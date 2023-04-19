@@ -52,280 +52,219 @@ const PropertyFormCom = () => {
         height: "589px",
       }}
     >
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-           
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          Property Title
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          label="Name of the property"
-          variant="outlined"
-          style={{
-            width: "520px",
-          }}
-        />
-      </Grid>
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-           
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          Property Type
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          label="Type"
-          variant="outlined"
-          style={{
-            width: "200px",
-          }}
-        />
-      </Grid>
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-           
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          Listing Type
-        </Typography>
-        <Select
-          labelId="demo-multiple-name-label"
-          id="demo-multiple-name"
-          multiple
-          value={personName}
-        //   onChange={handleChange}
-          input={<OutlinedInput label="Name" />}
-          MenuProps={MenuProps}
-        >
-          {names.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, personName, theme)}
-            >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </Grid>
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-           
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          Location
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          label="District"
-          variant="outlined"
-          style={{
-            width: "200px",
-          }}
-        />
-      </Grid>
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-           
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          Address
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          label="No 1, Street, etc.,"
-          variant="outlined"
-          style={{
-            width: "200px",
-          }}
-        />
-      </Grid>
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-           
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          Overall sqft.
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          label="ex. sqft"
-          variant="outlined"
-          style={{
-            width: "200px",
-          }}
-        />
-      </Grid>
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-           
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          Blocks
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          label="ex. No of blocks"
-          variant="outlined"
-          style={{
-            width: "200px",
-          }}
-        />
-      </Grid>
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-           
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          Floors
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          label="ex. No of floors"
-          variant="outlined"
-          style={{
-            width: "200px",
-          }}
-        />
-      </Grid>
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-           
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          Flats
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          label="ex. No of flats"
-          variant="outlined"
-          style={{
-            width: "200px",
-          }}
-        />
-      </Grid>
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-           
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          1BHK
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          label="ex. No of 1BHK"
-          variant="outlined"
-          style={{
-            width: "200px",
-          }}
-        />
-      </Grid>
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-           
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          2BHK
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          label="ex. No of 2BHK"
-          variant="outlined"
-          style={{
-            width: "200px",
-          }}
-        />
-      </Grid>
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-           
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          3BHK
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          label="ex. No of 3BHK"
-          variant="outlined"
-          style={{
-            width: "200px",
-          }}
-        />
-      </Grid>
-      <Grid sx={{ padding: "2rem" }}>
-        <Typography
-          style={{
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          Property amenities
-        </Typography>
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            // border: "none",
+            // outline: "none",
+            borderRadius: "12px",
+            height: "54px",
+            boxShadow: `0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)`,
+            "& .MuiOutlinedInput-notchedOutline": {
+              //   border: "none",
+            },
+          },
+          "& .MuiInputBase-input": {
+            // backgroundColor: "#F6F6F6",
+          },
+          "& .MuiTextField-root": {
+            // backgroundColor: "#F6F6F6",
+            width: "30ch",
+          },
+          padding: "2rem",
+        }}
+      >
+        <Grid>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Property Title
+          </Typography>
+          <TextField
+            placeholder="Tittle"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "520px",
+              marginTop: "1rem",
+            }}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Property Type
+          </Typography>
+          <TextField
+            //   placeholder="Tittle"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "1rem",
+            }}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Listing Type
+          </Typography>
+          <TextField
+            //   placeholder="Tittle"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "1rem",
+            }}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Location
+          </Typography>
+          <TextField
+            placeholder="ex. Chennai"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "1rem",
+            }}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Address
+          </Typography>
+          <TextField
+            placeholder="ex. No 1, street, etc.,"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "1rem",
+            }}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Overall sqft.
+          </Typography>
+          <TextField
+            placeholder="ex. sqft"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "1rem",
+            }}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Blocks
+          </Typography>
+          <TextField
+            placeholder="ex. No of blocks"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "1rem",
+            }}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Floors
+          </Typography>
+          <TextField
+            placeholder="ex. No of floors"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "1rem",
+            }}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Flats
+          </Typography>
+          <TextField
+            placeholder="ex. No of flats"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "1rem",
+            }}
+          />
+        </Grid>
       </Grid>
     </Paper>
   );
