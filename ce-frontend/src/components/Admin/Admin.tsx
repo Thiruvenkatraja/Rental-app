@@ -12,6 +12,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
+import { Property ,properties } from "../Utils/Constants";
+import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 
 export const Admin = () => {
   const theme = useTheme();
@@ -33,55 +35,49 @@ export const Admin = () => {
       label: "¥",
     },
   ];
+
+   const [searchTerm, setSearchTerm] = React.useState("");
+   const [visibleProperties, setVisibleProperties] = React.useState<Property[]>(
+     properties
+   );
   const [currentPage, setCurrentPage] = React.useState(1);
 
-
-  const [cards, setcards] = React.useState([
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953a33476cd4f4b3161c1c_image-thumbnail-6-property-posts-realtor-template-p-500.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/619539b83773147d9f162425_image-thumbnail-5-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953924b3ead41ff043a5ed_image-thumbnail-4-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
-    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
-  ]);
-
-  const totalPages = Math.ceil(cards.length / 8);
+  const totalPages = Math.ceil( properties.length / 8);
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setCurrentPage(value);
   };
 
   const startIndex = (currentPage - 1) * 8;
-  const visibleImages = cards.slice(startIndex, startIndex + 8);
+  const visibleImages = visibleProperties.slice(startIndex, startIndex + 8);
+const [isSearchClicked, setIsSearchClicked] = React.useState(false);
+
+const handleSearchClick = () => {
+  setIsSearchClicked(true);
+};
 
 
+  React.useEffect(() => {
+    setVisibleProperties(visibleImages);
+  }, [visibleImages]);
+
+ React.useEffect(() => {
+   if (isSearchClicked) {
+     const filteredProperties = properties.filter(
+       (property) =>
+         property.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+         property.address.toLowerCase().includes(searchTerm.toLowerCase())
+     );
+     setVisibleProperties(filteredProperties);
+     setIsSearchClicked(false);
+   }
+ }, [searchTerm, isSearchClicked]);
+ const handleClearClick = () => {
+   // clear the search term and reset visibleProperties
+   setSearchTerm("");
+   setVisibleProperties(properties);
+   setIsSearchClicked(false);
+ };
 
   return (
     <>
@@ -162,6 +158,8 @@ export const Admin = () => {
             sx={{ ml: 1, flex: 1 }}
             placeholder="Search..."
             inputProps={{ "aria-label": "search" }}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchTerm}
           />
           <Button
             sx={{
@@ -178,10 +176,19 @@ export const Admin = () => {
               color: theme.palette.info.main,
               backgroundColor: theme.palette.primary.main,
             }}
+            onClick={handleSearchClick}
             startIcon={<SearchIcon />}
           >
             Search
           </Button>
+          <IconButton
+            sx={{
+              color: theme.palette.primary.main,
+            }}
+            onClick={handleClearClick}
+          >
+            <ClearOutlinedIcon />
+          </IconButton>
         </Paper>
 
         <TextField
@@ -239,7 +246,7 @@ export const Admin = () => {
         }}
       >
         <Grid container spacing={2}>
-          {visibleImages.map((card, idx) => (
+          {visibleProperties.map((card, idx) => (
             <Grid item key={idx} xs={3}>
               <Paper
                 sx={{
@@ -258,7 +265,7 @@ export const Admin = () => {
                 }}
               >
                 <img
-                  src={card}
+                  src={card.url}
                   alt="Your Image"
                   style={{
                     maxWidth: "100%",
@@ -281,7 +288,7 @@ export const Admin = () => {
                     textAlign: "left",
                   }}
                 >
-                  Casagrande Apple Park
+                  {card.name}
                 </Typography>
                 <Typography
                   variant="h6"
@@ -299,7 +306,7 @@ export const Admin = () => {
                   }}
                 >
                   <FmdGoodOutlinedIcon sx={{ mr: 1, fontSize: "small" }} />
-                  Arcot Road, Vadapalani.
+                  {card.address}
                 </Typography>
 
                 <Divider
