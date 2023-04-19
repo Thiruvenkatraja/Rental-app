@@ -1,15 +1,19 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { MenuItem, Typography, useTheme } from "@material-ui/core";
-import { Avatar, Button, Chip, Divider, Grid, Stack, TextField } from "@mui/material";
+import { Button, Chip, Divider, Grid, IconButton, Pagination, Stack, TextField } from "@mui/material";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import Paper from "@mui/material/Paper";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import InputBase from "@mui/material/InputBase";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
+import { Property ,properties } from "../Utils/Constants";
+import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 
 export const Admin = () => {
   const theme = useTheme();
@@ -31,6 +35,50 @@ export const Admin = () => {
       label: "¥",
     },
   ];
+
+   const [searchTerm, setSearchTerm] = React.useState("");
+   const [visibleProperties, setVisibleProperties] = React.useState<Property[]>(
+     properties
+   );
+  const [currentPage, setCurrentPage] = React.useState(1);
+
+  const totalPages = Math.ceil( properties.length / 8);
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setCurrentPage(value);
+  };
+
+  const startIndex = (currentPage - 1) * 8;
+  const visibleImages = visibleProperties.slice(startIndex, startIndex + 8);
+const [isSearchClicked, setIsSearchClicked] = React.useState(false);
+
+const handleSearchClick = () => {
+  setIsSearchClicked(true);
+};
+
+
+  React.useEffect(() => {
+    setVisibleProperties(visibleImages);
+  }, [visibleImages]);
+
+ React.useEffect(() => {
+   if (isSearchClicked) {
+     const filteredProperties = properties.filter(
+       (property) =>
+         property.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+         property.address.toLowerCase().includes(searchTerm.toLowerCase())
+     );
+     setVisibleProperties(filteredProperties);
+     setIsSearchClicked(false);
+   }
+ }, [searchTerm, isSearchClicked]);
+ const handleClearClick = () => {
+   // clear the search term and reset visibleProperties
+   setSearchTerm("");
+   setVisibleProperties(properties);
+   setIsSearchClicked(false);
+ };
+
   return (
     <>
       <Box
@@ -46,7 +94,7 @@ export const Admin = () => {
             },
           },
           "& .MuiInputBase-input": {
-            backgroundColor: "#F6F6F6",
+            backgroundColor: "none",
           },
           "& .MuiTextField-root": {
             backgroundColor: "#F6F6F6",
@@ -110,6 +158,8 @@ export const Admin = () => {
             sx={{ ml: 1, flex: 1 }}
             placeholder="Search..."
             inputProps={{ "aria-label": "search" }}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchTerm}
           />
           <Button
             sx={{
@@ -126,10 +176,19 @@ export const Admin = () => {
               color: theme.palette.info.main,
               backgroundColor: theme.palette.primary.main,
             }}
+            onClick={handleSearchClick}
             startIcon={<SearchIcon />}
           >
             Search
           </Button>
+          <IconButton
+            sx={{
+              color: theme.palette.primary.main,
+            }}
+            onClick={handleClearClick}
+          >
+            <ClearOutlinedIcon />
+          </IconButton>
         </Paper>
 
         <TextField
@@ -178,7 +237,7 @@ export const Admin = () => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "flex-start",
           margin: "30px auto",
@@ -187,10 +246,14 @@ export const Admin = () => {
         }}
       >
         <Grid container spacing={2}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3].map((card) => (
-            <Grid item key={card} xs={3}>
+          {visibleProperties.map((card, idx) => (
+            <Grid item key={idx} xs={3}>
               <Paper
                 sx={{
+                  transition: "transform 0.2s",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                  },
                   m: 2,
                   borderRadius: "12px",
                   flexDirection: "column",
@@ -202,7 +265,7 @@ export const Admin = () => {
                 }}
               >
                 <img
-                  src="https://assets.website-files.com/6193ce0889184df85cd96c91/61953a33476cd4f4b3161c1c_image-thumbnail-6-property-posts-realtor-template-p-500.jpeg"
+                  src={card.url}
                   alt="Your Image"
                   style={{
                     maxWidth: "100%",
@@ -225,7 +288,7 @@ export const Admin = () => {
                     textAlign: "left",
                   }}
                 >
-                  Casagrande Apple Park
+                  {card.name}
                 </Typography>
                 <Typography
                   variant="h6"
@@ -243,30 +306,95 @@ export const Admin = () => {
                   }}
                 >
                   <FmdGoodOutlinedIcon sx={{ mr: 1, fontSize: "small" }} />
-                  Arcot Road, Vadapalani.
+                  {card.address}
                 </Typography>
 
                 <Divider
                   variant="middle"
-                  sx={{ width: "200px", marginTop: "15px" }}
+                  sx={{ width: "200px", marginTop: "10px" }}
                 />
-                <Stack direction="row" spacing={1}>
+                <Stack direction="row" padding={1.5} spacing={1}>
                   <Chip
-                    sx={{ color: theme.palette.info.main,  backgroundColor: theme.palette.primary.main }}
-                    icon={<HomeOutlinedIcon sx={{ color: "#FFFFFFF" }} />}
+                    sx={{
+                      padding: "3px",
+                      height: "28px",
+                      fontSize: "small",
+                      color: theme.palette.info.main,
+                      backgroundColor: theme.palette.primary.main,
+                    }}
+                    icon={
+                      <HomeOutlinedIcon
+                        color="primary"
+                        sx={{
+                          color: theme.palette.info.main,
+                          fontSize: "medium",
+                        }}
+                      />
+                    }
                     label="121"
-                    variant="outlined"
+                    variant="filled"
                   />
                   <Chip
-                    icon={<Groups2OutlinedIcon />}
+                    sx={{
+                      fontSize: "small",
+                      padding: "3px",
+                      height: "28px",
+                      color: theme.palette.info.main,
+                      backgroundColor: theme.palette.primary.main,
+                    }}
+                    icon={
+                      <Groups2OutlinedIcon
+                        color="primary"
+                        sx={{
+                          color: theme.palette.info.main,
+                          fontSize: "medium",
+                        }}
+                      />
+                    }
                     label="100"
-                    variant="outlined"
+                    variant="filled"
                   />
+
+                  <IconButton
+                    size="small"
+                    aria-label="edit"
+                    sx={{
+                      color: theme.palette.primary.main,
+                      backgroundColor: theme.palette.secondary.main,
+                    }}
+                  >
+                    <EditOutlinedIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton
+                    size="small"
+                    aria-label="delete"
+                    sx={{
+                      color: theme.palette.primary.main,
+                      backgroundColor: theme.palette.secondary.main,
+                    }}
+                  >
+                    <DeleteOutlinedIcon fontSize="small" />
+                  </IconButton>
                 </Stack>
               </Paper>
             </Grid>
           ))}
         </Grid>
+
+        {totalPages > 1 && (
+          <Pagination
+            count={totalPages}
+            page={currentPage}
+            onChange={handlePageChange}
+            sx={{
+              marginTop: "36px",
+              ".Mui-selected": {
+                color: theme.palette.primary.main,
+                bgcolor: `#F6C290 !important`,
+              },
+            }}
+          />
+        )}
       </Box>
     </>
   );
