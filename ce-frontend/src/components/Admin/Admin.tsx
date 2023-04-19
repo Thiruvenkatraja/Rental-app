@@ -1,9 +1,11 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { MenuItem, Typography, useTheme } from "@material-ui/core";
-import { Avatar, Button, Chip, Divider, Grid, Stack, TextField } from "@mui/material";
+import { Button, Chip, Divider, Grid, IconButton, Pagination, Stack, TextField } from "@mui/material";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import Paper from "@mui/material/Paper";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import InputBase from "@mui/material/InputBase";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
@@ -31,6 +33,56 @@ export const Admin = () => {
       label: "¥",
     },
   ];
+  const [currentPage, setCurrentPage] = React.useState(1);
+
+
+  const [cards, setcards] = React.useState([
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953a33476cd4f4b3161c1c_image-thumbnail-6-property-posts-realtor-template-p-500.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/619539b83773147d9f162425_image-thumbnail-5-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953924b3ead41ff043a5ed_image-thumbnail-4-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/6195384127055bbbc73f32e0_image-thumbnail-2-property-posts-realtor-template-p-500.jpeg",
+    "https://assets.website-files.com/6193ce0889184df85cd96c91/61953748655e2982e24ef661_image-thumbnail-8-property-posts-realtor-template-p-800.jpeg",
+  ]);
+
+  const totalPages = Math.ceil(cards.length / 8);
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setCurrentPage(value);
+  };
+
+  const startIndex = (currentPage - 1) * 8;
+  const visibleImages = cards.slice(startIndex, startIndex + 8);
+
+
+
   return (
     <>
       <Box
@@ -46,7 +98,7 @@ export const Admin = () => {
             },
           },
           "& .MuiInputBase-input": {
-            backgroundColor: "#F6F6F6",
+            backgroundColor: "none",
           },
           "& .MuiTextField-root": {
             backgroundColor: "#F6F6F6",
@@ -178,7 +230,7 @@ export const Admin = () => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "flex-start",
           margin: "30px auto",
@@ -187,8 +239,8 @@ export const Admin = () => {
         }}
       >
         <Grid container spacing={2}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3].map((card) => (
-            <Grid item key={card} xs={3}>
+          {visibleImages.map((card,idx) => (
+            <Grid item key={idx} xs={3}>
               <Paper
                 sx={{
                   m: 2,
@@ -202,7 +254,7 @@ export const Admin = () => {
                 }}
               >
                 <img
-                  src="https://assets.website-files.com/6193ce0889184df85cd96c91/61953a33476cd4f4b3161c1c_image-thumbnail-6-property-posts-realtor-template-p-500.jpeg"
+                  src={card}
                   alt="Your Image"
                   style={{
                     maxWidth: "100%",
@@ -248,25 +300,90 @@ export const Admin = () => {
 
                 <Divider
                   variant="middle"
-                  sx={{ width: "200px", marginTop: "15px" }}
+                  sx={{ width: "200px", marginTop: "10px" }}
                 />
-                <Stack direction="row" spacing={1}>
+                <Stack direction="row" padding={1.5} spacing={1}>
                   <Chip
-                    sx={{ color: theme.palette.info.main,  backgroundColor: theme.palette.primary.main }}
-                    icon={<HomeOutlinedIcon sx={{ color: "#FFFFFFF" }} />}
+                    sx={{
+                      padding: "3px",
+                      height: "28px",
+                      fontSize: "small",
+                      color: theme.palette.info.main,
+                      backgroundColor: theme.palette.primary.main,
+                    }}
+                    icon={
+                      <HomeOutlinedIcon
+                        color="primary"
+                        sx={{
+                          color: theme.palette.info.main,
+                          fontSize: "medium",
+                        }}
+                      />
+                    }
                     label="121"
-                    variant="outlined"
+                    variant="filled"
                   />
                   <Chip
-                    icon={<Groups2OutlinedIcon />}
+                    sx={{
+                      fontSize: "small",
+                      padding: "3px",
+                      height: "28px",
+                      color: theme.palette.info.main,
+                      backgroundColor: theme.palette.primary.main,
+                    }}
+                    icon={
+                      <Groups2OutlinedIcon
+                        color="primary"
+                        sx={{
+                          color: theme.palette.info.main,
+                          fontSize: "medium",
+                        }}
+                      />
+                    }
                     label="100"
-                    variant="outlined"
+                    variant="filled"
                   />
+
+                  <IconButton
+                    size="small"
+                    aria-label="edit"
+                    sx={{
+                      color: theme.palette.primary.main,
+                      backgroundColor: theme.palette.secondary.main,
+                    }}
+                  >
+                    <EditOutlinedIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton
+                    size="small"
+                    aria-label="delete"
+                    sx={{
+                      color: theme.palette.primary.main,
+                      backgroundColor: theme.palette.secondary.main,
+                    }}
+                  >
+                    <DeleteOutlinedIcon fontSize="small" />
+                  </IconButton>
                 </Stack>
               </Paper>
             </Grid>
           ))}
         </Grid>
+
+        {totalPages > 1 && (
+          <Pagination
+            count={totalPages}
+            page={currentPage}
+            onChange={handlePageChange}
+            sx={{
+              marginTop: "36px",
+              ".Mui-selected": {
+                color: theme.palette.primary.main,
+                bgcolor: `#F6C290 !important`,
+              },
+            }}
+          />
+        )}
       </Box>
     </>
   );
