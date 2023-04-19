@@ -239,10 +239,14 @@ export const Admin = () => {
         }}
       >
         <Grid container spacing={2}>
-          {visibleImages.map((card,idx) => (
+          {visibleImages.map((card, idx) => (
             <Grid item key={idx} xs={3}>
               <Paper
                 sx={{
+                  transition: "transform 0.2s",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                  },
                   m: 2,
                   borderRadius: "12px",
                   flexDirection: "column",
