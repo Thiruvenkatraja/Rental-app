@@ -73,6 +73,9 @@ const PropertyFormCom = () => {
       boxShadow: "none",
       marginTop: "0.5rem",
     },
+    "& .MuiTextField-root": {
+      backgroundColor: "#F6F6F6",
+    },
     "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
       background: "#F6F6F6",
 
@@ -91,7 +94,7 @@ const PropertyFormCom = () => {
       style={{
         position: "relative",
         width: "650px",
-        height: "970px",
+        height: "1000px",
       }}
     >
       <Grid
@@ -160,10 +163,11 @@ const PropertyFormCom = () => {
           </Typography>
           <TextField
             variant="outlined"
-            style={{ marginTop: "10px" }}
+            sx={TextFieldStyle}
+            style={{ marginTop: "5px" }}
             id="outlined-select-type"
             select
-                      defaultValue="Select"
+            defaultValue="Select"
           >
             {propertyType.map((option) => (
               <MenuItem key={option.value} value={option.value}>
@@ -185,7 +189,8 @@ const PropertyFormCom = () => {
           </Typography>
           <TextField
             variant="outlined"
-            style={{ marginTop: "10px" }}
+            sx={TextFieldStyle}
+            style={{ marginTop: "5px" }}
             id="outlined-select-type"
             select
             defaultValue="Select"
@@ -458,7 +463,6 @@ const PropertyFormCom = () => {
             style={{
               width: "548px",
               marginTop: "0.5rem",
-              //   backgroundColor: theme.palette.secondary.main,
             }}
           />
         </Grid>
