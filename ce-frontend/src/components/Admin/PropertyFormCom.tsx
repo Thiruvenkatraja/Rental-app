@@ -8,7 +8,6 @@ import {
   OutlinedInput,
   Paper,
   Select,
-  TextField,
   Theme,
   Typography,
 } from "@material-ui/core";
@@ -24,7 +23,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useState } from "react";
-
+import TextField from "@mui/material/TextField";
 const propertyType = [
   {
     value: "Select",
@@ -69,7 +68,23 @@ const PropertyFormCom = () => {
   };
 
   const theme = useTheme();
+  const TextFieldStyle = {
+    "& .MuiOutlinedInput-root": {
+      boxShadow: "none",
+      marginTop: "0.5rem",
+    },
+    "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
+      background: "#F6F6F6",
 
+      borderRadius: "12px",
+    },
+    "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
+      border: 0,
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#84342d",
+    },
+  };
   return (
     <Paper
       elevation={3}
@@ -84,20 +99,13 @@ const PropertyFormCom = () => {
         spacing={2}
         sx={{
           "& .MuiOutlinedInput-root": {
-            // border: "none",
-            // outline: "none",
             borderRadius: "12px",
             height: "54px",
             boxShadow: `0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)`,
-            "& .MuiOutlinedInput-notchedOutline": {
-              //   border: "none",
-            },
+            "& .MuiOutlinedInput-notchedOutline": {},
           },
-          "& .MuiInputBase-input": {
-            // backgroundColor: "#F6F6F6",
-          },
+          "& .MuiInputBase-input": {},
           "& .MuiTextField-root": {
-            // backgroundColor: "#F6F6F6",
             width: "30ch",
           },
           padding: "2rem",
@@ -118,10 +126,24 @@ const PropertyFormCom = () => {
             placeholder="Tittle"
             id="outlined-basic"
             variant="outlined"
-            style={{
-              width: "548px",
-              marginTop: "0.5rem",
-            //   backgroundColor: theme.palette.secondary.main,
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                boxShadow: "none",
+                marginTop: "0.5rem",
+                width: "548px",
+              },
+              "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
+                background: "#F6F6F6",
+
+                borderRadius: "12px",
+              },
+              "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
+                border: 0,
+              },
+              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "#84342d",
+                },
             }}
           />
         </Grid>
@@ -141,7 +163,7 @@ const PropertyFormCom = () => {
             style={{ marginTop: "10px" }}
             id="outlined-select-type"
             select
-            defaultValue="Select"
+                      defaultValue="Select"
           >
             {propertyType.map((option) => (
               <MenuItem key={option.value} value={option.value}>
@@ -194,6 +216,7 @@ const PropertyFormCom = () => {
               width: "250px",
               marginTop: "0.5rem",
             }}
+            sx={TextFieldStyle}
           />
         </Grid>
         <Grid item xs={6}>
@@ -215,6 +238,7 @@ const PropertyFormCom = () => {
               width: "250px",
               marginTop: "0.5rem",
             }}
+            sx={TextFieldStyle}
           />
         </Grid>
         <Grid item xs={6}>
@@ -236,6 +260,7 @@ const PropertyFormCom = () => {
               width: "250px",
               marginTop: "0.5rem",
             }}
+            sx={TextFieldStyle}
           />
         </Grid>
         <Grid item xs={6}>
@@ -257,6 +282,7 @@ const PropertyFormCom = () => {
               width: "250px",
               marginTop: "0.5rem",
             }}
+            sx={TextFieldStyle}
           />
         </Grid>
         <Grid item xs={6}>
@@ -278,6 +304,7 @@ const PropertyFormCom = () => {
               width: "250px",
               marginTop: "0.5rem",
             }}
+            sx={TextFieldStyle}
           />
         </Grid>
         <Grid item xs={6}>
@@ -299,6 +326,7 @@ const PropertyFormCom = () => {
               width: "250px",
               marginTop: "0.5rem",
             }}
+            sx={TextFieldStyle}
           />
         </Grid>
         <Grid item xs={6}>
@@ -320,6 +348,7 @@ const PropertyFormCom = () => {
               width: "250px",
               marginTop: "0.5rem",
             }}
+            sx={TextFieldStyle}
           />
         </Grid>
         <Grid item xs={6}>
@@ -341,6 +370,7 @@ const PropertyFormCom = () => {
               width: "250px",
               marginTop: "0.5rem",
             }}
+            sx={TextFieldStyle}
           />
         </Grid>
         <Grid item xs={6}>
@@ -362,6 +392,7 @@ const PropertyFormCom = () => {
               width: "250px",
               marginTop: "0.5rem",
             }}
+            sx={TextFieldStyle}
           />
         </Grid>
         <Grid item xs={12}>
@@ -404,6 +435,32 @@ const PropertyFormCom = () => {
             <FormControlLabel control={<Checkbox />} label="Elevator " />
             <FormControlLabel control={<Checkbox />} label="Garage" />
           </FormGroup>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography
+            style={{
+              marginTop: "2rem",
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Listing images
+          </Typography>
+          <p>
+            Please share a Google Drive or Imgur link of your listing images
+          </p>
+          <TextField
+            placeholder="ex. Drive.google.com/..."
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "548px",
+              marginTop: "0.5rem",
+              //   backgroundColor: theme.palette.secondary.main,
+            }}
+          />
         </Grid>
         <Grid item xs={3}>
           <Button
