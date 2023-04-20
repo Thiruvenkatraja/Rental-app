@@ -48,7 +48,7 @@ function ResponsiveAppBar() {
           height: 60,
           backgroundColor: theme.palette.primary.main,
           justifyContent: "center",
-          margin: "15px auto",
+          margin: "22px auto",
           width: "96%",
           borderRadius: "15px",
         }}
