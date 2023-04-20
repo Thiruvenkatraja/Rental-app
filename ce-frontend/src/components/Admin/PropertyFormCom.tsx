@@ -1,5 +1,10 @@
 import {
   Avatar,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  InputAdornment,
   OutlinedInput,
   Paper,
   Select,
@@ -10,46 +15,68 @@ import {
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { useTheme } from "@material-ui/core";
 import React from "react";
-import { Box, Grid, MenuItem, SelectChangeEvent } from "@mui/material";
+import {
+  Box,
+  Grid,
+  SelectChangeEvent,
+  FormControl,
+  InputLabel,
+  MenuItem,
+} from "@mui/material";
+import { useState } from "react";
 
-function getStyles(name: string, personName: string[], theme: Theme) {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
+const propertyType = [
+  {
+    value: "Select",
+    label: "Select",
+  },
+  {
+    value: "Rent",
+    label: "Rent",
+  },
+  {
+    value: "Sale",
+    label: "Sale",
+  },
+];
+
+const listingType = [
+  {
+    value: "Select",
+    label: "Select",
+  },
+  {
+    value: "Houses",
+    label: "Houses",
+  },
+  {
+    value: "Appartments",
+    label: "Appartments",
+  },
+  {
+    value: "Offices",
+    label: "Offices",
+  },
+];
 
 const PropertyFormCom = () => {
   const MenuProps = {
     PaperProps: {
       style: {
-        // maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
         width: 250,
       },
     },
   };
-  const names = ["Appartments", "Villas", "Offices"];
-  const theme = useTheme();
-  const [personName, setPersonName] = React.useState<string[]>([]);
 
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
+  const theme = useTheme();
+
   return (
     <Paper
       elevation={3}
       style={{
         position: "relative",
         width: "650px",
-        height: "589px",
+        height: "970px",
       }}
     >
       <Grid
@@ -76,7 +103,7 @@ const PropertyFormCom = () => {
           padding: "2rem",
         }}
       >
-        <Grid>
+        <Grid item xs={12}>
           <Typography
             style={{
               fontFamily: "Poppins",
@@ -92,8 +119,9 @@ const PropertyFormCom = () => {
             id="outlined-basic"
             variant="outlined"
             style={{
-              width: "520px",
-              marginTop: "1rem",
+              width: "548px",
+              marginTop: "0.5rem",
+            //   backgroundColor: theme.palette.secondary.main,
             }}
           />
         </Grid>
@@ -109,14 +137,18 @@ const PropertyFormCom = () => {
             Property Type
           </Typography>
           <TextField
-            //   placeholder="Tittle"
-            id="outlined-basic"
             variant="outlined"
-            style={{
-              width: "250px",
-              marginTop: "1rem",
-            }}
-          />
+            style={{ marginTop: "10px" }}
+            id="outlined-select-type"
+            select
+            defaultValue="Select"
+          >
+            {propertyType.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
         </Grid>
         <Grid item xs={6}>
           <Typography
@@ -130,14 +162,18 @@ const PropertyFormCom = () => {
             Listing Type
           </Typography>
           <TextField
-            //   placeholder="Tittle"
-            id="outlined-basic"
             variant="outlined"
-            style={{
-              width: "250px",
-              marginTop: "1rem",
-            }}
-          />
+            style={{ marginTop: "10px" }}
+            id="outlined-select-type"
+            select
+            defaultValue="Select"
+          >
+            {listingType.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
         </Grid>
         <Grid item xs={6}>
           <Typography
@@ -156,7 +192,7 @@ const PropertyFormCom = () => {
             variant="outlined"
             style={{
               width: "250px",
-              marginTop: "1rem",
+              marginTop: "0.5rem",
             }}
           />
         </Grid>
@@ -177,7 +213,7 @@ const PropertyFormCom = () => {
             variant="outlined"
             style={{
               width: "250px",
-              marginTop: "1rem",
+              marginTop: "0.5rem",
             }}
           />
         </Grid>
@@ -198,7 +234,7 @@ const PropertyFormCom = () => {
             variant="outlined"
             style={{
               width: "250px",
-              marginTop: "1rem",
+              marginTop: "0.5rem",
             }}
           />
         </Grid>
@@ -219,7 +255,7 @@ const PropertyFormCom = () => {
             variant="outlined"
             style={{
               width: "250px",
-              marginTop: "1rem",
+              marginTop: "0.5rem",
             }}
           />
         </Grid>
@@ -240,7 +276,7 @@ const PropertyFormCom = () => {
             variant="outlined"
             style={{
               width: "250px",
-              marginTop: "1rem",
+              marginTop: "0.5rem",
             }}
           />
         </Grid>
@@ -261,9 +297,126 @@ const PropertyFormCom = () => {
             variant="outlined"
             style={{
               width: "250px",
-              marginTop: "1rem",
+              marginTop: "0.5rem",
             }}
           />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            1BHK
+          </Typography>
+          <TextField
+            placeholder="ex. No of 1BHK"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "0.5rem",
+            }}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            2BHK
+          </Typography>
+          <TextField
+            placeholder="ex. No of 2BHK"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "0.5rem",
+            }}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            3BHK
+          </Typography>
+          <TextField
+            placeholder="ex. No of 3BHK"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "0.5rem",
+            }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography
+            style={{
+              marginTop: "2rem",
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Property amenities
+          </Typography>
+        </Grid>
+        <Grid item xs={3}>
+          <FormGroup>
+            <FormControlLabel control={<Checkbox />} label="Garden" />
+            <FormControlLabel control={<Checkbox />} label="Pool" />
+            <FormControlLabel control={<Checkbox />} label="Vigilance" />
+          </FormGroup>
+        </Grid>
+        <Grid item xs={3}>
+          <FormGroup>
+            <FormControlLabel control={<Checkbox />} label="Security" />
+            <FormControlLabel control={<Checkbox />} label="Cameras" />
+            <FormControlLabel control={<Checkbox />} label="Parking" />
+          </FormGroup>
+        </Grid>
+        <Grid item xs={3}>
+          <FormGroup>
+            <FormControlLabel control={<Checkbox />} label="Laundry" />
+            <FormControlLabel control={<Checkbox />} label="Jacuzzi" />
+            <FormControlLabel control={<Checkbox />} label="Solar panel" />
+          </FormGroup>
+        </Grid>
+        <Grid item xs={3}>
+          <FormGroup>
+            <FormControlLabel control={<Checkbox />} label="Internet" />
+            <FormControlLabel control={<Checkbox />} label="Elevator " />
+            <FormControlLabel control={<Checkbox />} label="Garage" />
+          </FormGroup>
+        </Grid>
+        <Grid item xs={3}>
+          <Button
+            variant="contained"
+            style={{
+              marginTop: "2rem",
+              fontWeight: "1000",
+              color: theme.palette.secondary.main,
+              backgroundColor: theme.palette.primary.main,
+            }}
+          >
+            Submit
+          </Button>
         </Grid>
       </Grid>
     </Paper>
