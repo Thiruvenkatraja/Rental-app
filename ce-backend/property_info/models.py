@@ -7,15 +7,14 @@ class Property(models.Model):
     Property_ID = models.AutoField(primary_key=True)
     PropertyTitle = models.CharField(max_length=100)
     Property_Choices = (
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
+        ('Rent', 'Rent'),
+        ('Sale', 'Sale')
     )
     PropertyType = models.CharField(max_length=100, choices=Property_Choices)
     Listing_Choices = (
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
+        ('Houses', 'Houses'),
+        ('Apartments', 'Apartments'),
+        ('Offices', 'Offices'),
     )
     Property_ListingType = models.CharField(
         max_length=100, choices=Listing_Choices)
