@@ -3,6 +3,7 @@ import ResponsiveAppBar from "./components/Utils/HeaderBar";
 import { Admin } from "./components/Admin/Admin";
 import AddClient from "./components/Forms/AddClient";
 import PropertyForm from "./components/Admin/PropertyForm";
+import ClientForm from "./components/Admin/ClientForm";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Admin />} />
         <Route path="/addclient" element={<AddClient />}/>
         <Route path="/property_form" element={<PropertyForm />} />
+        <Route path="/client_form" element={<ClientForm />} />
       </Routes>
     </BrowserRouter>
   );
