@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <ResponsiveAppBar />
       <Routes>
-        <Route path="/" element={<Admin />} />
+        <Route path="/properties" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );

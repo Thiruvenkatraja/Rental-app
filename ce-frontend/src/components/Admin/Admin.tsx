@@ -12,6 +12,7 @@ import {
   TextField,
 } from "@mui/material";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import { Link } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
@@ -21,7 +22,14 @@ import SearchIcon from "@mui/icons-material/Search";
 import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
-import { Property, properties, currencies } from "../Utils/Constants";
+import PaginationItem from "@mui/material/PaginationItem";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import {
+  Property,
+  properties,
+  getUniqueValuesFromArray,
+} from "../Utils/Constants";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 
 export const Admin = () => {
@@ -32,66 +40,40 @@ export const Admin = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 8;
   const totalPages = Math.ceil(properties.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
   const [selectedCity, setSelectedCity] = React.useState<string>("All");
-  const newVisibleProperties = properties.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );
-
   const [propertyType, setPropertyType] = React.useState<string>("All");
-  const [filteredProperties, setFilteredProperties] = React.useState<Property[]>([]);
-  function getUniqueValuesFromArray(
-    arr: Property[],
-    key: keyof Property
-  ): string[] {
-    return arr.reduce((acc: string[], obj: Property) => {
-      if (!acc.includes(obj[key])) {
-        acc.push(obj[key]);
-      }
-      return acc;
-    }, []);
-  }
-
   const types = getUniqueValuesFromArray(properties, "type");
   const cities = getUniqueValuesFromArray(properties, "city");
+
   React.useEffect(() => {
-    if (propertyType === "All") {
-      setFilteredProperties(properties);
-    } else {
-      const filtered = properties.filter(
-        (property) => property.type === propertyType
-      );
-      setFilteredProperties(filtered);
+    let filtered = properties;
+
+    if (propertyType !== "All") {
+      filtered = filtered.filter((property) => property.type === propertyType);
     }
-  }, [propertyType, properties]);
 
-  React.useEffect(() => {
-    setVisibleProperties(filteredProperties.slice(0, 8));
-  }, [filteredProperties]);
-  React.useEffect(() => {
-    setVisibleProperties(newVisibleProperties);
-  }, [currentPage, properties]);
-
-  const handleCityChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    const selectedCity = event.target.value as string;
-    setSelectedCity(selectedCity);
-    if (selectedCity === "All") {
-      setVisibleProperties(properties);
-    } else {
-      const filteredProperties = properties.filter(
-        (property) => property.city === selectedCity
-      );
-      setVisibleProperties(filteredProperties);
+    if (selectedCity !== "All") {
+      filtered = filtered.filter((property) => property.city === selectedCity);
     }
-  };
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    setCurrentPage(value);
-  };
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const visible = filtered.slice(startIndex, endIndex);
+    
+    setVisibleProperties(visible);
+  }, [propertyType, selectedCity, properties, currentPage]);
+
+
+ const handleFilterChange = (key: string, value: string) => {
+   if (key === "city") {
+     setSelectedCity(value);
+   } else if (key === "type") {
+     setPropertyType(value);
+   }
+ };
+const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  setCurrentPage(value);
+};
 
   function handleSearchClick() {
     const filteredProperties = properties.filter(
@@ -101,14 +83,12 @@ export const Admin = () => {
     );
     setVisibleProperties(filteredProperties);
   }
-  const handleTypeChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setPropertyType(event.target.value as string);
-  };
-
 
   const handleClearClick = () => {
     // clear the search term and reset visibleProperties
     setSearchTerm("");
+    setPropertyType("All");
+    setSelectedCity("All");
     setVisibleProperties(properties);
   };
 
@@ -239,7 +219,8 @@ export const Admin = () => {
           defaultValue="All"
           label="Location"
           value={selectedCity}
-          onChange={handleCityChange}
+          name="city"
+          onChange={(e) => handleFilterChange(e.target.name, e.target.value)}
         >
           <MenuItem value="All">All</MenuItem>
           {cities.map((option, idx) => (
@@ -263,7 +244,8 @@ export const Admin = () => {
           defaultValue="All"
           label="Property"
           value={propertyType}
-          onChange={handleTypeChange}
+          name="type"
+          onChange={(e) => handleFilterChange(e.target.name, e.target.value)}
         >
           <MenuItem value="All">All</MenuItem>
           {types.map((type: string) => (
@@ -288,135 +270,140 @@ export const Admin = () => {
         <Grid container spacing={2}>
           {visibleProperties.map((card, idx) => (
             <Grid item key={idx} xs={3}>
-              <Paper
-                sx={{
-                  transition: "transform 0.2s",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                  },
-                  m: 2,
-                  borderRadius: "12px",
-                  flexDirection: "column",
-                  display: "flex",
-                  alignItems: "flex-start",
-                  width: "250px",
-                  height: "280px",
-                  marginLeft: "30px",
-                }}
+              <Link
+                to={`/properties/${idx}`}
+                style={{ textDecoration: "none" }}
               >
-                <img
-                  src={card.url}
-                  alt="Your Image"
-                  style={{
-                    maxWidth: "100%",
-                    maxHeight: "250px",
-                    borderTopRightRadius: "12px",
-                    borderTopLeftRadius: "12px",
-                    verticalAlign: "top",
-                  }}
-                />
-                <Typography
-                  variant="h6"
-                  style={{
-                    marginTop: 20,
-                    marginLeft: 20,
-                    fontFamily: "Poppins",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    lineHeight: "24px",
-                    letterSpacing: "0.10000000149011612px",
-                    textAlign: "left",
-                  }}
-                >
-                  {card.name}
-                </Typography>
-                <Typography
-                  variant="h6"
-                  style={{
+                <Paper
+                  sx={{
+                    transition: "transform 0.2s",
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                    },
+                    m: 2,
+                    borderRadius: "12px",
+                    flexDirection: "column",
                     display: "flex",
-                    alignItems: "center",
-                    marginLeft: 20,
-                    fontFamily: "Poppins",
-                    fontSize: "smaller",
-                    fontWeight: 500,
-                    lineHeight: "24px",
-                    letterSpacing: "0.10000000149011612px",
-                    textAlign: "left",
-                    opacity: "40%",
+                    alignItems: "flex-start",
+                    width: "250px",
+                    height: "280px",
+                    marginLeft: "30px",
                   }}
                 >
-                  <FmdGoodOutlinedIcon sx={{ mr: 1, fontSize: "small" }} />
-                  {card.address}
-                </Typography>
-
-                <Divider
-                  variant="middle"
-                  sx={{ width: "200px", marginTop: "10px" }}
-                />
-                <Stack direction="row" padding={1.5} spacing={1}>
-                  <Chip
-                    sx={{
-                      padding: "3px",
-                      height: "28px",
-                      fontSize: "small",
-                      color: theme.palette.info.main,
-                      backgroundColor: theme.palette.primary.main,
+                  <img
+                    src={card.url}
+                    alt="Your Image"
+                    style={{
+                      maxWidth: "100%",
+                      maxHeight: "250px",
+                      borderTopRightRadius: "12px",
+                      borderTopLeftRadius: "12px",
+                      verticalAlign: "top",
                     }}
-                    icon={
-                      <HomeOutlinedIcon
-                        color="primary"
-                        sx={{
-                          color: theme.palette.info.main,
-                          fontSize: "medium",
-                        }}
-                      />
-                    }
-                    label="121"
-                    variant="filled"
                   />
-                  <Chip
-                    sx={{
-                      fontSize: "small",
-                      padding: "3px",
-                      height: "28px",
-                      color: theme.palette.info.main,
-                      backgroundColor: theme.palette.primary.main,
-                    }}
-                    icon={
-                      <Groups2OutlinedIcon
-                        color="primary"
-                        sx={{
-                          color: theme.palette.info.main,
-                          fontSize: "medium",
-                        }}
-                      />
-                    }
-                    label="100"
-                    variant="filled"
-                  />
-
-                  <IconButton
-                    size="small"
-                    aria-label="edit"
-                    sx={{
-                      color: theme.palette.primary.main,
-                      backgroundColor: theme.palette.secondary.main,
+                  <Typography
+                    variant="h6"
+                    style={{
+                      marginTop: 20,
+                      marginLeft: 20,
+                      fontFamily: "Poppins",
+                      fontSize: "16px",
+                      fontWeight: 500,
+                      lineHeight: "24px",
+                      letterSpacing: "0.10000000149011612px",
+                      textAlign: "left",
                     }}
                   >
-                    <EditOutlinedIcon fontSize="small" />
-                  </IconButton>
-                  <IconButton
-                    size="small"
-                    aria-label="delete"
-                    sx={{
-                      color: theme.palette.primary.main,
-                      backgroundColor: theme.palette.secondary.main,
+                    {card.name}
+                  </Typography>
+                  <Typography
+                    variant="h6"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginLeft: 20,
+                      fontFamily: "Poppins",
+                      fontSize: "smaller",
+                      fontWeight: 500,
+                      lineHeight: "24px",
+                      letterSpacing: "0.10000000149011612px",
+                      textAlign: "left",
+                      opacity: "40%",
                     }}
                   >
-                    <DeleteOutlinedIcon fontSize="small" />
-                  </IconButton>
-                </Stack>
-              </Paper>
+                    <FmdGoodOutlinedIcon sx={{ mr: 1, fontSize: "small" }} />
+                    {card.address}
+                  </Typography>
+
+                  <Divider
+                    variant="middle"
+                    sx={{ width: "200px", marginTop: "10px" }}
+                  />
+                  <Stack direction="row" padding={1.5} spacing={1}>
+                    <Chip
+                      sx={{
+                        padding: "3px",
+                        height: "28px",
+                        fontSize: "small",
+                        color: theme.palette.info.main,
+                        backgroundColor: theme.palette.primary.main,
+                      }}
+                      icon={
+                        <HomeOutlinedIcon
+                          color="primary"
+                          sx={{
+                            color: theme.palette.info.main,
+                            fontSize: "medium",
+                          }}
+                        />
+                      }
+                      label="121"
+                      variant="filled"
+                    />
+                    <Chip
+                      sx={{
+                        fontSize: "small",
+                        padding: "3px",
+                        height: "28px",
+                        color: theme.palette.info.main,
+                        backgroundColor: theme.palette.primary.main,
+                      }}
+                      icon={
+                        <Groups2OutlinedIcon
+                          color="primary"
+                          sx={{
+                            color: theme.palette.info.main,
+                            fontSize: "medium",
+                          }}
+                        />
+                      }
+                      label="100"
+                      variant="filled"
+                    />
+
+                    <IconButton
+                      size="small"
+                      aria-label="edit"
+                      sx={{
+                        color: theme.palette.primary.main,
+                        backgroundColor: theme.palette.secondary.main,
+                      }}
+                    >
+                      <EditOutlinedIcon fontSize="small" />
+                    </IconButton>
+                    <IconButton
+                      size="small"
+                      aria-label="delete"
+                      sx={{
+                        color: theme.palette.primary.main,
+                        backgroundColor: theme.palette.secondary.main,
+                      }}
+                    >
+                      <DeleteOutlinedIcon fontSize="small" />
+                    </IconButton>
+                  </Stack>
+                </Paper>
+              </Link>
             </Grid>
           ))}
         </Grid>
@@ -426,6 +413,12 @@ export const Admin = () => {
             count={totalPages}
             page={currentPage}
             onChange={handlePageChange}
+            renderItem={(item) => (
+              <PaginationItem
+                slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                {...item}
+              />
+            )}
             sx={{
               marginTop: "36px",
               ".Mui-selected": {
