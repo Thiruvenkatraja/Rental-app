@@ -13,10 +13,10 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useTheme } from "@material-ui/core/styles";
-import { Badge, Grid } from "@mui/material";
+import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const pages = ["Owners", "Buy/Sell", "Contact Us"];
+const pages = ["Properties", "Buy/Sell", "Contact Us"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
@@ -140,6 +140,8 @@ function ResponsiveAppBar() {
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
+                  component={Link}
+                  to={page.toLowerCase()}
                   sx={{
                     fontFamily: "Poppins",
                     my: 2,
@@ -155,8 +157,8 @@ function ResponsiveAppBar() {
                 <Badge badgeContent={4} color="error">
                   <Button
                     key="requests"
-                    LinkComponent={Link}
-                    href="/requests"
+                    component={Link}
+                    to="/requests"
                     onClick={handleCloseNavMenu}
                     sx={{
                       "&:hover": {

@@ -1,23 +1,5 @@
 import React from "react";
 
-export const currencies = [
-  {
-    value: "USD",
-    label: "$",
-  },
-  {
-    value: "EUR",
-    label: "€",
-  },
-  {
-    value: "BTC",
-    label: "฿",
-  },
-  {
-    value: "JPY",
-    label: "¥",
-  },
-];
 
 export interface Property {
   name: string;
@@ -102,3 +84,15 @@ export const properties: Property[] = [
     url: "https://assets.website-files.com/6193ce0889184df85cd96c91/619538b1f22c8819e89bc594_image-thumbnail-3-property-posts-realtor-template-p-800.jpeg",
   },
 ];
+
+export function getUniqueValuesFromArray(
+  arr: Property[],
+  key: keyof Property
+): string[] {
+  return arr.reduce((acc: string[], obj: Property) => {
+    if (!acc.includes(obj[key])) {
+      acc.push(obj[key]);
+    }
+    return acc;
+  }, []);
+}

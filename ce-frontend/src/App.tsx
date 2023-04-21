@@ -10,6 +10,7 @@ function App() {
     <BrowserRouter>
       <ResponsiveAppBar />
       <Routes>
+        <Route path="/properties" element={<Admin />} />
         <Route path="/" element={<Admin />} />
         <Route path="/addclient" element={<AddClient />}/>
         <Route path="/property_form" element={<PropertyForm />} />
