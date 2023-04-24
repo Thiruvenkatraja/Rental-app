@@ -58,7 +58,26 @@ const listingType = [
   },
 ];
 
-const PropertyFormCom = () => {
+const oneTwoThree = [
+  {
+    value: "Select",
+    label: "Select",
+  },
+  {
+    value: "1",
+    label: "1",
+  },
+  {
+    value: "2",
+    label: "2",
+  },
+  {
+    value: "3",
+    label: "3",
+  },
+];
+
+const ClientFormCom = () => {
   const MenuProps = {
     PaperProps: {
       style: {
@@ -70,8 +89,8 @@ const PropertyFormCom = () => {
   const theme = useTheme();
   const TextFieldStyle = {
     "& .MuiOutlinedInput-root": {
-      background: "#F6F6F6",
       boxShadow: "none",
+      background: "#F6F6F6",
       marginTop: "0.5rem",
     },
     "& .MuiTextField-root": {
@@ -79,6 +98,7 @@ const PropertyFormCom = () => {
     },
     "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
       background: "#F6F6F6",
+
       borderRadius: "12px",
     },
     "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
@@ -94,8 +114,7 @@ const PropertyFormCom = () => {
       style={{
         position: "relative",
         width: "650px",
-        height: "1200px",
-        borderRadius: "12px",
+        height: "1528px",
       }}
     >
       <Grid
@@ -115,6 +134,72 @@ const PropertyFormCom = () => {
           padding: "2rem",
         }}
       >
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Full name
+          </Typography>
+          <TextField
+            placeholder="John Joe"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "0.5rem",
+            }}
+            sx={TextFieldStyle}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Email
+          </Typography>
+          <TextField
+            placeholder="example@mail.com"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "0.5rem",
+            }}
+            sx={TextFieldStyle}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Mobile number
+          </Typography>
+          <TextField
+            placeholder="+91 9012121212"
+            id="outlined-basic"
+            variant="outlined"
+            style={{
+              width: "250px",
+              marginTop: "0.5rem",
+            }}
+            sx={TextFieldStyle}
+          />
+        </Grid>
         <Grid item xs={12}>
           <Typography
             style={{
@@ -256,10 +341,10 @@ const PropertyFormCom = () => {
               textDecoration: "none",
             }}
           >
-            Overall sqft.
+            Listing Price
           </Typography>
           <TextField
-            placeholder="ex. sqft"
+            placeholder="$ 1000"
             id="outlined-basic"
             variant="outlined"
             style={{
@@ -278,10 +363,88 @@ const PropertyFormCom = () => {
               textDecoration: "none",
             }}
           >
-            Blocks
+            Bedrooms
           </Typography>
           <TextField
-            placeholder="ex. No of blocks"
+            variant="outlined"
+            sx={TextFieldStyle}
+            style={{ marginTop: "5px" }}
+            id="outlined-select-type"
+            select
+            defaultValue="Select"
+          >
+            {oneTwoThree.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Bathrooms
+          </Typography>
+          <TextField
+            variant="outlined"
+            sx={TextFieldStyle}
+            style={{ marginTop: "5px" }}
+            id="outlined-select-type"
+            select
+            defaultValue="Select"
+          >
+            {oneTwoThree.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Parking Lots
+          </Typography>
+          <TextField
+            variant="outlined"
+            sx={TextFieldStyle}
+            style={{ marginTop: "5px" }}
+            id="outlined-select-type"
+            select
+            defaultValue="Select"
+          >
+            {oneTwoThree.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "650",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Construction sqft.
+          </Typography>
+          <TextField
+            placeholder="ex. 2000 sqft"
             id="outlined-basic"
             variant="outlined"
             style={{
@@ -300,10 +463,10 @@ const PropertyFormCom = () => {
               textDecoration: "none",
             }}
           >
-            Floors
+            Land sqft.
           </Typography>
           <TextField
-            placeholder="ex. No of floors"
+            placeholder="ex. 2000 sqft"
             id="outlined-basic"
             variant="outlined"
             style={{
@@ -313,7 +476,7 @@ const PropertyFormCom = () => {
             sx={TextFieldStyle}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <Typography
             style={{
               fontFamily: "Poppins",
@@ -322,20 +485,20 @@ const PropertyFormCom = () => {
               textDecoration: "none",
             }}
           >
-            Flats
+            Listing short description
           </Typography>
           <TextField
-            placeholder="ex. No of flats"
+            placeholder="Please enter up to 240 characters."
             id="outlined-basic"
             variant="outlined"
             style={{
-              width: "250px",
+              width: "552px",
               marginTop: "0.5rem",
             }}
             sx={TextFieldStyle}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <Typography
             style={{
               fontFamily: "Poppins",
@@ -344,58 +507,14 @@ const PropertyFormCom = () => {
               textDecoration: "none",
             }}
           >
-            1BHK
+            Listing lond description
           </Typography>
           <TextField
-            placeholder="ex. No of 1BHK"
+            placeholder="Please enter up to 4000 characters."
             id="outlined-basic"
             variant="outlined"
             style={{
-              width: "250px",
-              marginTop: "0.5rem",
-            }}
-            sx={TextFieldStyle}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            2BHK
-          </Typography>
-          <TextField
-            placeholder="ex. No of 2BHK"
-            id="outlined-basic"
-            variant="outlined"
-            style={{
-              width: "250px",
-              marginTop: "0.5rem",
-            }}
-            sx={TextFieldStyle}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            3BHK
-          </Typography>
-          <TextField
-            placeholder="ex. No of 3BHK"
-            id="outlined-basic"
-            variant="outlined"
-            style={{
-              width: "250px",
+              width: "552px",
               marginTop: "0.5rem",
             }}
             sx={TextFieldStyle}
@@ -486,4 +605,4 @@ const PropertyFormCom = () => {
   );
 };
 
-export default PropertyFormCom;
+export default ClientFormCom;
