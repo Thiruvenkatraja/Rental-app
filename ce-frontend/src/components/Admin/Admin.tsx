@@ -59,21 +59,23 @@ export const Admin = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const visible = filtered.slice(startIndex, endIndex);
-    
+
     setVisibleProperties(visible);
   }, [propertyType, selectedCity, properties, currentPage]);
 
-
- const handleFilterChange = (key: string, value: string) => {
-   if (key === "city") {
-     setSelectedCity(value);
-   } else if (key === "type") {
-     setPropertyType(value);
-   }
- };
-const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
-  setCurrentPage(value);
-};
+  const handleFilterChange = (key: string, value: string) => {
+    if (key === "city") {
+      setSelectedCity(value);
+    } else if (key === "type") {
+      setPropertyType(value);
+    }
+  };
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
 
   function handleSearchClick() {
     const filteredProperties = properties.filter(
