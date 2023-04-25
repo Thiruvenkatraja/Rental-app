@@ -15,14 +15,10 @@ import {
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { Link } from "react-router-dom";
 import Paper from "@mui/material/Paper";
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import InputBase from "@mui/material/InputBase";
 import InputAdornment from "@mui/material/InputAdornment";
-import SearchIcon from "@mui/icons-material/Search";
 import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -30,7 +26,7 @@ import {
   Property,
   properties,
   getUniqueValuesFromArray,
-} from "../utils/Constants";
+} from "../Utils/Constants";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { PropertyCard } from "../components/PropertyCard";
 
@@ -76,6 +72,7 @@ export const Admin = () => {
     } else if (key === "type") {
       setPropertyType(value);
     }
+    setCurrentPage(1);
   };
 
   const handlePageChange = (
