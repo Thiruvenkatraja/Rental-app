@@ -13,8 +13,13 @@ class Property(models.Model):
     PropertyType = models.CharField(max_length=100, choices=Property_Choices)
     Listing_Choices = (
         ('Houses', 'Houses'),
-        ('Apartments', 'Apartments'),
+        ('Apartment', 'Apartment'),
         ('Offices', 'Offices'),
+        ('Villa', 'Villa'),
+        ('Ranch', 'Ranch'),
+        ('Condominium', 'Condominium'),
+        ('Estate', 'Estate'),
+        ('Bungalow','Bungalow'),
     )
     Property_ListingType = models.CharField(
         max_length=100, choices=Listing_Choices)
