@@ -43,30 +43,22 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
           alignItems: "flex-start",
           width: "17rem",
           height: "18rem",
+        //   overflow: "hidden",
         }}
       >
-        <Grid
-          sx={{
-            objectFit: "cover",
+        <img
+          style={{
             transition: "transform 0.2s",
-            "&:hover": {
-              transform: "scale(1.05)",
-            },
+              maxWidth: "100%",
+              maxHeight: "250px",
+            borderTopRightRadius: "12px",
+            borderTopLeftRadius: "12px",
+            verticalAlign: "top",
           }}
-        >
-          <img
-            style={{
-              transition: "transform 0.2s",
-              //   maxWidth: "100%",
-              //   maxHeight: "250px",
-              borderTopRightRadius: "12px",
-              borderTopLeftRadius: "12px",
-              verticalAlign: "top",
-            }}
-            src={card.url}
-            alt="Your Image"
-          />
-        </Grid>
+          src={card.url}
+          alt="Your Image"
+        />
+
         <Typography
           variant="h6"
           style={{
