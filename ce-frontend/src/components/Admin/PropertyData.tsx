@@ -32,47 +32,57 @@ const PropertyData = (props: Props) => {
             width: "30ch",
           },
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           height: 60,
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: "flex-start",
-          margin: "30px auto",
+          margin: "auto",
           width: "92%",
         }}
       >
-        <Typography
-          variant="h6"
-          style={{
-            marginRight: 2,
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            color: "inherit",
-            textDecoration: "none",
-          }}
-        >
-          Properties
-        </Typography>
-        <Button
+        <Grid
           sx={{
-            height: "31px",
-            width: "88px",
-            "&:hover": {
-              backgroundColor: theme.palette.secondary.main,
-            },
-            boxShadow: `0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)`,
-            margin: "12px",
-            borderRadius: "12px",
-            fontFamily: "Poppins",
-            fontSize: "12px",
-            textTransform: "none",
-            color: theme.palette.info.main,
-            backgroundColor: theme.palette.secondary.main,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-start",
           }}
-          startIcon={<AddOutlinedIcon />}
         >
-          ADD
-        </Button>
-       <PropertyDataElements/>
+          <Typography
+            variant="h6"
+            style={{
+              marginRight: 2,
+              fontFamily: "Poppins",
+              fontWeight: "500",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Properties
+          </Typography>
+          <Button
+            sx={{
+              height: "31px",
+              width: "88px",
+              "&:hover": {
+                backgroundColor: theme.palette.secondary.main,
+              },
+              boxShadow: `0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)`,
+              margin: "12px",
+              borderRadius: "12px",
+              fontFamily: "Poppins",
+              fontSize: "12px",
+              textTransform: "none",
+              color: theme.palette.info.main,
+              backgroundColor: theme.palette.secondary.main,
+            }}
+            startIcon={<AddOutlinedIcon />}
+          >
+            ADD
+          </Button>
+        </Grid>
+        <Grid sx={{ position: "relative", left: "9rem" }}>
+          <PropertyDataElements />
+        </Grid>
       </Box>
     </>
   );

@@ -65,11 +65,6 @@ export const Admin = () => {
     const endIndex = startIndex + itemsPerPage;
     const visible = filtered.slice(startIndex, endIndex);
 
-
-    setVisibleProperties(visible);
-  }, [propertyType, selectedCity, properties, currentPage]);
-
-
     setVisibleProperties(visible);
   }, [propertyType, selectedCity, properties, searchTerm, currentPage]);
   const handleFilterChange = (key: string, value: string) => {
@@ -78,13 +73,6 @@ export const Admin = () => {
     } else if (key === "type") {
       setPropertyType(value);
     }
-  };
-
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    setCurrentPage(value);
   };
 
   const handlePageChange = (
@@ -268,7 +256,6 @@ export const Admin = () => {
             </MenuItem>
           ))}
         </TextField>
-        
       </Box>
 
       <Box
