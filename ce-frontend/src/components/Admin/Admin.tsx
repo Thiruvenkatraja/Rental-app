@@ -32,52 +32,47 @@ import {
 } from "../Utils/Constants";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { PropertyCard } from "../Utils/PropertyCard";
-import { StyledBox } from "../Utils/StyledBox";
 
 export const Admin = () => {
-  
   const theme = useTheme();
   const [searchTerm, setSearchTerm] = React.useState("");
   const [visibleProperties, setVisibleProperties] =
     React.useState<Property[]>(properties);
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 8;
+  const totalPages = Math.ceil(properties.length / itemsPerPage);
   const [selectedCity, setSelectedCity] = React.useState<string>("All");
   const [propertyType, setPropertyType] = React.useState<string>("All");
   const types = getUniqueValuesFromArray(properties, "type");
   const cities = getUniqueValuesFromArray(properties, "city");
-  // Filter Logic
-  const filteredProperties = React.useMemo(() => {
+
+  React.useEffect(() => {
     let filtered = properties.filter(
       (property) =>
         property.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         property.address.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
     if (propertyType !== "All") {
       filtered = filtered.filter((property) => property.type === propertyType);
     }
+
     if (selectedCity !== "All") {
       filtered = filtered.filter((property) => property.city === selectedCity);
     }
-    return filtered;
-  }, [properties, searchTerm, propertyType, selectedCity]);
-  
-  const totalPages = Math.ceil(filteredProperties.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const visible = filteredProperties.slice(startIndex, endIndex);
 
-  React.useEffect(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const visible = filtered.slice(startIndex, endIndex);
+
     setVisibleProperties(visible);
-  }, [visible]);
-
+  }, [propertyType, selectedCity, properties, searchTerm, currentPage]);
   const handleFilterChange = (key: string, value: string) => {
     if (key === "city") {
       setSelectedCity(value);
     } else if (key === "type") {
       setPropertyType(value);
     }
-    setCurrentPage(1);
   };
 
   const handlePageChange = (
@@ -92,13 +87,39 @@ export const Admin = () => {
     setSearchTerm("");
     setPropertyType("All");
     setSelectedCity("All");
-    setCurrentPage(1);
     setVisibleProperties(properties);
   };
 
   return (
     <>
-      <StyledBox>
+      <Box
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            border: "none",
+            outline: "none",
+            borderRadius: "12px",
+            height: "54px",
+            boxShadow: `0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)`,
+            "& .MuiOutlinedInput-notchedOutline": {
+              border: "none",
+            },
+          },
+          "& .MuiInputBase-input": {
+            backgroundColor: "none",
+          },
+          "& .MuiTextField-root": {
+            backgroundColor: "#F6F6F6",
+            width: "30ch",
+          },
+          display: "flex",
+          flexDirection: "row",
+          height: 60,
+          alignItems: "center",
+          justifyContent: "flex-start",
+          margin: "30px auto",
+          width: "92%",
+        }}
+      >
         <Typography
           variant="h6"
           style={{
@@ -151,7 +172,26 @@ export const Admin = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             value={searchTerm}
           />
-
+          {/* <Button
+            sx={{
+              height: "31px",
+              width: "91px",
+              "&:hover": {
+                backgroundColor: theme.palette.primary.main,
+              },
+              boxShadow: `0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)`,
+              margin: "12px",
+              borderRadius: "12px",
+              fontFamily: "Poppins",
+              textTransform: "none",
+              color: theme.palette.info.main,
+              backgroundColor: theme.palette.primary.main,
+            }}
+            onClick={handleSearchClick}
+            startIcon={<SearchIcon />}
+          >
+            Search
+          </Button> */}
           <IconButton
             disabled={!searchTerm}
             sx={{
@@ -164,15 +204,6 @@ export const Admin = () => {
         </Paper>
 
         <TextField
-          sx={{
-            marginLeft: "30px",
-            backgroundColor: theme.palette.primary.main,
-          }}
-          color="secondary"
-          id="location-filter"
-          label="Location"
-          name="city"
-          select
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -180,24 +211,28 @@ export const Admin = () => {
               </InputAdornment>
             ),
           }}
-          value={selectedCity}
-          onChange={(e) => handleFilterChange(e.target.name, e.target.value)}
+          sx={{
+            marginLeft: "30px",
+            backgroundColor: theme.palette.primary.main,
+          }}
+          id="outlined-select-currency"
+          color="secondary"
+          select
           defaultValue="All"
+          label="Location"
+          value={selectedCity}
+          name="city"
+          onChange={(e) => handleFilterChange(e.target.name, e.target.value)}
         >
           <MenuItem value="All">All</MenuItem>
-          {cities.map((city) => (
-            <MenuItem key={city} value={city}>
-              {city}
+          {cities.map((option, idx) => (
+            <MenuItem key={idx} value={option}>
+              {option}
             </MenuItem>
           ))}
         </TextField>
 
         <TextField
-          sx={{ marginLeft: "30px" }}
-          id="property-type-filter"
-          label="Property"
-          name="type"
-          select
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -205,18 +240,23 @@ export const Admin = () => {
               </InputAdornment>
             ),
           }}
-          value={propertyType}
-          onChange={(e) => handleFilterChange(e.target.name, e.target.value)}
+          sx={{ marginLeft: "30px" }}
+          id="outlined-select-currency"
+          select
           defaultValue="All"
+          label="Property"
+          value={propertyType}
+          name="type"
+          onChange={(e) => handleFilterChange(e.target.name, e.target.value)}
         >
           <MenuItem value="All">All</MenuItem>
-          {types.map((type) => (
+          {types.map((type: string) => (
             <MenuItem key={type} value={type}>
               {type}
             </MenuItem>
           ))}
         </TextField>
-      </StyledBox>
+      </Box>
 
       <Box
         sx={{
@@ -226,6 +266,7 @@ export const Admin = () => {
           justifyContent: "flex-start",
           margin: "30px auto",
           width: "87%",
+          // backgroundColor: theme.palette.secondary.main,
         }}
       >
         <Grid container spacing={2}>
@@ -257,7 +298,6 @@ export const Admin = () => {
           />
         )}
       </Box>
-
     </>
   );
 };
