@@ -19,6 +19,10 @@ class Clients(models.Model):
         ('Houses', 'Houses'),
         ('Apartments', 'Apartments'),
         ('Offices', 'Offices'),
+        ('Villas', 'Villas'),
+        ('Ranch', 'Ranch'),
+        ('Condominium', 'Condominium'),
+        ('Bungalow', 'Bungalow'),
     )
     Client_ListingType = models.CharField(choices=ListType, max_length=30)
     Client_Location = models.CharField(max_length=30)
