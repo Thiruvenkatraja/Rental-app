@@ -12,7 +12,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-import { useTheme } from "@material-ui/core";
+import { Grid, useTheme } from "@material-ui/core";
 
 type PropertyCardProps = {
   idx: number;
@@ -27,34 +27,46 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
   const theme = useTheme();
 
   return (
-    <Link to={`/properties/${idx}`} style={{ textDecoration: "none" }}>
+    <Link
+      to={`/properties/${idx}`}
+      style={{ textDecoration: "none", width: "auto" }}
+    >
       <Paper
         sx={{
-        //   transition: "transform 0.2s",
-        //   "&:hover": {
-        //     transform: "scale(1.05)",
-        //   },
-        //   m: 2,
+          transition: "transform 0.2s",
+          "&:hover": {
+            transform: "scale(1.05)",
+          },
           borderRadius: "12px",
           flexDirection: "column",
           display: "flex",
           alignItems: "flex-start",
-          width: "18rem",
-          height: "20rem",
-        //   marginLeft: "30px",
+          width: "17rem",
+          height: "18rem",
         }}
       >
-        <img
-          src={card.url}
-          alt="Your Image"
-          style={{
-            maxWidth: "100%",
-            maxHeight: "250px",
-            borderTopRightRadius: "12px",
-            borderTopLeftRadius: "12px",
-            verticalAlign: "top",
+        <Grid
+          sx={{
+            objectFit: "cover",
+            transition: "transform 0.2s",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
           }}
-        />
+        >
+          <img
+            style={{
+              transition: "transform 0.2s",
+              //   maxWidth: "100%",
+              //   maxHeight: "250px",
+              borderTopRightRadius: "12px",
+              borderTopLeftRadius: "12px",
+              verticalAlign: "top",
+            }}
+            src={card.url}
+            alt="Your Image"
+          />
+        </Grid>
         <Typography
           variant="h6"
           style={{
