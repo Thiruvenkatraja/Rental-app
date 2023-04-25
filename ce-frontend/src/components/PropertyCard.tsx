@@ -14,6 +14,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useTheme } from "@mui/material";
 
+
 type PropertyCardProps = {
   idx: number;
   card: {
@@ -27,34 +28,45 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
   const theme = useTheme();
 
   return (
+
     <Link to={`/properties_data/${idx}`} style={{ textDecoration: "none" }}>
+
       <Paper
         sx={{
           transition: "transform 0.2s",
           "&:hover": {
             transform: "scale(1.05)",
           },
-          m: 2,
           borderRadius: "12px",
           flexDirection: "column",
           display: "flex",
           alignItems: "flex-start",
-          width: "250px",
-          height: "280px",
-          marginLeft: "30px",
+          width: "17rem",
+          height: "18rem",
         }}
       >
-        <img
-          src={card.url}
-          alt="Your Image"
-          style={{
-            maxWidth: "100%",
-            maxHeight: "250px",
-            borderTopRightRadius: "12px",
-            borderTopLeftRadius: "12px",
-            verticalAlign: "top",
+        <Grid
+          sx={{
+            objectFit: "cover",
+            transition: "transform 0.2s",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
           }}
-        />
+        >
+          <img
+            style={{
+              transition: "transform 0.2s",
+              //   maxWidth: "100%",
+              //   maxHeight: "250px",
+              borderTopRightRadius: "12px",
+              borderTopLeftRadius: "12px",
+              verticalAlign: "top",
+            }}
+            src={card.url}
+            alt="Your Image"
+          />
+        </Grid>
         <Typography
           variant="h6"
           style={{
@@ -64,7 +76,6 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
             fontSize: "16px",
             fontWeight: 500,
             lineHeight: "24px",
-            letterSpacing: "0.10000000149011612px",
             textAlign: "left",
           }}
         >
@@ -80,7 +91,6 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
             fontSize: "smaller",
             fontWeight: 500,
             lineHeight: "24px",
-            letterSpacing: "0.10000000149011612px",
             textAlign: "left",
             opacity: "40%",
           }}

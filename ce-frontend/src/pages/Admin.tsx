@@ -41,33 +41,35 @@ export const Admin = () => {
     React.useState<Property[]>(properties);
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 8;
-  const totalPages = Math.ceil(properties.length / itemsPerPage);
   const [selectedCity, setSelectedCity] = React.useState<string>("All");
   const [propertyType, setPropertyType] = React.useState<string>("All");
   const types = getUniqueValuesFromArray(properties, "type");
   const cities = getUniqueValuesFromArray(properties, "city");
 
-  React.useEffect(() => {
+  const filteredProperties = React.useMemo(() => {
     let filtered = properties.filter(
       (property) =>
         property.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         property.address.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
     if (propertyType !== "All") {
       filtered = filtered.filter((property) => property.type === propertyType);
     }
-
     if (selectedCity !== "All") {
       filtered = filtered.filter((property) => property.city === selectedCity);
     }
+    return filtered;
+  }, [properties, searchTerm, propertyType, selectedCity]);
 
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const visible = filtered.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(filteredProperties.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const visible = filteredProperties.slice(startIndex, endIndex);
 
+  React.useEffect(() => {
     setVisibleProperties(visible);
-  }, [propertyType, selectedCity, properties, searchTerm, currentPage]);
+  }, [visible]);
+
   const handleFilterChange = (key: string, value: string) => {
     if (key === "city") {
       setSelectedCity(value);
@@ -258,46 +260,53 @@ export const Admin = () => {
           ))}
         </TextField>
       </Box>
-
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "flex-start",
-          margin: "30px auto",
-          width: "87%",
-          // backgroundColor: theme.palette.secondary.main,
+          padding: "1rem 0 2rem 0",
         }}
       >
-        <Grid container spacing={2}>
+        <Grid
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "3rem",
+          }}
+          spacing={2}
+        >
           {visibleProperties.map((card, idx) => (
-            <Grid item key={idx} xs={3}>
+            <Grid item key={idx}>
               <PropertyCard card={card} idx={idx} />
             </Grid>
           ))}
         </Grid>
 
-        {totalPages > 1 && (
-          <Pagination
-            count={totalPages}
-            page={currentPage}
-            onChange={handlePageChange}
-            renderItem={(item) => (
-              <PaginationItem
-                slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-                {...item}
-              />
-            )}
-            sx={{
-              marginTop: "36px",
-              ".Mui-selected": {
-                color: theme.palette.primary.main,
-                bgcolor: `#F6C290 !important`,
-              },
-            }}
-          />
-        )}
+        <Grid>
+          {totalPages > 1 && (
+            <Pagination
+              count={totalPages}
+              page={currentPage}
+              onChange={handlePageChange}
+              renderItem={(item) => (
+                <PaginationItem
+                  slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                  {...item}
+                />
+              )}
+              sx={{
+                marginTop: "36px",
+                ".Mui-selected": {
+                  color: theme.palette.primary.main,
+                  bgcolor: `#F6C290 !important`,
+                },
+              }}
+            />
+          )}
+        </Grid>
       </Box>
     </>
   );
