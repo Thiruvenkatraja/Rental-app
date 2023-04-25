@@ -68,9 +68,8 @@ export const Admin = () => {
   React.useEffect(() => {
     setVisibleProperties(visible);
   }, [visible]);
-    
-    
-    const handleFilterChange = (key: string, value: string) => {
+
+  const handleFilterChange = (key: string, value: string) => {
     if (key === "city") {
       setSelectedCity(value);
     } else if (key === "type") {
@@ -266,6 +265,7 @@ export const Admin = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "flex-start",
+          padding: "1rem 0 2rem 0",
         }}
       >
         <Grid
@@ -273,12 +273,12 @@ export const Admin = () => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
-            gap: "2rem",
+            gap: "3rem",
           }}
           spacing={2}
         >
           {visibleProperties.map((card, idx) => (
-            <Grid item key={idx} xs={3}>
+            <Grid item key={idx}>
               <PropertyCard card={card} idx={idx} />
             </Grid>
           ))}
