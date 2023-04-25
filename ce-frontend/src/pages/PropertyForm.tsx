@@ -4,9 +4,9 @@ import {
   Paper,
   TextField,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import { useTheme } from "@material-ui/core";
+import { useTheme } from "@mui/material";
 import React from "react";
 import { Box } from "@mui/material";
 import PropertyFormCom from "../components/PropertyFormCom";

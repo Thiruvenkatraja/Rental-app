@@ -1,15 +1,20 @@
 import React from "react";
 import { Box, Grid } from "@mui/material";
-import { Typography, useTheme } from "@material-ui/core";
+import  Typography from "@mui/material/Typography";
+import {useTheme} from "@mui/material"
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import PropertyDataElements from "../components/PropertyDataElements";
+import { useParams } from "react-router-dom";
 
 type Props = {};
 
 const PropertyData = (props: Props) => {
   const theme = useTheme();
+  const {id} = useParams();
+  console.log(id)
+
   return (
     <>
       <Box

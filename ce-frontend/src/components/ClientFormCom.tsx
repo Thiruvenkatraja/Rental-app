@@ -5,8 +5,8 @@ import {
   FormGroup,
   Paper,
   Typography,
-} from "@material-ui/core";
-import { useTheme } from "@material-ui/core";
+} from "@mui/material";
+import { useTheme } from "@mui/material";
 import {
   Grid,
 } from "@mui/material";
