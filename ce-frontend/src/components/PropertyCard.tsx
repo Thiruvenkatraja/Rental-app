@@ -30,18 +30,18 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
     <Link to={`/properties/${idx}`} style={{ textDecoration: "none" }}>
       <Paper
         sx={{
-          transition: "transform 0.2s",
-          "&:hover": {
-            transform: "scale(1.05)",
-          },
-          m: 2,
+        //   transition: "transform 0.2s",
+        //   "&:hover": {
+        //     transform: "scale(1.05)",
+        //   },
+        //   m: 2,
           borderRadius: "12px",
           flexDirection: "column",
           display: "flex",
           alignItems: "flex-start",
-          width: "250px",
-          height: "280px",
-          marginLeft: "30px",
+          width: "18rem",
+          height: "20rem",
+        //   marginLeft: "30px",
         }}
       >
         <img
@@ -64,7 +64,6 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
             fontSize: "16px",
             fontWeight: 500,
             lineHeight: "24px",
-            letterSpacing: "0.10000000149011612px",
             textAlign: "left",
           }}
         >
@@ -80,7 +79,6 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
             fontSize: "smaller",
             fontWeight: 500,
             lineHeight: "24px",
-            letterSpacing: "0.10000000149011612px",
             textAlign: "left",
             opacity: "40%",
           }}
