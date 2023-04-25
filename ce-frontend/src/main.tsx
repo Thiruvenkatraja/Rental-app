@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+import { createTheme, ThemeProvider } from "@mui/material";
+import ClientSlice from "./Redux/ClientSlice";
+import PropertySlice from "./Redux/PropertySlice";
 
 const theme = createTheme({
   palette: {
@@ -17,12 +20,19 @@ const theme = createTheme({
     },
   },
 });
+const store = configureStore({
+  reducer: {
+    ClientSlice:ClientSlice,
+    PropertySlice:PropertySlice
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <CssBaseline />
     <ThemeProvider theme={theme}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>
 );

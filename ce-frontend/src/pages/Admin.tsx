@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import { InputLabel, MenuItem, Typography, useTheme } from "@material-ui/core";
+import { InputLabel, MenuItem, Typography} from "@mui/material";
+import {useTheme} from "@mui/material"
 import {
   Button,
   Chip,

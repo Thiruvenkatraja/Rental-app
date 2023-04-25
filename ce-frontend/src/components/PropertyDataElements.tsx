@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, MenuItem, TextField } from "@mui/material";
-import { Typography, useTheme } from "@material-ui/core";
+import Typography from "@mui/material/Typography";
+import {useTheme} from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import PropertyDataGrid from "./PropertyDataGrid";
@@ -47,22 +48,7 @@ const PropertyDataElements = (props: Props) => {
   };
   return (
     <>
-      <Box
-        sx={
-          {
-            //   display: "flex",
-            //   flexDirection: "column",
-            //   alignItems: "center",
-            //   justifyContent: "flex-start",
-            //   margin: "30px auto",
-            //   width: "87%",
-            //   padding: "5rem",
-            //   marginTop: "90vh",
-            //   marginLeft: "-10vw",
-            // backgroundColor: theme.palette.secondary.main,
-          }
-        }
-      >
+      <Box>
         <Paper
           sx={{
             borderRadius: "12px",
@@ -70,10 +56,6 @@ const PropertyDataElements = (props: Props) => {
             p: "3rem",
             display: "flex",
             flexDirection: "column",
-            // height: "54px",
-            // alignItems: "center",
-            // width: 1100,
-            // marginLeft: "30px",
             gap: "1.5rem",
             backgroundColor: "white",
           }}
@@ -94,8 +76,6 @@ const PropertyDataElements = (props: Props) => {
           <Paper
             sx={{
               background: "#f6c290",
-              //   height: "5rem",
-              //   width: "40rem",
               borderRadius: "1rem",
               display: "flex",
               justifyContent: "center",

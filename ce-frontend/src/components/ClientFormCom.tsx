@@ -6,9 +6,13 @@ import {
   MenuItem,
   Paper,
   Typography,
-} from "@material-ui/core";
-import { useTheme } from "@material-ui/core";
-import { Grid } from "@mui/material";
+
+} from "@mui/material";
+import { useTheme } from "@mui/material";
+import {
+  Grid,
+} from "@mui/material";
+
 import TextField from "@mui/material/TextField";
 const propertyType = [
   {

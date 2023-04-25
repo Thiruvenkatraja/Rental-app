@@ -12,7 +12,8 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-import { Grid, useTheme } from "@material-ui/core";
+import { useTheme } from "@mui/material";
+
 
 type PropertyCardProps = {
   idx: number;
@@ -27,10 +28,9 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
   const theme = useTheme();
 
   return (
-    <Link
-      to={`/properties/${idx}`}
-      style={{ textDecoration: "none", width: "auto" }}
-    >
+
+    <Link to={`/properties_data/${idx}`} style={{ textDecoration: "none" }}>
+
       <Paper
         sx={{
           transition: "transform 0.2s",
