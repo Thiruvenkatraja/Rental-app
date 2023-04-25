@@ -11,15 +11,18 @@ class Clients(models.Model):
     Client_EMail = models.EmailField()
     Client_PropertyTitle = models.CharField(max_length=30)
     PropertyType = (
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
+        ('Rent', 'Rent'),
+        ('Sale', 'Sale'),
     )
     Client_PropertyType = models.CharField(choices=PropertyType, max_length=30)
     ListType = (
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
+        ('Houses', 'Houses'),
+        ('Apartments', 'Apartments'),
+        ('Offices', 'Offices'),
+        ('Villas', 'Villas'),
+        ('Ranch', 'Ranch'),
+        ('Condominium', 'Condominium'),
+        ('Bungalow', 'Bungalow'),
     )
     Client_ListingType = models.CharField(choices=ListType, max_length=30)
     Client_Location = models.CharField(max_length=30)
