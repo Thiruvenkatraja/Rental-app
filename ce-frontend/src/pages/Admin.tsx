@@ -30,7 +30,7 @@ import {
   Property,
   properties,
   getUniqueValuesFromArray,
-} from "../utils/Constants";
+} from "../Utils/Constants";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { PropertyCard } from "../components/PropertyCard";
 
