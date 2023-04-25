@@ -10,7 +10,7 @@ import { useTheme } from "@material-ui/core";
 import React from "react";
 import { Box, Grid } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
-import ClientFormCom from "./ClientFormCom";
+import ClientFormCom from "../components/ClientFormCom";
 const ClientForm = () => {
   const theme = useTheme();
   return (

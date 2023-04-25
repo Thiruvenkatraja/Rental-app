@@ -1,11 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ResponsiveAppBar from "./components/Utils/HeaderBar";
-import { Admin } from "./components/Admin/Admin";
-import AddClient from "./components/Forms/AddClient";
-import PropertyForm from "./components/Admin/PropertyForm";
-import ClientForm from "./components/Admin/ClientForm";
-import PropertyData from "./components/Admin/PropertyData";
-
+import ResponsiveAppBar from "./components/HeaderBar";
+import { Admin } from "./pages/Admin";
+import AddClient from "./pages/AddClient";
+import PropertyForm from "./pages/PropertyForm";
+import ClientForm from "./pages/ClientForm";
+import PropertyData from "./pages/PropertyData";
 
 function App() {
   return (
@@ -15,7 +14,7 @@ function App() {
         <Route path="/properties" element={<Admin />} />
         <Route path="/properties_data" element={<PropertyData />} />
         <Route path="/" element={<Admin />} />
-        <Route path="/addclient" element={<AddClient />}/>
+        <Route path="/addclient" element={<AddClient />} />
         <Route path="/property_form" element={<PropertyForm />} />
         <Route path="/client_form" element={<ClientForm />} />
       </Routes>
