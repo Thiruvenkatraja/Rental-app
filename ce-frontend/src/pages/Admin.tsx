@@ -29,7 +29,7 @@ import {
   Property,
   properties,
   getUniqueValuesFromArray,
-} from "../Utils/Constants";
+} from "../utils/Constants";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { PropertyCard } from "../components/PropertyCard";
 
