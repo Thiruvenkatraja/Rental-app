@@ -9,7 +9,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { useTheme } from "@material-ui/core";
 import React from "react";
 import { Box } from "@mui/material";
-import PropertyFormCom from "./PropertyFormCom";
+import PropertyFormCom from "../components/PropertyFormCom";
 
 const PropertyForm = () => {
   const theme = useTheme();
@@ -22,7 +22,7 @@ const PropertyForm = () => {
           gap: "7rem",
           justifyContent: "center",
           alignItems: "start",
-          paddingTop: "3rem",
+        //   paddingTop: "3rem",
         }}
       >
         <Box

@@ -31,7 +31,7 @@ import {
   getUniqueValuesFromArray,
 } from "../Utils/Constants";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
-import { PropertyCard } from "../Utils/PropertyCard";
+import { PropertyCard } from "../components/PropertyCard";
 
 export const Admin = () => {
   const theme = useTheme();

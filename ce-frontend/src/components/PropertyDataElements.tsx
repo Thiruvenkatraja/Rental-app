@@ -72,7 +72,7 @@ const PropertyDataElements = (props: Props) => {
             flexDirection: "column",
             // height: "54px",
             // alignItems: "center",
-            // width: 600,
+            // width: 1100,
             // marginLeft: "30px",
             gap: "1.5rem",
             backgroundColor: "white",
@@ -128,7 +128,7 @@ const PropertyDataElements = (props: Props) => {
               id="outlined-basic"
               variant="outlined"
               style={{
-                width: "30rem",
+                width: "37rem",
                 borderRadius: "100px",
                 backgroundColor: "#ffffff00",
               }}

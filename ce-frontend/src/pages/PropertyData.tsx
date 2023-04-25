@@ -4,7 +4,7 @@ import { Typography, useTheme } from "@material-ui/core";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
-import PropertyDataElements from "../Utils/PropertyDataElements";
+import PropertyDataElements from "../components/PropertyDataElements";
 
 type Props = {};
 
