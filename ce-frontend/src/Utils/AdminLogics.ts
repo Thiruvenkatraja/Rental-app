@@ -9,9 +9,9 @@ export const AdminLogics = () => {
     dispatch<any>(fetchPropertyData());
   }, []);
   const properties: Property[] = useSelector(
-    (state:any) => state.PropertySlice.propertyData
+    (state: any) => state.PropertySlice.propertyData
   );
-//   console.log(properties)
+  //   console.log(properties)
   const [searchTerm, setSearchTerm] = React.useState("");
   const [visibleProperties, setVisibleProperties] =
     React.useState<Property[]>(properties);
@@ -25,14 +25,22 @@ export const AdminLogics = () => {
   const filteredProperties = React.useMemo(() => {
     let filtered = properties.filter(
       (property) =>
-        property.PropertyTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        property.Property_Address.toLowerCase().includes(searchTerm.toLowerCase())
+        property.PropertyTitle.toLowerCase().includes(
+          searchTerm.toLowerCase()
+        ) ||
+        property.Property_Address.toLowerCase().includes(
+          searchTerm.toLowerCase()
+        )
     );
     if (propertyType !== "All") {
-      filtered = filtered.filter((property) => property.PropertyType === propertyType);
+      filtered = filtered.filter(
+        (property) => property.PropertyType === propertyType
+      );
     }
     if (selectedCity !== "All") {
-      filtered = filtered.filter((property) => property.Property_Location === selectedCity);
+      filtered = filtered.filter(
+        (property) => property.Property_Location === selectedCity
+      );
     }
     return filtered;
   }, [properties, searchTerm, propertyType, selectedCity]);
@@ -70,7 +78,7 @@ export const AdminLogics = () => {
     setVisibleProperties(properties);
   };
 
-return{
+  return {
     handleClearClick,
     handlePageChange,
     handleFilterChange,
@@ -79,10 +87,10 @@ return{
     cities,
     visibleProperties,
     totalPages,
-    searchTerm, 
+    searchTerm,
     setSearchTerm,
     selectedCity,
     propertyType,
     currentPage,
-}
+  };
 };

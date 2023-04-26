@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import { InputLabel, MenuItem, Typography} from "@mui/material";
-import {useTheme} from "@mui/material"
+import { InputLabel, MenuItem, Typography } from "@mui/material";
+import { useTheme } from "@mui/material";
 import {
   Button,
   Chip,
@@ -37,12 +37,12 @@ export const Admin = () => {
     cities,
     visibleProperties,
     totalPages,
-    searchTerm, 
+    searchTerm,
     setSearchTerm,
     selectedCity,
     propertyType,
-    currentPage
-    }=AdminLogics()
+    currentPage,
+  } = AdminLogics();
   return (
     <>
       <Box
