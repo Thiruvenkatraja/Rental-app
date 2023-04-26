@@ -102,6 +102,7 @@ const PropertyFormCom = () => {
             placeholder="Tittle"
             id="outlined-basic"
             variant="outlined"
+            name="Property Title"
             sx={{
               "& .MuiOutlinedInput-root": {
                 boxShadow: "none",
@@ -163,6 +164,7 @@ const PropertyFormCom = () => {
               placeholder={inputs.placeholder}
               id="outlined-basic"
               variant="outlined"
+              name={inputs.name}
               style={{
                 width: "250px",
                 marginTop: "0.5rem",
