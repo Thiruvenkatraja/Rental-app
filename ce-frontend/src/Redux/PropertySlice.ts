@@ -1,7 +1,7 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchPropertyData = createAsyncThunk("fetchPropertyData", async()=>{
-    const response = await fetch("http://127.0.0.1:8000/cart/");
+    const response = await fetch("http://127.0.0.1:8000/property/");
     return response.json();
 })
 
