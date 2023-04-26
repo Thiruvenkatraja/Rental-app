@@ -14,30 +14,22 @@ import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useTheme } from "@mui/material";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchPropertyData } from "../Redux/PropertySlice";
+
 
 type PropertyCardProps = {
   idx: number;
   card: {
-    url: string;
-    name: string;
-    address: string;
+    Property_ID:number;
+    Property_ImgURL: string;
+    PropertyTitle: string;
+    Property_Address: string;
   };
 };
 
 export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
   const theme = useTheme();
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(fetchPropertyData());
-  }, []);
-  const propertiesData = useSelector(
-    (state) => state.PropertySlice.propertyData
-  );
-  console.log(propertiesData);
   return (
-    <Link to={`/properties_data/${idx}`} style={{ textDecoration: "none" }}>
+    <Link to={`/properties_data/${card.Property_ID}`} style={{ textDecoration: "none" }}>
       <Paper
         sx={{
           transition: "transform 0.2s",
@@ -62,7 +54,7 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
             borderTopLeftRadius: "12px",
             verticalAlign: "top",
           }}
-          src={card.url}
+          src={card.Property_ImgURL}
           alt="Your Image"
         />
 
@@ -78,7 +70,7 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
             textAlign: "left",
           }}
         >
-          {card.name}
+          {card.PropertyTitle}
         </Typography>
         <Typography
           variant="h6"
@@ -95,7 +87,7 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
           }}
         >
           <FmdGoodOutlinedIcon sx={{ mr: 1, fontSize: "small" }} />
-          {card.address}
+          {card.Property_Address}
         </Typography>
 
         <Divider variant="middle" sx={{ width: "200px", marginTop: "10px" }} />
