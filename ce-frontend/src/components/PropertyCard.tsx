@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import {
   Chip,
@@ -13,7 +14,8 @@ import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useTheme } from "@mui/material";
-
+import { useSelector, useDispatch } from "react-redux";
+import { fetchPropertyData } from "../Redux/PropertySlice";
 
 type PropertyCardProps = {
   idx: number;
@@ -26,11 +28,16 @@ type PropertyCardProps = {
 
 export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
   const theme = useTheme();
-
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(fetchPropertyData());
+  }, []);
+  const propertiesData = useSelector(
+    (state) => state.PropertySlice.propertyData
+  );
+  console.log(propertiesData);
   return (
-
     <Link to={`/properties_data/${idx}`} style={{ textDecoration: "none" }}>
-
       <Paper
         sx={{
           transition: "transform 0.2s",
@@ -43,14 +50,14 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
           alignItems: "flex-start",
           width: "17rem",
           height: "18rem",
-        //   overflow: "hidden",
+          //   overflow: "hidden",
         }}
       >
         <img
           style={{
             transition: "transform 0.2s",
-              maxWidth: "100%",
-              maxHeight: "250px",
+            maxWidth: "100%",
+            maxHeight: "250px",
             borderTopRightRadius: "12px",
             borderTopLeftRadius: "12px",
             verticalAlign: "top",
