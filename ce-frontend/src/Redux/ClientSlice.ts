@@ -14,15 +14,15 @@ export const clientData = createSlice({
         error:false,
     },
     reducers:{},
-    extraReducers: (builder) => {
-        builder.addCase(fetchClientData.pending, (state) => {
+    extraReducers: (builder:any) => {
+        builder.addCase(fetchClientData.pending, (state:any) => {
           state.loading = true;
         });
-        builder.addCase(fetchClientData.fulfilled, (state, action) => {
+        builder.addCase(fetchClientData.fulfilled, (state:any, action:any) => {
           state.loading = false;
           state.clientData = action.payload;
         });
-        builder.addCase(fetchClientData.rejected, (state) => {
+        builder.addCase(fetchClientData.rejected, (state:any) => {
           state.error = true;
         });
       },
