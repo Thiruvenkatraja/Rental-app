@@ -9,7 +9,8 @@ import {
 import { useTheme } from "@mui/material";
 import { Grid, MenuItem } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import { PropertyFormInputs } from "../constants";
+import { FormControl, PropertyFormInputs } from "../constants";
+import { PropertyFormLogics } from "../utils/PropertyFormLogics";
 
 const propertyType = [
   {
@@ -46,6 +47,9 @@ const listingType = [
 ];
 
 const PropertyFormCom = () => {
+  const { handleChange, values, handleCheckbox, handleSubmit } =
+    PropertyFormLogics();
+
   const theme = useTheme();
   const TypographStyles = {
     fontFamily: "Poppins",
@@ -102,7 +106,9 @@ const PropertyFormCom = () => {
             placeholder="Tittle"
             id="outlined-basic"
             variant="outlined"
-            name="Property Title"
+            name="Property_Title"
+            value={values.Property_Title}
+            onChange={handleChange}
             sx={{
               "& .MuiOutlinedInput-root": {
                 boxShadow: "none",
@@ -127,6 +133,9 @@ const PropertyFormCom = () => {
           <Typography style={TypographStyles}>Property Type</Typography>
           <TextField
             variant="outlined"
+            name="Property_Type"
+            value={values.Property_Type}
+            onChange={handleChange}
             sx={TextFieldStyle}
             style={{ marginTop: "5px", width: "15.5rem" }}
             id="outlined-select-type"
@@ -144,6 +153,9 @@ const PropertyFormCom = () => {
           <Typography style={TypographStyles}>Listing Type</Typography>
           <TextField
             variant="outlined"
+            name="Listing_Type"
+            value={values.Listing_Type}
+            onChange={handleChange}
             sx={TextFieldStyle}
             style={{ marginTop: "5px", width: "15.5rem" }}
             id="outlined-select-type"
@@ -159,11 +171,13 @@ const PropertyFormCom = () => {
         </Grid>
         {PropertyFormInputs.map((inputs) => (
           <Grid item xs={6}>
-            <Typography style={TypographStyles}>{inputs.name}</Typography>
+            <Typography style={TypographStyles}>{inputs.label}</Typography>
             <TextField
               placeholder={inputs.placeholder}
               id="outlined-basic"
               variant="outlined"
+              value={values[inputs.name]}
+              onChange={handleChange}
               name={inputs.name}
               style={{
                 width: "250px",
@@ -176,34 +190,20 @@ const PropertyFormCom = () => {
         <Grid item xs={12}>
           <Typography style={TypographStyles}>Property amenities</Typography>
         </Grid>
-        <Grid item xs={3}>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="Garden" />
-            <FormControlLabel control={<Checkbox />} label="Pool" />
-            <FormControlLabel control={<Checkbox />} label="Vigilance" />
-          </FormGroup>
-        </Grid>
-        <Grid item xs={3}>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="Security" />
-            <FormControlLabel control={<Checkbox />} label="Cameras" />
-            <FormControlLabel control={<Checkbox />} label="Parking" />
-          </FormGroup>
-        </Grid>
-        <Grid item xs={3}>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="Laundry" />
-            <FormControlLabel control={<Checkbox />} label="Jacuzzi" />
-            <FormControlLabel control={<Checkbox />} label="Solar panel" />
-          </FormGroup>
-        </Grid>
-        <Grid item xs={3}>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="Internet" />
-            <FormControlLabel control={<Checkbox />} label="Elevator " />
-            <FormControlLabel control={<Checkbox />} label="Garage" />
-          </FormGroup>
-        </Grid>
+
+        <FormGroup sx={{ flexDirection: "row", justifyContent: "center" }}>
+          {FormControl.map((check) => (
+            <FormControlLabel
+              sx={{ width: "8.1rem" }}
+              onChange={handleCheckbox}
+              control={<Checkbox />}
+              label={check.label}
+              name={check.name}
+              value={check.name}
+            />
+          ))}
+        </FormGroup>
+
         <Grid item xs={12}>
           <Typography style={TypographStyles}>Listing images</Typography>
           <p>
@@ -213,6 +213,9 @@ const PropertyFormCom = () => {
             placeholder="ex. Drive.google.com/..."
             id="outlined-basic"
             variant="outlined"
+            name="ImgURL"
+            value={values.ImgURL}
+            onChange={handleChange}
             style={{
               width: "34rem",
               marginTop: "0.5rem",
@@ -223,6 +226,7 @@ const PropertyFormCom = () => {
         <Grid item xs={3}>
           <Button
             variant="contained"
+            onClick={handleSubmit}
             style={{
               fontWeight: "1000",
               color: theme.palette.secondary.main,

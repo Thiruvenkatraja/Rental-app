@@ -1,26 +1,26 @@
 from django.db import models
 from multiselectfield import MultiSelectField
 # Create your models here.
+Property_Choices = (
+    ('Rent', 'Rent'),
+    ('Sale', 'Sale')
+)
+Listing_Choices = (
+    ('Houses', 'Houses'),
+    ('Apartment', 'Apartment'),
+    ('Offices', 'Offices'),
+    ('Villa', 'Villa'),
+    ('Ranch', 'Ranch'),
+    ('Condominium', 'Condominium'),
+    ('Estate', 'Estate'),
+    ('Bungalow', 'Bungalow'),
+)
 
 
 class Property(models.Model):
     Property_ID = models.AutoField(primary_key=True)
     PropertyTitle = models.CharField(max_length=100)
-    Property_Choices = (
-        ('Rent', 'Rent'),
-        ('Sale', 'Sale')
-    )
     PropertyType = models.CharField(max_length=100, choices=Property_Choices)
-    Listing_Choices = (
-        ('Houses', 'Houses'),
-        ('Apartment', 'Apartment'),
-        ('Offices', 'Offices'),
-        ('Villa', 'Villa'),
-        ('Ranch', 'Ranch'),
-        ('Condominium', 'Condominium'),
-        ('Estate', 'Estate'),
-        ('Bungalow','Bungalow'),
-    )
     Property_ListingType = models.CharField(
         max_length=100, choices=Listing_Choices)
     Property_Location = models.CharField(max_length=100)
@@ -56,4 +56,3 @@ class Property(models.Model):
 
     def __str__(self):
         return f"{self.PropertyTitle}"
-    
