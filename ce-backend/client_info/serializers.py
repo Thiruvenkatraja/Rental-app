@@ -7,7 +7,7 @@ class ClientsSerializerID(serializers.ModelSerializer):
 
     class Meta:
         model = Clients
-        fields = ['Client_Id','Client_FullName','Client_Block','Client_FlatNo','Client_ListingType','Client_BHK','Client_Status','Client_PropertyID']
+        fields = ['Client_ID','Client_FullName','Client_Block','Client_FlatNo','Client_ListingType','Client_BHK','Client_Status','Client_PropertyID']
 
 class ClientsSerializer(serializers.ModelSerializer):
     Client_PropertyAmenities = serializers.MultipleChoiceField(
