@@ -11,7 +11,7 @@ export const AdminLogics = () => {
   const properties: Property[] = useSelector(
     (state: any) => state.PropertySlice.propertyData
   );
-  //   console.log(properties)
+    // console.log(properties)
   const [searchTerm, setSearchTerm] = React.useState("");
   const [visibleProperties, setVisibleProperties] =
     React.useState<Property[]>(properties);
