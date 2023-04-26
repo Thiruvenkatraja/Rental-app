@@ -22,74 +22,27 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import {
-  Property,
-  properties,
-  getUniqueValuesFromArray,
-} from "../Utils/Constants";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { PropertyCard } from "../components/PropertyCard";
+import { AdminLogics } from "../Utils/AdminLogics";
 
 export const Admin = () => {
   const theme = useTheme();
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [visibleProperties, setVisibleProperties] =
-    React.useState<Property[]>(properties);
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const itemsPerPage = 8;
-  const [selectedCity, setSelectedCity] = React.useState<string>("All");
-  const [propertyType, setPropertyType] = React.useState<string>("All");
-  const types = getUniqueValuesFromArray(properties, "type");
-  const cities = getUniqueValuesFromArray(properties, "city");
-
-  const filteredProperties = React.useMemo(() => {
-    let filtered = properties.filter(
-      (property) =>
-        property.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        property.address.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    if (propertyType !== "All") {
-      filtered = filtered.filter((property) => property.type === propertyType);
-    }
-    if (selectedCity !== "All") {
-      filtered = filtered.filter((property) => property.city === selectedCity);
-    }
-    return filtered;
-  }, [properties, searchTerm, propertyType, selectedCity]);
-
-  const totalPages = Math.ceil(filteredProperties.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const visible = filteredProperties.slice(startIndex, endIndex);
-
-  React.useEffect(() => {
-    setVisibleProperties(visible);
-  }, [visible]);
-
-  const handleFilterChange = (key: string, value: string) => {
-    if (key === "city") {
-      setSelectedCity(value);
-    } else if (key === "type") {
-      setPropertyType(value);
-    }
-    setCurrentPage(1);
-  };
-
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    setCurrentPage(value);
-  };
-
-  const handleClearClick = () => {
-    // clear the search term and reset visibleProperties
-    setSearchTerm("");
-    setPropertyType("All");
-    setSelectedCity("All");
-    setVisibleProperties(properties);
-  };
-
+  const {
+    handleClearClick,
+    handlePageChange,
+    handleFilterChange,
+    types,
+    filteredProperties,
+    cities,
+    visibleProperties,
+    totalPages,
+    searchTerm, 
+    setSearchTerm,
+    selectedCity,
+    propertyType,
+    currentPage
+    }=AdminLogics()
   return (
     <>
       <Box

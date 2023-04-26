@@ -1,11 +1,11 @@
 import React from "react";
 
 export interface Property {
-  name: string;
-  type: string;
-  address: string;
-  city: string;
-  url: string;
+  PropertyTitle: string;
+  PropertyType: string;
+  Property_Address: string;
+  Property_Location: string;
+  Property_ImgURL: string;
 }
 
 export const properties: Property[] = [
