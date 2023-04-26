@@ -66,14 +66,14 @@ export const PropertyFormLogics = () => {
   };
 
   const handleSubmit = () => {
-    axios
-      .post(`${url}/property/`, propertyData)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      axios
+        .post(`${url}/property/`, propertyData)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   };
   return {
     handleChange,
