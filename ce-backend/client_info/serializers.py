@@ -4,10 +4,10 @@ from .models import Clients
 #Create your serializers here:
 
 class ClientsSerializerID(serializers.ModelSerializer):
-    
+
     class Meta:
         model = Clients
-        fields = ['Client_ID','Client_Name','Client_Block','Client_FlatNo','Client_ListingType','Client_BHK','Client_Status','Client_PropertyID']
+        fields = ['Client_FullName','Client_Block','Client_FlatNo','Client_ListingType','Client_BHK','Client_Status','Client_PropertyID']
 
 class ClientsSerializer(serializers.ModelSerializer):
     Client_PropertyAmenities = serializers.MultipleChoiceField(

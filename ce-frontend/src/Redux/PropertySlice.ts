@@ -13,15 +13,15 @@ export const propertyData = createSlice({
         error:false,
     },
     reducers:{},
-    extraReducers: (builder) => {
-        builder.addCase(fetchPropertyData .pending, (state) => {
+    extraReducers: (builder:any) => {
+        builder.addCase(fetchPropertyData .pending, (state:any) => {
           state.loading = true;
         });
-        builder.addCase(fetchPropertyData .fulfilled, (state, action) => {
+        builder.addCase(fetchPropertyData .fulfilled, (state:any, action:any) => {
           state.loading = false;
           state.propertyData = action.payload;
         });
-        builder.addCase(fetchPropertyData .rejected, (state) => {
+        builder.addCase(fetchPropertyData .rejected, (state:any) => {
           state.error = true;
         });
       },
