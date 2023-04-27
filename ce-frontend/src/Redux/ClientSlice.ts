@@ -12,11 +12,11 @@ export const clientData = createSlice({
         loading: false,
         clientData:[],
         error:false,
-        propertyId:0
+        filteredClientData:[]
     },
     reducers:{
-      clientId:(state:any,action:any)=>{
-        state.propertyId = action.payload
+      clientDataFiltered:(state:any,action:any)=>{
+        state.filteredClientData = action.payload 
       }
     },
     extraReducers: (builder:any) => {
@@ -32,5 +32,5 @@ export const clientData = createSlice({
         });
       },
 })
-export const { clientId } = clientData.actions;
+export const { clientDataFiltered } = clientData.actions;
 export default clientData.reducer;

@@ -6,68 +6,23 @@ import {
   MenuItem,
   Paper,
   Typography,
-
 } from "@mui/material";
 import { useTheme } from "@mui/material";
-import {
-  Grid,
-} from "@mui/material";
-
+import { Grid } from "@mui/material";
 import TextField from "@mui/material/TextField";
-const propertyType = [
-  {
-    value: "Select",
-    label: "Select",
-  },
-  {
-    value: "Rent",
-    label: "Rent",
-  },
-  {
-    value: "Sale",
-    label: "Sale",
-  },
-];
-
-const listingType = [
-  {
-    value: "Select",
-    label: "Select",
-  },
-  {
-    value: "Houses",
-    label: "Houses",
-  },
-  {
-    value: "Appartments",
-    label: "Appartments",
-  },
-  {
-    value: "Offices",
-    label: "Offices",
-  },
-];
-
-const oneTwoThree = [
-  {
-    value: "Select",
-    label: "Select",
-  },
-  {
-    value: "1",
-    label: "1",
-  },
-  {
-    value: "2",
-    label: "2",
-  },
-  {
-    value: "3",
-    label: "3",
-  },
-];
+import {
+  BHK,
+  FormControl,
+  Status,
+  listingType,
+  oneTwoThree,
+  propertyType,
+} from "../constants";
+import { ClientFormLogics } from "../Utils/ClientFormLogics";
 
 const ClientFormCom = () => {
+  const { handleChange, handleCheckbox, values, handleSubmit } =
+    ClientFormLogics();
   const theme = useTheme();
   const TextFieldStyle = {
     "& .MuiOutlinedInput-root": {
@@ -89,6 +44,12 @@ const ClientFormCom = () => {
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
       borderColor: "#84342d",
     },
+  };
+  const TypographyStyles = {
+    fontFamily: "Poppins",
+    fontWeight: "650",
+    color: "inherit",
+    textDecoration: "none",
   };
   return (
     <Paper
@@ -117,17 +78,11 @@ const ClientFormCom = () => {
         }}
       >
         <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Full name
-          </Typography>
+          <Typography style={TypographyStyles}>Full name</Typography>
           <TextField
+            name="Client_Name"
+            value={values.Client_Name}
+            onChange={handleChange}
             placeholder="John Joe"
             id="outlined-basic"
             variant="outlined"
@@ -139,17 +94,11 @@ const ClientFormCom = () => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Email
-          </Typography>
+          <Typography style={TypographyStyles}>Email</Typography>
           <TextField
+            name="Client_EMail"
+            value={values.Client_EMail}
+            onChange={handleChange}
             placeholder="example@mail.com"
             id="outlined-basic"
             variant="outlined"
@@ -161,17 +110,11 @@ const ClientFormCom = () => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Mobile number
-          </Typography>
+          <Typography style={TypographyStyles}>Mobile number</Typography>
           <TextField
+            name="Client_MobileNumber"
+            value={values.Client_MobileNumber}
+            onChange={handleChange}
             placeholder="+91 9012121212"
             id="outlined-basic"
             variant="outlined"
@@ -183,17 +126,11 @@ const ClientFormCom = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Property Title
-          </Typography>
+          <Typography style={TypographyStyles}>Property Title</Typography>
           <TextField
+            name="Client_PropertyTitle"
+            value={values.Client_PropertyTitle}
+            onChange={handleChange}
             placeholder="Tittle"
             id="outlined-basic"
             variant="outlined"
@@ -219,17 +156,11 @@ const ClientFormCom = () => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Property Type
-          </Typography>
+          <Typography style={TypographyStyles}>Property Type</Typography>
           <TextField
+            name="Client_PropertyType"
+            value={values.Client_PropertyType}
+            onChange={handleChange}
             variant="outlined"
             sx={TextFieldStyle}
             style={{ marginTop: "5px" }}
@@ -245,17 +176,11 @@ const ClientFormCom = () => {
           </TextField>
         </Grid>
         <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Listing Type
-          </Typography>
+          <Typography style={TypographyStyles}>Listing Type</Typography>
           <TextField
+            name="Client_ListingType"
+            value={values.Client_ListingType}
+            onChange={handleChange}
             variant="outlined"
             sx={TextFieldStyle}
             style={{ marginTop: "5px" }}
@@ -271,17 +196,11 @@ const ClientFormCom = () => {
           </TextField>
         </Grid>
         <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Location
-          </Typography>
+          <Typography style={TypographyStyles}>Location</Typography>
           <TextField
+            name="Client_Location"
+            value={values.Client_Location}
+            onChange={handleChange}
             placeholder="ex. Chennai"
             id="outlined-basic"
             variant="outlined"
@@ -293,17 +212,11 @@ const ClientFormCom = () => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Address
-          </Typography>
+          <Typography style={TypographyStyles}>Address</Typography>
           <TextField
+            name="Client_Address"
+            value={values.Client_Address}
+            onChange={handleChange}
             placeholder="ex. No 1, street, etc.,"
             id="outlined-basic"
             variant="outlined"
@@ -315,17 +228,11 @@ const ClientFormCom = () => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Listing Price
-          </Typography>
+          <Typography style={TypographyStyles}>Listing Price</Typography>
           <TextField
+            name="Client_ListingPrice"
+            value={values.Client_ListingPrice}
+            onChange={handleChange}
             placeholder="$ 1000"
             id="outlined-basic"
             variant="outlined"
@@ -337,17 +244,51 @@ const ClientFormCom = () => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Bedrooms
-          </Typography>
+          <Typography style={TypographyStyles}>BHK</Typography>
           <TextField
+            name="Client_BHK"
+            value={values.Client_BHK}
+            onChange={handleChange}
+            variant="outlined"
+            sx={TextFieldStyle}
+            style={{ marginTop: "5px" }}
+            id="outlined-select-type"
+            select
+            defaultValue="Select"
+          >
+            {BHK.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography style={TypographyStyles}>Status</Typography>
+          <TextField
+            name="Client_Status"
+            value={values.Client_Status}
+            onChange={handleChange}
+            variant="outlined"
+            sx={TextFieldStyle}
+            style={{ marginTop: "5px" }}
+            id="outlined-select-type"
+            select
+            defaultValue="Select"
+          >
+            {Status.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography style={TypographyStyles}>Parking Lots</Typography>
+          <TextField
+            name="Client_ParkingLot"
+            value={values.Client_ParkingLot}
+            onChange={handleChange}
             variant="outlined"
             sx={TextFieldStyle}
             style={{ marginTop: "5px" }}
@@ -363,69 +304,11 @@ const ClientFormCom = () => {
           </TextField>
         </Grid>
         <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Bathrooms
-          </Typography>
+          <Typography style={TypographyStyles}>Construction sqft.</Typography>
           <TextField
-            variant="outlined"
-            sx={TextFieldStyle}
-            style={{ marginTop: "5px" }}
-            id="outlined-select-type"
-            select
-            defaultValue="Select"
-          >
-            {oneTwoThree.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Parking Lots
-          </Typography>
-          <TextField
-            variant="outlined"
-            sx={TextFieldStyle}
-            style={{ marginTop: "5px" }}
-            id="outlined-select-type"
-            select
-            defaultValue="Select"
-          >
-            {oneTwoThree.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Construction sqft.
-          </Typography>
-          <TextField
+            name="Client_ConstructionSqft"
+            value={values.Client_ConstructionSqft}
+            onChange={handleChange}
             placeholder="ex. 2000 sqft"
             id="outlined-basic"
             variant="outlined"
@@ -437,17 +320,11 @@ const ClientFormCom = () => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Land sqft.
-          </Typography>
+          <Typography style={TypographyStyles}>Land sqft.</Typography>
           <TextField
+            name="Client_LandSqft"
+            value={values.Client_LandSqft}
+            onChange={handleChange}
             placeholder="ex. 2000 sqft"
             id="outlined-basic"
             variant="outlined"
@@ -459,17 +336,13 @@ const ClientFormCom = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
+          <Typography style={TypographyStyles}>
             Listing short description
           </Typography>
           <TextField
+            name="Client_ShortDesc"
+            value={values.Client_ShortDesc}
+            onChange={handleChange}
             placeholder="Please enter up to 240 characters."
             id="outlined-basic"
             variant="outlined"
@@ -481,17 +354,13 @@ const ClientFormCom = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Typography
-            style={{
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Listing lond description
+          <Typography style={TypographyStyles}>
+            Listing long description
           </Typography>
           <TextField
+            name="Client_LongDesc"
+            value={values.Client_LongDesc}
+            onChange={handleChange}
             placeholder="Please enter up to 4000 characters."
             id="outlined-basic"
             variant="outlined"
@@ -503,46 +372,20 @@ const ClientFormCom = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Typography
-            style={{
-              marginTop: "2rem",
-              fontFamily: "Poppins",
-              fontWeight: "650",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Property amenities
-          </Typography>
+          <Typography style={TypographyStyles}>Property amenities</Typography>
         </Grid>
-        <Grid item xs={3}>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="Garden" />
-            <FormControlLabel control={<Checkbox />} label="Pool" />
-            <FormControlLabel control={<Checkbox />} label="Vigilance" />
-          </FormGroup>
-        </Grid>
-        <Grid item xs={3}>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="Security" />
-            <FormControlLabel control={<Checkbox />} label="Cameras" />
-            <FormControlLabel control={<Checkbox />} label="Parking" />
-          </FormGroup>
-        </Grid>
-        <Grid item xs={3}>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="Laundry" />
-            <FormControlLabel control={<Checkbox />} label="Jacuzzi" />
-            <FormControlLabel control={<Checkbox />} label="Solar panel" />
-          </FormGroup>
-        </Grid>
-        <Grid item xs={3}>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="Internet" />
-            <FormControlLabel control={<Checkbox />} label="Elevator " />
-            <FormControlLabel control={<Checkbox />} label="Garage" />
-          </FormGroup>
-        </Grid>
+        <FormGroup sx={{ flexDirection: "row", justifyContent: "center" }}>
+          {FormControl.map((check) => (
+            <FormControlLabel
+              sx={{ width: "8.1rem" }}
+              onChange={handleCheckbox}
+              control={<Checkbox />}
+              label={check.label}
+              name={check.name}
+              value={check.name}
+            />
+          ))}
+        </FormGroup>
         <Grid item xs={12}>
           <Typography
             style={{
@@ -559,6 +402,9 @@ const ClientFormCom = () => {
             Please share a Google Drive or Imgur link of your listing images
           </p>
           <TextField
+            name="Client_ImgURL"
+            value={values.Client_ImgURL}
+            onChange={handleChange}
             placeholder="ex. Drive.google.com/..."
             id="outlined-basic"
             variant="outlined"
@@ -572,8 +418,8 @@ const ClientFormCom = () => {
         <Grid item xs={3}>
           <Button
             variant="contained"
+            onClick={handleSubmit}
             style={{
-              marginTop: "4.5rem",
               fontWeight: "1000",
               color: theme.palette.secondary.main,
               backgroundColor: theme.palette.primary.main,

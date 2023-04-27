@@ -28,12 +28,10 @@ type PropertyCardProps = {
 };
 
 export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
-  const theme = useTheme();
-  const {handleId} = AdminLogics()
+  const theme = useTheme()
   return (
-    <Link to={`/properties_data`} style={{ textDecoration: "none" }}>
+    <Link to={`/properties_data/${card.Property_ID}/${card.PropertyTitle}`} style={{ textDecoration: "none" }}>
       <Paper
-        onClick={()=>handleId(card.Property_ID)}
         sx={{
           transition: "transform 0.2s",
           "&:hover": {

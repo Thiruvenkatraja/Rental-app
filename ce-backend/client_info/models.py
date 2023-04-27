@@ -3,12 +3,44 @@ from multiselectfield import MultiSelectField
 from property_info.models import Property
 
 # Create your models here.
+PropertyType = (
+    ('Rent', 'Rent'),
+    ('Sale', 'Sale'),
+)
+
+ListType = (
+    ('Houses', 'Houses'),
+    ('Apartments', 'Apartments'),
+    ('Offices', 'Offices'),
+    ('Villas', 'Villas'),
+    ('Ranch', 'Ranch'),
+    ('Condominium', 'Condominium'),
+    ('Bungalow', 'Bungalow'),
+)
+
+BHK = (
+    ('1BHK', '1BHK'),
+    ('2BHK', '2BHK'),
+    ('3BHK', '3BHK'),
+)
+
+Status = (
+    ('Active', 'Active'),
+    ('In-Active', 'In-Active'),
+)
+
+ParkingLot = (
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+)
 
 
 class Clients(models.Model):
     Client_ID = models.AutoField(primary_key=True)
-    Client_PropertyID = models.ForeignKey(Property,on_delete=models.PROTECT,null=True)
-    Client_FullName = models.CharField(max_length=30, null=True)
+    Client_PropertyID = models.ForeignKey(
+        Property, on_delete=models.PROTECT, null=True)
+    Client_FullName = models.CharField(max_length=30)
     Client_MobileNumber = models.BigIntegerField(null=True)
     Client_EMail = models.EmailField(null=True)
     Client_Block = models.CharField(max_length=1, null=True)
@@ -24,8 +56,8 @@ class Clients(models.Model):
     Client_ParkingLot = models.CharField(max_length=30,null=True)
     Client_ConstructionSqft = models.PositiveIntegerField(null=True)
     Client_LandSqft = models.PositiveIntegerField(null=True)
-    Client_ShortDesc = models.TextField(max_length=240,null=True)
-    Client_LongDesc = models.TextField(max_length=4000,null=True)
+    Client_ShortDesc = models.TextField(max_length=240, null=True)
+    Client_LongDesc = models.TextField(max_length=4000, null=True)
     Amenities_List = [
         ('garden', 'Garden'),
         ('security_cameras', 'Security Cameras'),
