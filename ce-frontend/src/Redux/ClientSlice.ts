@@ -12,8 +12,13 @@ export const clientData = createSlice({
         loading: false,
         clientData:[],
         error:false,
+        filteredClientData:[]
     },
-    reducers:{},
+    reducers:{
+      clientDataFiltered:(state:any,action:any)=>{
+        state.filteredClientData = action.payload 
+      }
+    },
     extraReducers: (builder:any) => {
         builder.addCase(fetchClientData.pending, (state:any) => {
           state.loading = true;
@@ -27,4 +32,5 @@ export const clientData = createSlice({
         });
       },
 })
+export const { clientDataFiltered } = clientData.actions;
 export default clientData.reducer;

@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchClientData } from "../Redux/ClientSlice";
+import { clientDataFiltered, fetchClientData } from "../Redux/ClientSlice";
 import { useParams } from "react-router-dom";
 import { Property, getUniqueValuesFromArray } from "./Constants";
 
 export const PropertyDataLogics = () => {
-  const { id }: any = useParams();
+  const { id, propertyName }: any = useParams();
   const Idx = parseInt(id);
   const dispatch = useDispatch();
   const Data: any = useSelector((state: any) => state.ClientSlice.clientData);
@@ -15,15 +15,13 @@ export const PropertyDataLogics = () => {
     dispatch<any>(fetchClientData());
   }, [dispatch]);
   const FilteredData = Data.filter((item: any) => item.Client_ID === Idx);
-  const [filteredClientData, setFilteredClientData] =
-    React.useState<Property[]>(FilteredData);
   const blockType = getUniqueValuesFromArray(FilteredData, "Client_Block");
   const handleFilterChange = (key: string, value: string) => {
     if (key === "block") {
       setBlock(value);
     }
   };
-  const filteredProperties = React.useMemo(() => {
+  const filteredClients = React.useMemo(() => {
     let filtered = FilteredData.filter(
       (property: any) =>
         property.Client_FullName.toLowerCase().includes(search.toLowerCase()) ||
@@ -38,8 +36,10 @@ export const PropertyDataLogics = () => {
   }, [search, block, Data, FilteredData]);
 
   React.useEffect(() => {
-    setFilteredClientData(filteredProperties);
-  }, [filteredProperties]);
+    dispatch<any>(
+      clientDataFiltered<any>({ filteredClientData: filteredClients })
+    );
+  }, [filteredClients]);
 
   return {
     Data,
@@ -49,6 +49,6 @@ export const PropertyDataLogics = () => {
     handleFilterChange,
     search,
     setSearch,
-    filteredClientData
+    propertyName,
   };
 };
