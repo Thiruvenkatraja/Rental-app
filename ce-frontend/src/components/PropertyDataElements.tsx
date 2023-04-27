@@ -1,29 +1,18 @@
 import React from "react";
 import { Box, MenuItem, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import {useTheme} from "@mui/material";
+import { useTheme } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import PropertyDataGrid from "./PropertyDataGrid";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { PropertyDataLogics } from "../Utils/PropertyDataGridLogics";
 type Props = {};
-const propertyType = [
-  {
-    value: "Block",
-    label: "Block",
-  },
-  {
-    value: "Rent",
-    label: "Rent",
-  },
-  {
-    value: "Sale",
-    label: "Sale",
-  },
-];
 
 const PropertyDataElements = (props: Props) => {
   const theme = useTheme();
+  const { block, handleFilterChange, blockType, search, setSearch } =
+    PropertyDataLogics();
   const TextFieldStyle = {
     "& .MuiOutlinedInput-root": {
       background: "#F6F6F6",
@@ -95,10 +84,16 @@ const PropertyDataElements = (props: Props) => {
               id="outlined-select-type"
               select
               defaultValue="Block"
+              name="block"
+              value={block}
+              onChange={(e) =>
+                handleFilterChange(e.target.name, e.target.value)
+              }
             >
-              {propertyType.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+              <MenuItem value="All">All</MenuItem>
+              {blockType.map((type: string) => (
+                <MenuItem key={type} value={type}>
+                  {type}
                 </MenuItem>
               ))}
             </TextField>
@@ -113,6 +108,9 @@ const PropertyDataElements = (props: Props) => {
                 backgroundColor: "#ffffff00",
               }}
               sx={TextFieldStyle}
+              name="search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
             <Button
               sx={{

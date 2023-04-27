@@ -3,20 +3,15 @@ import { Box, Grid } from "@mui/material";
 import  Typography from "@mui/material/Typography";
 import {useTheme} from "@mui/material"
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import PropertyDataElements from "../components/PropertyDataElements";
-import { useParams } from "react-router-dom";
 import { PropertyDataLogics } from "../Utils/PropertyDataGridLogics";
 
 type Props = {};
 
 const PropertyData = (props: Props) => {
   const theme = useTheme();
-  const {id} = useParams();
-  const {Data,FilteredData} = PropertyDataLogics(id)
-  console.log(Data)
-  console.log("ff",FilteredData)
   return (
     <>
       <Box
@@ -67,6 +62,8 @@ const PropertyData = (props: Props) => {
             Properties
           </Typography>
           <Button
+          component={ Link }
+          to={"/client_form"}
             sx={{
               height: "31px",
               width: "88px",
