@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': 'IGS_CE',
         'USER':'postgres',
         'PASSWORD':'igs-dev',
         'HOST':'3.226.14.5'
