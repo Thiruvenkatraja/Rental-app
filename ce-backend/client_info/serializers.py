@@ -7,7 +7,7 @@ class ClientsSerializerID(serializers.ModelSerializer):
 
     class Meta:
         model = Clients
-        fields = ['Client_ID','Client_FullName','Client_Block','Client_FlatNo','Client_ListingType','Client_BHK','Client_Status','Client_PropertyID']
+        fields = '__all__'       
 
 class ClientsSerializer(serializers.ModelSerializer):
     Client_PropertyAmenities = serializers.MultipleChoiceField(
@@ -16,3 +16,9 @@ class ClientsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Clients
         exclude = ("Client_ID",)
+
+class DataGridSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Clients
+        fields = ['Client_ID','Client_FullName','Client_Block','Client_FlatNo','Client_ListingType','Client_BHK','Client_Status','Client_PropertyID']
