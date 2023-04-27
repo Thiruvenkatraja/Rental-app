@@ -3,7 +3,6 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 export const PropertyFormLogics = () => {
-  const checkbox: Array<string> = [];
   const url = useSelector((state: any) => state.ClientSlice.Url);
   const [values, setValues] = useState<any>({
     Property_Title: "",
