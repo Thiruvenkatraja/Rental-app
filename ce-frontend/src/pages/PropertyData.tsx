@@ -7,14 +7,16 @@ import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import PropertyDataElements from "../components/PropertyDataElements";
 import { useParams } from "react-router-dom";
+import { PropertyDataLogics } from "../Utils/PropertyDataGridLogics";
 
 type Props = {};
 
 const PropertyData = (props: Props) => {
   const theme = useTheme();
   const {id} = useParams();
-  console.log(id)
-
+  const {Data,FilteredData} = PropertyDataLogics(id)
+  console.log(Data)
+  console.log("ff",FilteredData)
   return (
     <>
       <Box

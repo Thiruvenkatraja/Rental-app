@@ -86,6 +86,8 @@ export const Admin = () => {
           Properties
         </Typography>
         <Button
+        component={Link}
+        to={"/property_form"}
           sx={{
             height: "31px",
             width: "88px",
@@ -228,7 +230,7 @@ export const Admin = () => {
           }}
           spacing={2}
         >
-          {visibleProperties.map((card, idx) => (
+          {visibleProperties.map((card:any, idx) => (
             <Grid item key={idx}>
               <PropertyCard card={card} idx={idx} />
             </Grid>
