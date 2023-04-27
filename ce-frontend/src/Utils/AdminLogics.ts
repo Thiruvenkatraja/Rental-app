@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPropertyData } from "../Redux/PropertySlice";
 import { Property, getUniqueValuesFromArray } from "./Constants";
-import { clientId } from "../Redux/ClientSlice";
+
 
 export const AdminLogics = () => {
   const dispatch = useDispatch();
@@ -23,10 +23,7 @@ export const AdminLogics = () => {
   const types = getUniqueValuesFromArray(properties, "PropertyType");
   const cities = getUniqueValuesFromArray(properties, "Property_Location");
 
-  const handleId = (id:number)=>{
-    dispatch(clientId<any>({propertyId:id})
-    )
-  }
+
 
   const filteredProperties = React.useMemo(() => {
     let filtered = properties.filter(
@@ -97,7 +94,6 @@ export const AdminLogics = () => {
     setSearchTerm,
     selectedCity,
     propertyType,
-    currentPage,
-    handleId
+    currentPage
   };
 };
