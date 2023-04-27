@@ -11,8 +11,14 @@ type Props = {};
 
 const PropertyDataElements = (props: Props) => {
   const theme = useTheme();
-  const { block, handleFilterChange, blockType, search, setSearch,propertyName } =
-    PropertyDataLogics();
+  const {
+    block,
+    handleFilterChange,
+    blockType,
+    search,
+    setSearch,
+    propertyName,
+  } = PropertyDataLogics();
   const TextFieldStyle = {
     "& .MuiOutlinedInput-root": {
       background: "#F6F6F6",
@@ -60,7 +66,7 @@ const PropertyDataElements = (props: Props) => {
               float: "left",
             }}
           >
-           {propertyName}
+            {propertyName}
           </Typography>
           <Paper
             sx={{
