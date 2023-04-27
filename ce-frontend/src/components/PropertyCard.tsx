@@ -14,6 +14,7 @@ import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useTheme } from "@mui/material";
+import { AdminLogics } from "../Utils/AdminLogics";
 
 
 type PropertyCardProps = {
@@ -28,9 +29,11 @@ type PropertyCardProps = {
 
 export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
   const theme = useTheme();
+  const {handleId} = AdminLogics()
   return (
-    <Link to={`/properties_data/${card.Property_ID}`} style={{ textDecoration: "none" }}>
+    <Link to={`/properties_data`} style={{ textDecoration: "none" }}>
       <Paper
+        onClick={()=>handleId(card.Property_ID)}
         sx={{
           transition: "transform 0.2s",
           "&:hover": {
