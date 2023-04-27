@@ -18,7 +18,7 @@ import {
   oneTwoThree,
   propertyType,
 } from "../constants";
-import { ClientFormLogics } from "../utils/ClientFormLogics";
+import { ClientFormLogics } from "../Utils/ClientFormLogics";
 
 const ClientFormCom = () => {
   const { handleChange, handleCheckbox, values, handleSubmit } =
