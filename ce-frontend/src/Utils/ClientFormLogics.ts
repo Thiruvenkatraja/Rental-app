@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 export const ClientFormLogics = () => {
   const url = useSelector((state: any) => state.ClientSlice.Url);
   const [values, setValues] = useState<any>({
-    Client_Name: "",
+    Client_FullName: "",
     Client_MobileNumber: "",
     Client_EMail: "",
     Client_Block: "",
@@ -63,6 +63,28 @@ export const ClientFormLogics = () => {
       .catch((err) => {
         console.log(err);
       });
+      setValues({
+        Client_FullName: "",
+    Client_MobileNumber: "",
+    Client_EMail: "",
+    Client_Block: "",
+    Client_FlatNo: "",
+    Client_PropertyTitle: "",
+    Client_PropertyType: "Select",
+    Client_ListingType: "Select",
+    Client_Location: "",
+    Client_Address: "",
+    Client_ListingPrice: "",
+    Client_BHK: "Select",
+    Client_Status: "Select",
+    Client_ParkingLot: "Select",
+    Client_ConstructionSqft: "",
+    Client_LandSqft: "",
+    Client_ShortDesc: "",
+    Client_LongDesc: "",
+    Client_PropertyAmenities: [],
+    Client_ImgURL: "",
+      })
   };
   return {
     handleChange,

@@ -1,10 +1,11 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import { PropertyDataLogics } from "../Utils/PropertyDataGridLogics";
+import { useSelector } from "react-redux";
 
 export default function PropertyDataGrid() {
-  const { filteredClientData } = PropertyDataLogics();
+  const Data: any = useSelector((state: any) => state.ClientSlice.filteredClientData.filteredClientData);
+  console.log("fd",Data)
   const columns: GridColDef[] = [
     // { field: "Client_ID", headerName: "S.NO", width: 100 },
     {
@@ -87,7 +88,7 @@ export default function PropertyDataGrid() {
           },
         }}
         getRowId={(row: any) => row.Client_ID}
-        rows={filteredClientData}
+        rows={Data}
         columns={columns}
         initialState={{
           pagination: {

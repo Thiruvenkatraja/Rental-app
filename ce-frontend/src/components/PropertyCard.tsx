@@ -30,7 +30,7 @@ type PropertyCardProps = {
 export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
   const theme = useTheme()
   return (
-    <Link to={`/properties_data/${card.Property_ID}`} style={{ textDecoration: "none" }}>
+    <Link to={`/properties_data/${card.Property_ID}/${card.PropertyTitle}`} style={{ textDecoration: "none" }}>
       <Paper
         sx={{
           transition: "transform 0.2s",
