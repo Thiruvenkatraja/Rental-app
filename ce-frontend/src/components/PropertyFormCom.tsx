@@ -15,7 +15,7 @@ import {
   listingType,
   propertyType,
 } from "../constants";
-import { PropertyFormLogics } from "../utils/PropertyFormLogics";
+import { PropertyFormLogics } from "../Utils/PropertyFormLogics";
 
 const PropertyFormCom = () => {
   const { handleChange, values, handleCheckbox, handleSubmit } =
