@@ -45,7 +45,6 @@ export const PropertyFormLogics = () => {
         Property_amenities: [...prevValues.Property_amenities, e.target.value],
       }));
     }
-    console.log(values.Property_amenities);
   };
   const propertyData = {
     PropertyTitle: values.Property_Title,
