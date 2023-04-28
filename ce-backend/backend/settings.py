@@ -89,6 +89,8 @@ DATABASES = {
         'USER':'postgres',
         'PASSWORD':'igs-dev',
         'HOST':'3.226.14.5'
+        # 'PASSWORD': '12345',
+        # 'HOST': 'localhost'
     }
 }
 
