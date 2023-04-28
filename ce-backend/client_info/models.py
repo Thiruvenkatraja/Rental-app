@@ -3,38 +3,6 @@ from multiselectfield import MultiSelectField
 from property_info.models import Property
 
 # Create your models here.
-PropertyType = (
-    ('Rent', 'Rent'),
-    ('Sale', 'Sale'),
-)
-
-ListType = (
-    ('Houses', 'Houses'),
-    ('Apartments', 'Apartments'),
-    ('Offices', 'Offices'),
-    ('Villas', 'Villas'),
-    ('Ranch', 'Ranch'),
-    ('Condominium', 'Condominium'),
-    ('Bungalow', 'Bungalow'),
-)
-
-BHK = (
-    ('1BHK', '1BHK'),
-    ('2BHK', '2BHK'),
-    ('3BHK', '3BHK'),
-)
-
-Status = (
-    ('Active', 'Active'),
-    ('In-Active', 'In-Active'),
-)
-
-ParkingLot = (
-    ('1', '1'),
-    ('2', '2'),
-    ('3', '3'),
-)
-
 
 class Clients(models.Model):
     Client_ID = models.AutoField(primary_key=True)
