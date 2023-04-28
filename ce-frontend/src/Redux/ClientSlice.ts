@@ -6,31 +6,31 @@ export const fetchClientData = createAsyncThunk("fetchClientData", async()=>{
 });
 
 export const clientData = createSlice({
-    name:"Client",
-    initialState:{
-        Url: "http://127.0.0.1:8000",
-        loading: false,
-        clientData:[],
-        error:false,
-        filteredClientData:[]
+  name: "Client",
+  initialState: {
+    Url: "http://3.226.14.5:8000/",
+    loading: false,
+    clientData: [],
+    error: false,
+    filteredClientData: [],
+  },
+  reducers: {
+    clientDataFiltered: (state: any, action: any) => {
+      state.filteredClientData = action.payload;
     },
-    reducers:{
-      clientDataFiltered:(state:any,action:any)=>{
-        state.filteredClientData = action.payload 
-      }
-    },
-    extraReducers: (builder:any) => {
-        builder.addCase(fetchClientData.pending, (state:any) => {
-          state.loading = true;
-        });
-        builder.addCase(fetchClientData.fulfilled, (state:any, action:any) => {
-          state.loading = false;
-          state.clientData = action.payload;
-        });
-        builder.addCase(fetchClientData.rejected, (state:any) => {
-          state.error = true;
-        });
-      },
-})
+  },
+  extraReducers: (builder: any) => {
+    builder.addCase(fetchClientData.pending, (state: any) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchClientData.fulfilled, (state: any, action: any) => {
+      state.loading = false;
+      state.clientData = action.payload;
+    });
+    builder.addCase(fetchClientData.rejected, (state: any) => {
+      state.error = true;
+    });
+  },
+});
 export const { clientDataFiltered } = clientData.actions;
 export default clientData.reducer;
