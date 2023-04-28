@@ -9,42 +9,13 @@ import {
 import { useTheme } from "@mui/material";
 import { Grid, MenuItem } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import { FormControl, PropertyFormInputs } from "../constants";
-import { PropertyFormLogics } from "../utils/PropertyFormLogics";
-
-const propertyType = [
-  {
-    value: "Select",
-    label: "Select",
-  },
-  {
-    value: "Rent",
-    label: "Rent",
-  },
-  {
-    value: "Sale",
-    label: "Sale",
-  },
-];
-
-const listingType = [
-  {
-    value: "Select",
-    label: "Select",
-  },
-  {
-    value: "Houses",
-    label: "Houses",
-  },
-  {
-    value: "Appartments",
-    label: "Appartments",
-  },
-  {
-    value: "Offices",
-    label: "Offices",
-  },
-];
+import {
+  FormControl,
+  PropertyFormInputs,
+  listingType,
+  propertyType,
+} from "../constants";
+import { PropertyFormLogics } from "../Utils/PropertyFormLogics";
 
 const PropertyFormCom = () => {
   const { handleChange, values, handleCheckbox, handleSubmit } =

@@ -3,7 +3,6 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 export const PropertyFormLogics = () => {
-  const checkbox: Array<string> = [];
   const url = useSelector((state: any) => state.ClientSlice.Url);
   const [values, setValues] = useState<any>({
     Property_Title: "",
@@ -46,7 +45,6 @@ export const PropertyFormLogics = () => {
         Property_amenities: [...prevValues.Property_amenities, e.target.value],
       }));
     }
-    console.log(values.Property_amenities);
   };
   const propertyData = {
     PropertyTitle: values.Property_Title,

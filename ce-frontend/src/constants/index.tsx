@@ -96,3 +96,78 @@ export const FormControl = [
     label: "Garage",
   },
 ];
+export const propertyType = [
+  {
+    value: "Select",
+    label: "Select",
+  },
+  {
+    value: "Rent",
+    label: "Rent",
+  },
+  {
+    value: "Sale",
+    label: "Sale",
+  },
+];
+
+export const listingType = [
+  {
+    value: "Select",
+    label: "Select",
+  },
+  {
+    value: "Houses",
+    label: "Houses",
+  },
+  {
+    value: "Appartments",
+    label: "Appartments",
+  },
+  {
+    value: "Offices",
+    label: "Offices",
+  },
+];
+
+export const BHK = [
+  {
+    value: "Select",
+    label: "Select",
+  },
+  {
+    value: "1BHK",
+    label: "1BHK",
+  },
+  {
+    value: "2BHK",
+    label: "2BHK",
+  },
+  {
+    value: "3BHK",
+    label: "3BHK",
+  },
+];
+export const oneTwoThree = [
+  {
+    value: "Select",
+    label: "Select",
+  },
+  {
+    value: "1",
+    label: "1",
+  },
+  {
+    value: "2",
+    label: "2",
+  },
+  {
+    value: "3",
+    label: "3",
+  },
+];
+export const Status = [
+  { value: "Select", label: "Select" },
+  { value: "Active", label: "Active" },
+  { value: "In-Active", label: "In-Active" },
+];
