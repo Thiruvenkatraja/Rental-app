@@ -126,12 +126,11 @@ const ClientFormCom = () => {
               placeholder="+91 9012121212"
               id="outlined-basic"
               variant="outlined"
-              validators={["required", "matchRegexp:^[1-9][0-9]{9}$"]}
+              validators={["matchRegexp:^[1-9][0-9]{9}$"]}
               errorMessages={[
                 "Please enter 10 digit Mobile",
-                "Please enter 10 digit Mobile",
               ]}
-              required={true}
+              required
               style={{
                 width: "250px",
                 marginTop: "0.5rem",
@@ -410,7 +409,6 @@ const ClientFormCom = () => {
                 label={check.label}
                 name={check.name}
                 value={check.name}
-                required={true}
               />
             ))}
           </FormGroup>
@@ -447,7 +445,7 @@ const ClientFormCom = () => {
           <Grid item xs={3}>
             <Button
               variant="contained"
-              onClick={handleSubmit}
+              type="submit"
               style={{
                 fontWeight: "1000",
                 color: theme.palette.secondary.main,
