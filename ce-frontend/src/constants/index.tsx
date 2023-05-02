@@ -48,51 +48,48 @@ export const PropertyFormInputs = [
 
 export const FormControl = [
   {
-    name: "Garden",
+    name: "garden",
     label: "Garden",
   },
   {
-    name: "Pool",
+    name: "pool",
     label: "Pool",
   },
   {
-    name: "Vigilance",
+    name: "vigilance",
     label: "Vigilance",
   },
   {
-    name: "Security",
-    label: "Security",
+    name: "security_cameras",
+    label: "Security Cameras",
   },
+ 
   {
-    name: "Cameras",
-    label: "Cameras",
-  },
-  {
-    name: "Parking",
+    name: "parking",
     label: "Parking",
   },
   {
-    name: "Laundry",
+    name: "laundry",
     label: "Laundry",
   },
   {
-    name: "Jacuzzi",
+    name: "jacuzzi",
     label: "Jacuzzi",
   },
   {
-    name: "Solar_panel",
+    name: "solar_panel",
     label: "Solar panel",
   },
   {
-    name: "Internet",
+    name: "internet",
     label: "Internet",
   },
   {
-    name: "Elevator",
+    name: "elevator",
     label: "Elevator",
   },
   {
-    name: "Garage",
+    name: "garage",
     label: "Garage",
   },
 ];

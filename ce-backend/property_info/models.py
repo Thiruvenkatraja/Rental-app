@@ -30,7 +30,8 @@ class Property(models.Model):
         ('vigilance', 'Vigilance'),
         ('dish', 'Dish'),
         ('solar_panel', 'Solar Panel'),
-        ('garage', 'Garage')
+        ('garage', 'Garage'),
+        ('parking', 'Parking')
     ]
     Property_Amenities = MultiSelectField(
         max_length=120, choices=Amenities_List)
