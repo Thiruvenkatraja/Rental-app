@@ -64,9 +64,9 @@ export const ClientFormLogics = () => {
         console.log(res.data);
         window.alert("Client added successfully");
       })
-      .catch((err: any) => {
+      .catch((err): any => {
         console.log(err);
-        window.alert("Something went wrong", err);
+        window.alert("Something went wrong");
       });
 
     setValues({
