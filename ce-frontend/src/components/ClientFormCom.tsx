@@ -28,22 +28,22 @@ const ClientFormCom = () => {
   const TextValidatorStyle = {
     "& .MuiOutlinedInput-root": {
       boxShadow: "none",
-      background: "#F6F6F6",
+      background: "#F6F6F6 !important",
       marginTop: "0.5rem",
     },
     "& .MuiTextValidator-root": {
-      backgroundColor: "#F6F6F6",
+      backgroundColor: "#F6F6F6 !important",
     },
     "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
-      background: "#F6F6F6",
+      background: "#F6F6F6 !important",
 
       borderRadius: "12px",
     },
     "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
-      border: 0,
+      border: "0 !important",
     },
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#84342d",
+      borderColor: "#84342d !important",
     },
   };
   const TypographyStyles = {
@@ -153,16 +153,16 @@ const ClientFormCom = () => {
                   width: "551px",
                 },
                 "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
-                  background: "#F6F6F6",
+                  background: "#F6F6F6 !important",
 
                   borderRadius: "12px",
                 },
                 "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
-                  border: 0,
+                  border: "0 !important",
                 },
                 "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                   {
-                    borderColor: "#84342d",
+                    borderColor: "#84342d !important",
                   },
               }}
             />
