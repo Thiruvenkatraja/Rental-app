@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchClientData = createAsyncThunk("fetchClientData", async () => {
-  const response = await fetch("http://127.0.0.1:8000/clients/");
+  const response = await fetch("https://3.226.14.5:7000/clients/");
   return response.json();
 });
 
 export const clientData = createSlice({
   name: "Client",
   initialState: {
-    Url: "http://127.0.0.1:8000/",
+    Url: "https://3.226.14.5:7000/",
     loading: false,
     clientData: [],
     error: false,
