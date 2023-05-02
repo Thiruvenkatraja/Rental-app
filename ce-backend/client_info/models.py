@@ -38,7 +38,8 @@ class Clients(models.Model):
         ('vigilance', 'Vigilance'),
         ('dish', 'Dish'),
         ('solar_panel', 'Solar Panel'),
-        ('garage', 'Garage')
+        ('garage', 'Garage'),
+        ('parking', 'Parking')
     ]
     Client_PropertyAmenities = MultiSelectField(
         max_length=120, choices=Amenities_List,null=True)
