@@ -106,7 +106,10 @@ const ClientFormCom = () => {
               name="Client_EMail"
               value={values.Client_EMail}
               onChange={handleChange}
+              validators={["isEmail"]}
+              errorMessages={["Please enter valid email"]}
               placeholder="example@mail.com"
+              type="email"
               id="outlined-basic"
               variant="outlined"
               required={true}
