@@ -3,14 +3,14 @@ import { Box, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import PropertyDataElements from "../components/PropertyDataElements";
-import { PropertyDataLogics } from "../Utils/PropertyDataGridLogics";
 
 type Props = {};
 
 const PropertyData = (props: Props) => {
+  const { id, propertyName } = useParams();
   const theme = useTheme();
   return (
     <>
@@ -63,7 +63,7 @@ const PropertyData = (props: Props) => {
           </Typography>
           <Button
             component={Link}
-            to={"/client_form"}
+            to={`/client_form/${id}/${propertyName}`}
             sx={{
               height: "31px",
               width: "88px",

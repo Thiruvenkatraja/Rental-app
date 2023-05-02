@@ -12,7 +12,7 @@ import { Box, Grid } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import ClientFormCom from "../components/ClientFormCom";
 const ClientForm = () => {
-  const theme = useTheme();
+const theme = useTheme();
   return (
     <>
       <Box
