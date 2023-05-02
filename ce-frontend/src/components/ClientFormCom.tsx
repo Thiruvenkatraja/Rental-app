@@ -58,7 +58,6 @@ const ClientFormCom = () => {
       style={{
         position: "relative",
         width: "650px",
-        height: "99rem",
         margin: "4rem",
       }}
     >

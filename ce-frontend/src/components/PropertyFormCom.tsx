@@ -52,7 +52,6 @@ const PropertyFormCom = () => {
       style={{
         position: "relative",
         width: "650px",
-        height: "77rem",
         borderRadius: "12px",
         margin: "4rem",
       }}
