@@ -49,8 +49,8 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
         <img
           style={{
             transition: "transform 0.2s",
-            maxWidth: "100%",
-            maxHeight: "250px",
+            width: "100%",
+            height: "100%",
             borderTopRightRadius: "12px",
             borderTopLeftRadius: "12px",
             verticalAlign: "top",
