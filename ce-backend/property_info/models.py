@@ -12,7 +12,7 @@ class Property(models.Model):
     Property_Location = models.CharField(max_length=100)
     Property_Address = models.CharField(max_length=200)
     Property_OverallSqft = models.PositiveIntegerField()
-    Property_Blocks = models.PositiveIntegerField()
+    Property_Blocks = models.CharField(max_length=10)
     Property_Floors = models.PositiveIntegerField()
     Property_Flats = models.PositiveIntegerField()
     Property_1BHK = models.PositiveIntegerField()
@@ -30,7 +30,8 @@ class Property(models.Model):
         ('vigilance', 'Vigilance'),
         ('dish', 'Dish'),
         ('solar_panel', 'Solar Panel'),
-        ('garage', 'Garage')
+        ('garage', 'Garage'),
+        ('parking','Parking')
     ]
     Property_Amenities = MultiSelectField(
         max_length=120, choices=Amenities_List)
