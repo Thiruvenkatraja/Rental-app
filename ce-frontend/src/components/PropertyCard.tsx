@@ -54,6 +54,7 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
             transition: "transform 0.2s",
             width: "auto",
             height: "12rem",
+            objectFit: "cover",
             borderTopRightRadius: "12px",
             borderTopLeftRadius: "12px",
             verticalAlign: "top",
