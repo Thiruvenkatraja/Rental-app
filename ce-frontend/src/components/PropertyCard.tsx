@@ -30,7 +30,10 @@ type PropertyCardProps = {
 export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
   const theme = useTheme()
   return (
-    <Link to={`/properties_data/${card.Property_ID}/${card.PropertyTitle}`} style={{ textDecoration: "none" }}>
+    <Link
+      to={`/properties_data/${card.Property_ID}/${card.PropertyTitle}`}
+      style={{ textDecoration: "none" }}
+    >
       <Paper
         sx={{
           transition: "transform 0.2s",
@@ -46,19 +49,31 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
           //   overflow: "hidden",
         }}
       >
-        <img
+        <div
           style={{
-            transition: "transform 0.2s",
+            position: "relative",
             width: "100%",
-            height: "100%",
-            borderTopRightRadius: "12px",
-            borderTopLeftRadius: "12px",
-            verticalAlign: "top",
+            height: "0",
+            paddingBottom: "58%",
           }}
-          src={card.Property_ImgURL}
-          alt="Your Image"
-        />
+        >
+          <img
+            style={{
+              transition: "transform 0.2s",
 
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              top: "0",
+              left: "0",
+              borderTopRightRadius: "12px",
+              borderTopLeftRadius: "12px",
+              objectFit: "cover",
+            }}
+            src={card.Property_ImgURL}
+            alt="Your Image"
+          />
+        </div>
         <Typography
           variant="h6"
           style={{
