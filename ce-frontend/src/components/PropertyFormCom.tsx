@@ -52,7 +52,7 @@ const PropertyFormCom = () => {
       style={{
         position: "relative",
         width: "650px",
-        height: "1200px",
+        height: "77rem",
         borderRadius: "12px",
         margin: "4rem",
       }}
@@ -175,12 +175,16 @@ const PropertyFormCom = () => {
             sx={{
               flexDirection: "row",
               justifyContent: " flex-start",
-              padding: "1rem 0 0 1rem",
+              padding: "1rem 0 0 1.5rem",
             }}
           >
             {FormControl.map((check) => (
               <FormControlLabel
-                sx={{ marginLeft: "-5px", marginRight: "10px", width: "11rem" }}
+                sx={{
+                  marginLeft: "-5px",
+                  marginRight: "10px",
+                  width: "11.5rem",
+                }}
                 onChange={handleCheckbox}
                 control={<Checkbox />}
                 label={check.label}

@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchPropertyData = createAsyncThunk(
   "fetchPropertyData",
   async () => {
-    const response = await fetch("http://127.0.0.1:8000/property/");
+    const response = await fetch("https://3.226.14.5:7000/property/");
     return response.json();
   }
 );

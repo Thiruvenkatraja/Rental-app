@@ -58,7 +58,8 @@ const ClientFormCom = () => {
       style={{
         position: "relative",
         width: "650px",
-        height: "1528px",
+        height: "99rem",
+        margin: "4rem",
       }}
     >
       <ValidatorForm
@@ -175,7 +176,7 @@ const ClientFormCom = () => {
               onChange={handleChange}
               variant="outlined"
               sx={TextValidatorStyle}
-              style={{ marginTop: "5px" }}
+              style={{ marginTop: "5px", width: "250px" }}
               id="outlined-select-type"
               required={true}
               select
@@ -196,7 +197,7 @@ const ClientFormCom = () => {
               onChange={handleChange}
               variant="outlined"
               sx={TextValidatorStyle}
-              style={{ marginTop: "5px" }}
+              style={{ marginTop: "5px", width: "250px" }}
               id="outlined-select-type"
               required={true}
               select
@@ -269,7 +270,7 @@ const ClientFormCom = () => {
               variant="outlined"
               sx={TextValidatorStyle}
               required={true}
-              style={{ marginTop: "5px" }}
+              style={{ marginTop: "5px", width: "250px" }}
               id="outlined-select-type"
               select
               defaultValue="Select"
@@ -289,7 +290,7 @@ const ClientFormCom = () => {
               onChange={handleChange}
               variant="outlined"
               sx={TextValidatorStyle}
-              style={{ marginTop: "5px" }}
+              style={{ marginTop: "5px", width: "250px" }}
               id="outlined-select-type"
               required={true}
               select
@@ -310,7 +311,7 @@ const ClientFormCom = () => {
               onChange={handleChange}
               variant="outlined"
               sx={TextValidatorStyle}
-              style={{ marginTop: "5px" }}
+              style={{ marginTop: "5px", width: "250px" }}
               id="outlined-select-type"
               required={true}
               select
@@ -402,12 +403,16 @@ const ClientFormCom = () => {
             sx={{
               flexDirection: "row",
               justifyContent: " flex-start",
-              padding: "1rem 0 0 1rem",
+              padding: "1rem 0 0 1.5rem",
             }}
           >
             {FormControl.map((check) => (
               <FormControlLabel
-                sx={{ marginLeft: "-5px", marginRight: "10px", width: "11rem" }}
+                sx={{
+                  marginLeft: "-5px",
+                  marginRight: "10px",
+                  width: "11.5rem",
+                }}
                 onChange={handleCheckbox}
                 control={<Checkbox />}
                 label={check.label}
