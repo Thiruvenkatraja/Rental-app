@@ -59,10 +59,13 @@ export const ClientFormLogics = () => {
       .post(`${url}clients/`, values)
       .then((res) => {
         console.log(res.data);
+        window.alert("Client added successfully");
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log(err);
+        window.alert("Something went wrong", err);
       });
+
     setValues({
       Client_FullName: "",
       Client_MobileNumber: 0,
