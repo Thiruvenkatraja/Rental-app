@@ -71,8 +71,8 @@ export const PropertyFormLogics = () => {
         window.alert("Property added successfully");
       })
       .catch((err) => {
-          console.log(err);
-          window.alert("Something went wrong",err);
+        console.log(err);
+        window.alert("Something went wrong");
       });
     setValues({
       Property_Title: "",
