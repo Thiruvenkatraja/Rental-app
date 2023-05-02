@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const PropertyFormLogics = () => {
+  const navigate = useNavigate();
   const url = useSelector((state: any) => state.ClientSlice.Url);
   const [values, setValues] = useState<any>({
     Property_Title: "",
@@ -74,6 +76,7 @@ export const PropertyFormLogics = () => {
         console.log(err);
         window.alert("Something went wrong");
       });
+    navigate(-1)
     setValues({
       Property_Title: "",
       Property_Type: "Select",
