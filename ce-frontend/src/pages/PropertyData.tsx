@@ -7,10 +7,12 @@ import { Link, useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import PropertyDataElements from "../components/PropertyDataElements";
 
+
 type Props = {};
 
 const PropertyData = (props: Props) => {
   const { id, propertyName } = useParams();
+
   const theme = useTheme();
   return (
     <>
