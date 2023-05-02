@@ -21,7 +21,7 @@ const ClientForm = () => {
           gap: "7rem",
           justifyContent: "center",
           alignItems: "start",
-          paddingTop: "3rem",
+         
         }}
       >
         <Box

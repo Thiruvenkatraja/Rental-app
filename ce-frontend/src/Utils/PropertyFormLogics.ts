@@ -5,11 +5,11 @@ import { useSelector } from "react-redux";
 export const PropertyFormLogics = () => {
   const url = useSelector((state: any) => state.ClientSlice.Url);
   const [values, setValues] = useState<any>({
-    Property_Title: "test",
+    Property_Title: "",
     Property_Type: "Select",
     Listing_Type: "Select",
-    Location: "test",
-    Address: "test",
+    Location: "",
+    Address: "",
     Overall_sqft: 0,
     Blocks: 0,
     Floors: 0,
@@ -17,8 +17,7 @@ export const PropertyFormLogics = () => {
     One_BHK: 0,
     Two_BHK: 0,
     Three_BHK: 0,
-    ImgURL:
-      "https://assets.website-files.com/6193ce0889184df85cd96c91/61953a33476cd4f4b3161c1c_image-thumbnail-6-property-posts-realtor-template-p-500.jpeg",
+    ImgURL: "",
     Property_amenities: [],
   });
 
@@ -73,6 +72,22 @@ export const PropertyFormLogics = () => {
       .catch((err) => {
         console.log(err);
       });
+    setValues({
+      Property_Title: "",
+      Property_Type: "Select",
+      Listing_Type: "Select",
+      Location: "",
+      Address: "",
+      Overall_sqft: 0,
+      Blocks: 0,
+      Floors: 0,
+      Flats: 0,
+      One_BHK: 0,
+      Two_BHK: 0,
+      Three_BHK: 0,
+      ImgURL: "",
+      Property_amenities: [],
+    });
   };
   return {
     handleChange,
