@@ -283,6 +283,40 @@ const ClientFormCom = () => {
             </TextValidator>
           </Grid>
           <Grid item xs={6}>
+            <Typography style={TypographyStyles}>Block</Typography>
+            <TextValidator
+              name="Client_Block"
+              value={values.Client_Block}
+              onChange={handleChange}
+              placeholder="A"
+              id="outlined-basic"
+              variant="outlined"
+              required={true}
+              style={{
+                width: "250px",
+                marginTop: "0.5rem",
+              }}
+              sx={TextValidatorStyle}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Typography style={TypographyStyles}>Flat No</Typography>
+            <TextValidator
+              name="Client_FlatNo"
+              value={values.Client_FlatNo}
+              onChange={handleChange}
+              placeholder="A"
+              id="outlined-basic"
+              variant="outlined"
+              required={true}
+              style={{
+                width: "250px",
+                marginTop: "0.5rem",
+              }}
+              sx={TextValidatorStyle}
+            />
+          </Grid>
+          <Grid item xs={6}>
             <Typography style={TypographyStyles}>Status</Typography>
             <TextValidator
               name="Client_Status"

@@ -75,7 +75,7 @@ export const ClientFormLogics = () => {
       Client_Location: "",
       Client_Address: "",
       Client_ListingPrice: 0,
-      Client_BHK: "",
+      Client_BHK: "Select",
       Client_Status: "Select",
       Client_ParkingLot: "Select",
       Client_ConstructionSqft: 0,
