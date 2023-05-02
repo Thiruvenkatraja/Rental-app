@@ -61,7 +61,7 @@ const PropertyData = (props: Props) => {
               textDecoration: "none",
             }}
           >
-            Add Owner
+            Property Owners
           </Typography>
           <Button
             component={Link}
