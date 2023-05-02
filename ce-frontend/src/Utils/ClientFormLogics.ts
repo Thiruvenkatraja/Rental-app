@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const ClientFormLogics = () => {
+  const navigate = useNavigate();
   const { property_id, propertyName }: any = useParams();
   const url = useSelector((state: any) => state.ClientSlice.Url);
   const [values, setValues] = useState<any>({
@@ -69,6 +70,7 @@ export const ClientFormLogics = () => {
         window.alert("Something went wrong");
       });
 
+    navigate(-1)
     setValues({
       Client_FullName: "",
       Client_MobileNumber: 0,
