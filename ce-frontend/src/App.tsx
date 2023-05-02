@@ -12,11 +12,17 @@ function App() {
       <ResponsiveAppBar />
       <Routes>
         <Route path="/properties" element={<Admin />} />
-        <Route path="/properties_data/:id/:propertyName" element={<PropertyData />} />
+        <Route
+          path="/properties_data/:id/:propertyName"
+          element={<PropertyData />}
+        />
         <Route path="/" element={<Admin />} />
         <Route path="/addclient" element={<AddClient />} />
         <Route path="/property_form" element={<PropertyForm />} />
-        <Route path="/client_form" element={<ClientForm />} />
+        <Route
+          path="/client_form/:property_id/:propertyName"
+          element={<ClientForm />}
+        />
       </Routes>
     </BrowserRouter>
   );

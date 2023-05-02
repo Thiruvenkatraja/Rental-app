@@ -68,9 +68,11 @@ export const PropertyFormLogics = () => {
       .post(`${url}/property/`, propertyData)
       .then((res) => {
         console.log(res.data);
+        window.alert("Property added successfully");
       })
       .catch((err) => {
-        console.log(err);
+          console.log(err);
+          window.alert("Something went wrong",err);
       });
     setValues({
       Property_Title: "",

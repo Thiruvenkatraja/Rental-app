@@ -304,7 +304,7 @@ const ClientFormCom = () => {
               name="Client_FlatNo"
               value={values.Client_FlatNo}
               onChange={handleChange}
-              placeholder="A"
+              placeholder="A1234"
               id="outlined-basic"
               variant="outlined"
               required={true}
