@@ -86,8 +86,8 @@ const ClientFormCom = () => {
           <Grid item xs={6}>
             <Typography style={TypographyStyles}>Full name</Typography>
             <TextValidator
-              name="Client_Name"
-              value={values.Client_Name}
+              name="Client_FullName"
+              value={values.Client_FullName}
               onChange={handleChange}
               placeholder="John Joe"
               id="outlined-basic"
@@ -127,9 +127,7 @@ const ClientFormCom = () => {
               id="outlined-basic"
               variant="outlined"
               validators={["matchRegexp:^[1-9][0-9]{9}$"]}
-              errorMessages={[
-                "Please enter 10 digit Mobile",
-              ]}
+              errorMessages={["Please enter 10 digit Mobile"]}
               required
               style={{
                 width: "250px",
@@ -400,10 +398,16 @@ const ClientFormCom = () => {
           <Grid item xs={12}>
             <Typography style={TypographyStyles}>Property amenities</Typography>
           </Grid>
-          <FormGroup sx={{ flexDirection: "row", justifyContent: "center" }}>
+          <FormGroup
+            sx={{
+              flexDirection: "row",
+              justifyContent: " flex-start",
+              padding: "1rem 0 0 1rem",
+            }}
+          >
             {FormControl.map((check) => (
               <FormControlLabel
-                sx={{ width: "8.1rem" }}
+                sx={{ marginLeft: "-5px", marginRight: "10px", width: "11rem" }}
                 onChange={handleCheckbox}
                 control={<Checkbox />}
                 label={check.label}
@@ -446,6 +450,7 @@ const ClientFormCom = () => {
             <Button
               variant="contained"
               type="submit"
+              onSubmit={handleSubmit}
               style={{
                 fontWeight: "1000",
                 color: theme.palette.secondary.main,

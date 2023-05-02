@@ -171,10 +171,16 @@ const PropertyFormCom = () => {
             <Typography style={TypographStyles}>Property amenities</Typography>
           </Grid>
 
-          <FormGroup sx={{ flexDirection: "row", justifyContent: "center" }}>
+          <FormGroup
+            sx={{
+              flexDirection: "row",
+              justifyContent: " flex-start",
+              padding: "1rem 0 0 1rem",
+            }}
+          >
             {FormControl.map((check) => (
               <FormControlLabel
-                sx={{ width: "8.1rem" }}
+                sx={{ marginLeft: "-5px", marginRight: "10px", width: "11rem" }}
                 onChange={handleCheckbox}
                 control={<Checkbox />}
                 label={check.label}
