@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid } from "@mui/material";
-import  Typography from "@mui/material/Typography";
-import {useTheme} from "@mui/material"
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
@@ -59,11 +59,11 @@ const PropertyData = (props: Props) => {
               textDecoration: "none",
             }}
           >
-            Properties
+            Add Owner
           </Typography>
           <Button
-          component={ Link }
-          to={"/client_form"}
+            component={Link}
+            to={"/client_form"}
             sx={{
               height: "31px",
               width: "88px",
