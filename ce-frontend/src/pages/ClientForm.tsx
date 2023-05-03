@@ -11,6 +11,7 @@ import React from "react";
 import { Box, Grid } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import ClientFormCom from "../components/ClientFormCom";
+import SnackBar from "../components/SnakeBar";
 const ClientForm = () => {
 const theme = useTheme();
   return (
@@ -21,7 +22,6 @@ const theme = useTheme();
           gap: "7rem",
           justifyContent: "center",
           alignItems: "start",
-         
         }}
       >
         <Box
@@ -107,6 +107,7 @@ const theme = useTheme();
         </Box>
         <ClientFormCom />
       </Box>
+      <SnackBar />
     </>
   );
 };

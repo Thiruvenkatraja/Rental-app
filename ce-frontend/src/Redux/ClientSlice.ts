@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchClientData = createAsyncThunk("fetchClientData", async () => {
   const response = await fetch("https://3.226.14.5:7000/clients/");
-  console.log(response.json());
   return response.json();
 });
 

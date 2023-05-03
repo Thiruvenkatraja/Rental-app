@@ -1,15 +1,10 @@
-import {
-  Avatar,
-  Button,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Avatar, Button, Paper, TextField, Typography } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { useTheme } from "@mui/material";
 import React from "react";
 import { Box } from "@mui/material";
 import PropertyFormCom from "../components/PropertyFormCom";
+import SnackBar from "../components/SnakeBar";
 
 const PropertyForm = () => {
   const theme = useTheme();
@@ -22,7 +17,7 @@ const PropertyForm = () => {
           gap: "7rem",
           justifyContent: "center",
           alignItems: "start",
-        //   paddingTop: "3rem",
+          //   paddingTop: "3rem",
         }}
       >
         <Box
@@ -63,6 +58,7 @@ const PropertyForm = () => {
         </Box>
         <PropertyFormCom />
       </Box>
+      <SnackBar />
     </>
   );
 };

@@ -14,8 +14,21 @@ export const propertyData = createSlice({
     loading: false,
     propertyData: [],
     error: false,
+    formData: {},
+    request: "Post",
+    open: false,
   },
-  reducers: {},
+  reducers: {
+    requestObjects: (state: any, action: any) => {
+      state.formData = action.payload;
+    },
+    requests: (state: any, action: any) => {
+      state.request = action.payload;
+    },
+    snackBarOpen: (state: any, action: any) => {
+      state.open = action.payload;
+    },
+  },
   extraReducers: (builder: any) => {
     builder.addCase(fetchPropertyData.pending, (state: any) => {
       state.loading = true;
@@ -29,5 +42,5 @@ export const propertyData = createSlice({
     });
   },
 });
-
+export const { requestObjects, requests, snackBarOpen } = propertyData.actions;
 export default propertyData.reducer;

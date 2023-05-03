@@ -1,47 +1,47 @@
 export const PropertyFormInputs = [
   {
     label: "Location",
-    name: "Location",
+    name: "Property_Location",
     placeholder: "ex. Chennai",
   },
   {
     label: "Address",
-    name: "Address",
+    name: "Property_Address",
     placeholder: "ex. No 1, street, etc.,",
   },
   {
     label: "Overall sqft.",
-    name: "Overall_sqft",
+    name: "Property_OverallSqft",
     placeholder: "ex. sqft",
   },
   {
     label: "Blocks",
-    name: "Blocks",
+    name: "Property_Blocks",
     placeholder: "ex. No of blocks",
   },
   {
     label: "Floors",
-    name: "Floors",
+    name: "Property_Floors",
     placeholder: "ex. No of floors",
   },
   {
     label: "Flats",
-    name: "Flats",
+    name: "Property_Flats",
     placeholder: "ex. No of flats",
   },
   {
     label: "1BHK",
-    name: "One_BHK",
+    name: "Property_1BHK",
     placeholder: "ex. No of 1BHK",
   },
   {
     label: "2BHK",
-    name: "Two_BHK",
+    name: "Property_2BHK",
     placeholder: "ex. No of 2BHK",
   },
   {
     label: "3BHK",
-    name: "Three_BHK",
+    name: "Property_3BHK",
     placeholder: "ex. No of 3BHK",
   },
 ];

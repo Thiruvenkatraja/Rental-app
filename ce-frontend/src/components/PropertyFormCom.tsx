@@ -16,6 +16,7 @@ import {
   propertyType,
 } from "../constants";
 import { PropertyFormLogics } from "../Utils/PropertyFormLogics";
+import FormActionButtons from "./FormActionButtons";
 
 const PropertyFormCom = () => {
   const { handleChange, values, handleCheckbox, handleSubmit } =
@@ -81,8 +82,8 @@ const PropertyFormCom = () => {
               placeholder="Tittle"
               id="outlined-basic"
               variant="outlined"
-              name="Property_Title"
-              value={values.Property_Title}
+              name="PropertyTitle"
+              value={values.PropertyTitle}
               required={true}
               onChange={handleChange}
               sx={{
@@ -109,8 +110,8 @@ const PropertyFormCom = () => {
             <Typography style={TypographStyles}>Property Type</Typography>
             <TextValidator
               variant="outlined"
-              name="Property_Type"
-              value={values.Property_Type}
+              name="PropertyType"
+              value={values.PropertyType}
               onChange={handleChange}
               sx={TextValidatorStyle}
               style={{ marginTop: "5px", width: "15.5rem" }}
@@ -130,8 +131,8 @@ const PropertyFormCom = () => {
             <Typography style={TypographStyles}>Listing Type</Typography>
             <TextValidator
               variant="outlined"
-              name="Listing_Type"
-              value={values.Listing_Type}
+              name="Property_ListingType"
+              value={values.Property_ListingType}
               required={true}
               onChange={handleChange}
               sx={TextValidatorStyle}
@@ -174,7 +175,7 @@ const PropertyFormCom = () => {
             sx={{
               flexDirection: "row",
               justifyContent: " flex-start",
-              padding: "1rem 0 0 1.5rem",
+              padding: "1rem 0 0 1rem",
             }}
           >
             {FormControl.map((check) => (
@@ -182,29 +183,38 @@ const PropertyFormCom = () => {
                 sx={{
                   marginLeft: "-5px",
                   marginRight: "10px",
-                  width: "11.5rem",
+                  width: "11rem",
                 }}
                 onChange={handleCheckbox}
                 control={<Checkbox />}
                 label={check.label}
                 name={check.name}
                 value={check.name}
+                checked={
+                  values.Property_Amenities &&
+                  values.Property_Amenities.includes(check.name)
+                }
               />
             ))}
           </FormGroup>
 
           <Grid item xs={12}>
             <Typography style={TypographStyles}>Listing images</Typography>
-            <p>
+            <Typography
+              style={{
+                marginTop: "1rem",
+                color: "inherit",
+              }}
+            >
               Please share a Google Drive or Imgur link of your listing images
-            </p>
+            </Typography>
             <TextValidator
               placeholder="ex. Drive.google.com/..."
               id="outlined-basic"
               variant="outlined"
-              name="ImgURL"
+              name="Property_ImgURL"
               required={true}
-              value={values.ImgURL}
+              value={values.Property_ImgURL}
               onChange={handleChange}
               style={{
                 width: "34rem",
@@ -214,17 +224,7 @@ const PropertyFormCom = () => {
             />
           </Grid>
           <Grid item xs={3}>
-            <Button
-              variant="contained"
-              type="submit"
-              style={{
-                fontWeight: "1000",
-                color: theme.palette.secondary.main,
-                backgroundColor: theme.palette.primary.main,
-              }}
-            >
-              Submit
-            </Button>
+            <FormActionButtons />
           </Grid>
         </Grid>
       </ValidatorForm>

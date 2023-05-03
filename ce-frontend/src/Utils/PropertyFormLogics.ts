@@ -1,28 +1,38 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { snackBarOpen } from "../Redux/PropertySlice";
 
 export const PropertyFormLogics = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+ 
   const url = useSelector((state: any) => state.ClientSlice.Url);
-  const [values, setValues] = useState<any>({
-    Property_Title: "",
-    Property_Type: "Select",
-    Listing_Type: "Select",
-    Location: "",
-    Address: "",
-    Overall_sqft: 0,
-    Blocks: 0,
-    Floors: 0,
-    Flats: 0,
-    One_BHK: 0,
-    Two_BHK: 0,
-    Three_BHK: 0,
-    ImgURL: "",
-    Property_amenities: [],
-  });
-
+  const request = useSelector((state: any) => state.PropertySlice.request);
+  const requestObject = useSelector(
+    (state: any) => state.PropertySlice.formData
+  );
+  //   console.log(requestObject);
+  const [values, setValues] = useState<any>(
+    request === "Post"
+      ? {
+          PropertyTitle: "",
+          PropertyType: "Select",
+          Property_ListingType: "Select",
+          Property_Location: "",
+          Property_Address: "",
+          Property_OverallSqft: 0,
+          Property_Blocks: 0,
+          Property_Floors: 0,
+          Property_Flats: 0,
+          Property_1BHK: 0,
+          Property_2BHK: 0,
+          Property_3BHK: 0,
+          Property_ImgURL: "",
+          Property_Amenities: [],
+        }
+      : requestObject
+  );
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setValues((preVal: any) => {
@@ -34,49 +44,59 @@ export const PropertyFormLogics = () => {
   };
 
   const handleCheckbox = (e: any) => {
-    if (values.Property_amenities.includes(e.target.value)) {
+    if (values.Property_Amenities.includes(e.target.value)) {
       setValues((prevValues: any) => ({
         ...prevValues,
-        Property_amenities: prevValues.Property_amenities.filter(
+        Property_Amenities: prevValues.Property_Amenities.filter(
           (item: any) => item !== e.target.value
         ),
       }));
     } else {
       setValues((prevValues: any) => ({
         ...prevValues,
-        Property_amenities: [...prevValues.Property_amenities, e.target.value],
+        Property_Amenities: [...prevValues.Property_Amenities, e.target.value],
       }));
     }
   };
-  const propertyData = {
-    PropertyTitle: values.Property_Title,
-    PropertyType: values.Property_Type,
-    Property_ListingType: values.Listing_Type,
-    Property_Location: values.Location,
-    Property_Address: values.Address,
-    Property_OverallSqft: values.Overall_sqft,
-    Property_Blocks: values.Blocks,
-    Property_Floors: values.Floors,
-    Property_Flats: values.Flats,
-    Property_1BHK: values.One_BHK,
-    Property_2BHK: values.Two_BHK,
-    Property_3BHK: values.Three_BHK,
-    Property_Amenities: values.Property_amenities,
-    Property_ImgURL: values.ImgURL,
-  };
 
-  const handleSubmit = () => {
+  const handleDelete = (id: number) => {
     axios
-      .post(`${url}/property/`, propertyData)
+      .delete(`${url}/property/${id}/delete`)
       .then((res) => {
         console.log(res.data);
-        window.alert("Property added successfully");
-        navigate(-1)
+        window.alert("Property Delete successfully");
       })
       .catch((err) => {
         console.log(err);
         window.alert("Something went wrong");
       });
+  };
+
+  const handleSubmit = () => {
+    if (request === "Post") {
+      axios
+        .post(`${url}/property/`, values)
+        .then((res) => {
+          console.log(res.data);
+          dispatch<any>(snackBarOpen<any>(true));
+        })
+        .catch((err) => {
+          console.log(err);
+          window.alert("Something went wrong");
+        });
+    }
+    if (request === "Edit") {
+      axios
+        .put(`${url}/property/${requestObject.Property_ID}/update`, values)
+        .then((res) => {
+          console.log(res.data);
+          dispatch<any>(snackBarOpen<any>(true));
+        })
+        .catch((err) => {
+          console.log(err);
+          window.alert("Something went wrong");
+        });
+    }
     setValues({
       Property_Title: "",
       Property_Type: "Select",
@@ -99,5 +119,6 @@ export const PropertyFormLogics = () => {
     values,
     handleCheckbox,
     handleSubmit,
+    handleDelete,
   };
 };
