@@ -20,6 +20,7 @@ import {
   propertyType,
 } from "../constants";
 import { ClientFormLogics } from "../Utils/ClientFormLogics";
+import FormActionButtons from "./FormActionButtons";
 
 const ClientFormCom = () => {
   const { handleChange, handleCheckbox, values, handleSubmit } =
@@ -439,7 +440,7 @@ const ClientFormCom = () => {
             sx={{
               flexDirection: "row",
               justifyContent: " flex-start",
-              padding: "1rem 0 0 1.5rem",
+              padding: "1rem 0 0 1rem",
             }}
           >
             {FormControl.map((check) => (
@@ -447,7 +448,7 @@ const ClientFormCom = () => {
                 sx={{
                   marginLeft: "-5px",
                   marginRight: "10px",
-                  width: "11.5rem",
+                  width: "11rem",
                 }}
                 onChange={handleCheckbox}
                 control={<Checkbox />}
@@ -469,9 +470,14 @@ const ClientFormCom = () => {
             >
               Listing images
             </Typography>
-            <p>
+            <Typography
+              style={{
+                marginTop: "1rem",
+                color: "inherit",
+              }}
+            >
               Please share a Google Drive or Imgur link of your listing images
-            </p>
+            </Typography>
             <TextValidator
               name="Client_ImgURL"
               value={values.Client_ImgURL}
@@ -488,18 +494,7 @@ const ClientFormCom = () => {
             />
           </Grid>
           <Grid item xs={3}>
-            <Button
-              variant="contained"
-              type="submit"
-              onSubmit={handleSubmit}
-              style={{
-                fontWeight: "1000",
-                color: theme.palette.secondary.main,
-                backgroundColor: theme.palette.primary.main,
-              }}
-            >
-              Submit
-            </Button>
+            <FormActionButtons />
           </Grid>
         </Grid>
       </ValidatorForm>
