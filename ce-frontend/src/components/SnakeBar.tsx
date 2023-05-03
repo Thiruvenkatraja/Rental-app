@@ -47,7 +47,6 @@ const SnackBar = (props: props) => {
           fontSize: "1rem",
           fontFamily: "Poppins",
         }}
-        severity="success"
       >
         Request submitted succesfully!
       </div>
