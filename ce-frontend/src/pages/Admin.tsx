@@ -26,6 +26,7 @@ import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { PropertyCard } from "../components/PropertyCard";
 import { AdminLogics } from "../Utils/AdminLogics";
 
+
 export const Admin = () => {
   const theme = useTheme();
   const {

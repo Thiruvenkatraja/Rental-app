@@ -14,8 +14,15 @@ export const propertyData = createSlice({
     loading: false,
     propertyData: [],
     error: false,
+    formData: {},
+    request:"Post"
   },
-  reducers: {},
+  reducers: {
+    requestObjects: (state: any, action: any) => {
+      state.formData = action.payload;
+      state.request=action.payload;
+    },
+  },
   extraReducers: (builder: any) => {
     builder.addCase(fetchPropertyData.pending, (state: any) => {
       state.loading = true;
@@ -29,5 +36,5 @@ export const propertyData = createSlice({
     });
   },
 });
-
+export const { requestObjects } = propertyData.actions;
 export default propertyData.reducer;
