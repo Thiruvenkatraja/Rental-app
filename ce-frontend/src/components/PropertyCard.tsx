@@ -15,8 +15,8 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useTheme } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { requestObjects } from "../Redux/PropertySlice";
-
+import { requestObjects, requests } from "../Redux/PropertySlice";
+import { PropertyFormLogics } from "../Utils/PropertyFormLogics";
 
 type PropertyCardProps = {
   idx: number;
@@ -31,6 +31,7 @@ type PropertyCardProps = {
 export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const { handleDelete } = PropertyFormLogics();
   return (
     <Paper
       sx={{
@@ -154,8 +155,8 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
         />
 
         <IconButton
-         component={Link}
-         to={"/property_form"}
+          component={Link}
+          to={"/property_form"}
           size="small"
           aria-label="edit"
           sx={{
@@ -163,12 +164,8 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
             backgroundColor: theme.palette.secondary.main,
           }}
           onClick={() => {
-            dispatch<any>(
-              requestObjects<any>({ 
-                formData: card,
-                request:"Edit"
-               })
-            );
+            dispatch<any>(requestObjects<any>(card));
+            dispatch<any>(requests<any>("Edit"));
           }}
         >
           <EditOutlinedIcon fontSize="small" />
@@ -176,6 +173,7 @@ export const PropertyCard = ({ idx, card }: PropertyCardProps) => {
         <IconButton
           size="small"
           aria-label="delete"
+          onClick={() => handleDelete(card.Property_ID)}
           sx={{
             color: theme.palette.primary.main,
             backgroundColor: theme.palette.secondary.main,

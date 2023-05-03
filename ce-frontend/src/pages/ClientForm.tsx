@@ -21,7 +21,6 @@ const theme = useTheme();
           gap: "7rem",
           justifyContent: "center",
           alignItems: "start",
-         
         }}
       >
         <Box
@@ -107,6 +106,7 @@ const theme = useTheme();
         </Box>
         <ClientFormCom />
       </Box>
+      <SnackBar />
     </>
   );
 };

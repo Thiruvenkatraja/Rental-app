@@ -25,10 +25,13 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { PropertyCard } from "../components/PropertyCard";
 import { AdminLogics } from "../Utils/AdminLogics";
+import {  requests } from "../Redux/PropertySlice";
+import { useDispatch } from "react-redux";
 
 
 export const Admin = () => {
-  const theme = useTheme();
+    const theme = useTheme();
+    const dispatch = useDispatch();
   const {
     handleClearClick,
     handlePageChange,
@@ -87,8 +90,13 @@ export const Admin = () => {
           Properties
         </Typography>
         <Button
-        component={Link}
-        to={"/property_form"}
+          component={Link}
+          to={"/property_form"}
+          onClick={() => {
+            dispatch<any>(
+              requests<any>("Post")
+              );
+          }}
           sx={{
             height: "31px",
             width: "88px",
@@ -231,7 +239,7 @@ export const Admin = () => {
           }}
           spacing={2}
         >
-          {visibleProperties.map((card:any, idx) => (
+          {visibleProperties.map((card: any, idx) => (
             <Grid item key={idx}>
               <PropertyCard card={card} idx={idx} />
             </Grid>

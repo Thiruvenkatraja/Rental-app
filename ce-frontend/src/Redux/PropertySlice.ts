@@ -15,12 +15,18 @@ export const propertyData = createSlice({
     propertyData: [],
     error: false,
     formData: {},
-    request:"Post"
+    request: "Post",
+    open: false,
   },
   reducers: {
     requestObjects: (state: any, action: any) => {
       state.formData = action.payload;
-      state.request=action.payload;
+    },
+    requests: (state: any, action: any) => {
+      state.request = action.payload;
+    },
+    snackBarOpen: (state: any, action: any) => {
+      state.open = action.payload;
     },
   },
   extraReducers: (builder: any) => {
@@ -36,5 +42,5 @@ export const propertyData = createSlice({
     });
   },
 });
-export const { requestObjects } = propertyData.actions;
+export const { requestObjects, requests, snackBarOpen } = propertyData.actions;
 export default propertyData.reducer;
