@@ -71,12 +71,12 @@ export const PropertyFormLogics = () => {
       .then((res) => {
         console.log(res.data);
         window.alert("Property added successfully");
+        navigate(-1)
       })
       .catch((err) => {
         console.log(err);
         window.alert("Something went wrong");
       });
-    navigate(-1)
     setValues({
       Property_Title: "",
       Property_Type: "Select",

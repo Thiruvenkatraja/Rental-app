@@ -64,20 +64,21 @@ export const ClientFormLogics = () => {
       .then((res) => {
         console.log(res.data);
         window.alert("Client added successfully");
+        navigate(-1)
       })
       .catch((err): any => {
         console.log(err);
         window.alert("Something went wrong");
       });
 
-    navigate(-1)
     setValues({
+    Client_PropertyID: parseInt(property_id),
       Client_FullName: "",
       Client_MobileNumber: 0,
       Client_EMail: "",
       Client_Block: "",
       Client_FlatNo: "",
-      Client_PropertyTitle: "",
+      Client_PropertyTitle: propertyName,
       Client_PropertyType: "Select",
       Client_ListingType: "Select",
       Client_Location: "",
