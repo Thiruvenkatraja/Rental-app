@@ -11,6 +11,7 @@ import React from "react";
 import { Box, Grid } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import ClientFormCom from "../components/ClientFormCom";
+import SnackBar from "../components/SnakeBar";
 const ClientForm = () => {
 const theme = useTheme();
   return (
