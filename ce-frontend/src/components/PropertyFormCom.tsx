@@ -81,8 +81,8 @@ const PropertyFormCom = () => {
               placeholder="Tittle"
               id="outlined-basic"
               variant="outlined"
-              name="Property_Title"
-              value={values.Property_Title}
+              name="PropertyTitle"
+              value={values.PropertyTitle}
               required={true}
               onChange={handleChange}
               sx={{
@@ -109,8 +109,8 @@ const PropertyFormCom = () => {
             <Typography style={TypographStyles}>Property Type</Typography>
             <TextValidator
               variant="outlined"
-              name="Property_Type"
-              value={values.Property_Type}
+              name="PropertyType"
+              value={values.PropertyType}
               onChange={handleChange}
               sx={TextValidatorStyle}
               style={{ marginTop: "5px", width: "15.5rem" }}
@@ -130,8 +130,8 @@ const PropertyFormCom = () => {
             <Typography style={TypographStyles}>Listing Type</Typography>
             <TextValidator
               variant="outlined"
-              name="Listing_Type"
-              value={values.Listing_Type}
+              name="Property_ListingType"
+              value={values.Property_ListingType}
               required={true}
               onChange={handleChange}
               sx={TextValidatorStyle}
@@ -202,9 +202,9 @@ const PropertyFormCom = () => {
               placeholder="ex. Drive.google.com/..."
               id="outlined-basic"
               variant="outlined"
-              name="ImgURL"
+              name="Property_ImgURL"
               required={true}
-              value={values.ImgURL}
+              value={values.Property_ImgURL}
               onChange={handleChange}
               style={{
                 width: "34rem",

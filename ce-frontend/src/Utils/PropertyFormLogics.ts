@@ -6,23 +6,27 @@ import { useNavigate } from "react-router-dom";
 export const PropertyFormLogics = () => {
   const navigate = useNavigate();
   const url = useSelector((state: any) => state.ClientSlice.Url);
-  const [values, setValues] = useState<any>({
-    Property_Title: "",
-    Property_Type: "Select",
-    Listing_Type: "Select",
-    Location: "",
-    Address: "",
-    Overall_sqft: 0,
-    Blocks: 0,
-    Floors: 0,
-    Flats: 0,
-    One_BHK: 0,
-    Two_BHK: 0,
-    Three_BHK: 0,
-    ImgURL: "",
-    Property_amenities: [],
-  });
-
+  const request = useSelector((state: any) => state.PropertySlice.request.request);
+  const requestObject =useSelector((state: any) => state.PropertySlice.formData.formData);
+  console.log(request)
+  const [values, setValues] = useState<any>(request === "Post"?{
+    PropertyTitle: "",
+    PropertyType: "Select",
+    Property_ListingType: "Select",
+    Property_Location: "",
+    Property_Address: "",
+    Property_OverallSqft: 0,
+    Property_Blocks: 0,
+    Property_Floors: 0,
+    Property_Flats: 0,
+    Property_1BHK: 0,
+    Property_2BHK: 0,
+    Property_3BHK: 0,
+    Property_ImgURL: "",
+    Property_Amenities: [],
+  }:requestObject);
+  
+  console.log(requestObject);
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setValues((preVal: any) => {
@@ -34,17 +38,17 @@ export const PropertyFormLogics = () => {
   };
 
   const handleCheckbox = (e: any) => {
-    if (values.Property_amenities.includes(e.target.value)) {
+    if (values.Property_Amenities.includes(e.target.value)) {
       setValues((prevValues: any) => ({
         ...prevValues,
-        Property_amenities: prevValues.Property_amenities.filter(
+        Property_Amenities: prevValues.Property_Amenities.filter(
           (item: any) => item !== e.target.value
         ),
       }));
     } else {
       setValues((prevValues: any) => ({
         ...prevValues,
-        Property_amenities: [...prevValues.Property_amenities, e.target.value],
+        Property_Amenities: [...prevValues.Property_Amenities, e.target.value],
       }));
     }
   };
@@ -98,6 +102,6 @@ export const PropertyFormLogics = () => {
     handleChange,
     values,
     handleCheckbox,
-    handleSubmit,
+    handleSubmit
   };
 };
