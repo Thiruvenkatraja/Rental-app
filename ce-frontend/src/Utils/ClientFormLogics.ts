@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { snackBarOpen } from "../Redux/PropertySlice";
 
 export const ClientFormLogics = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { property_id, propertyName }: any = useParams();
   const url = useSelector((state: any) => state.ClientSlice.Url);
   const [values, setValues] = useState<any>({
@@ -63,8 +64,7 @@ export const ClientFormLogics = () => {
       .post(`${url}clients/`, values)
       .then((res) => {
         console.log(res.data);
-        window.alert("Client added successfully");
-        navigate(-1)
+        dispatch<any>(snackBarOpen<any>(true));
       })
       .catch((err): any => {
         console.log(err);
@@ -72,7 +72,7 @@ export const ClientFormLogics = () => {
       });
 
     setValues({
-    Client_PropertyID: parseInt(property_id),
+      Client_PropertyID: parseInt(property_id),
       Client_FullName: "",
       Client_MobileNumber: 0,
       Client_EMail: "",

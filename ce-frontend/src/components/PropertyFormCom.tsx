@@ -190,6 +190,10 @@ const PropertyFormCom = () => {
                 label={check.label}
                 name={check.name}
                 value={check.name}
+                checked={
+                  values.Property_Amenities &&
+                  values.Property_Amenities.includes(check.name)
+                }
               />
             ))}
           </FormGroup>
