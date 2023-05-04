@@ -5,7 +5,7 @@ from multiselectfield import MultiSelectField
 
 class Property(models.Model):
     Property_ID = models.AutoField(primary_key=True)
-    PropertyTitle = models.CharField(max_length=100)
+    PropertyTitle = models.CharField(max_length=50)
     PropertyType = models.CharField(max_length=100)
     Property_ListingType = models.CharField(
         max_length=100)
