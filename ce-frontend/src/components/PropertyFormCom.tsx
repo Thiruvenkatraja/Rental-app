@@ -19,7 +19,7 @@ import { PropertyFormLogics } from "../Utils/PropertyFormLogics";
 import FormActionButtons from "./FormActionButtons";
 
 const PropertyFormCom = () => {
-  const { handleChange, values, handleCheckbox, handleSubmit } =
+  const { handleChange, values, handleCheckbox, handleSubmit, handleClear } =
     PropertyFormLogics();
 
   const theme = useTheme();
@@ -224,7 +224,7 @@ const PropertyFormCom = () => {
             />
           </Grid>
           <Grid item xs={3}>
-            <FormActionButtons />
+            <FormActionButtons handleClear={handleClear} />
           </Grid>
         </Grid>
       </ValidatorForm>

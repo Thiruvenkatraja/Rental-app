@@ -23,7 +23,7 @@ import { ClientFormLogics } from "../Utils/ClientFormLogics";
 import FormActionButtons from "./FormActionButtons";
 
 const ClientFormCom = () => {
-  const { handleChange, handleCheckbox, values, handleSubmit } =
+  const { handleChange, handleCheckbox, values, handleSubmit, handleClear } =
     ClientFormLogics();
   const theme = useTheme();
   const TextValidatorStyle = {
@@ -494,7 +494,7 @@ const ClientFormCom = () => {
             />
           </Grid>
           <Grid item xs={3}>
-            <FormActionButtons />
+            <FormActionButtons handleClear={handleClear} />
           </Grid>
         </Grid>
       </ValidatorForm>

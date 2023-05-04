@@ -3,9 +3,7 @@ import React from "react";
 import { useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-type Props = {};
-
-const FormActionButtons = (props: Props) => {
+const FormActionButtons = ({ handleClear }: any) => {
   const navigate = useNavigate();
   const handleBack = () => {
     navigate(-1);
@@ -33,7 +31,7 @@ const FormActionButtons = (props: Props) => {
       </Button>
       <Button
         variant="contained"
-        type="submit"
+        onClick={handleClear}
         style={{
           fontFamily: "Poppins",
           padding: ".5rem 3rem",
