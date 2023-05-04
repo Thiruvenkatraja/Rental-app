@@ -95,10 +95,36 @@ export const ClientFormLogics = () => {
       Client_ImgURL: "",
     });
   };
+  const handleClear = () => {
+    setValues({
+      Client_PropertyID: "",
+      Client_FullName: "",
+      Client_MobileNumber: 0,
+      Client_EMail: "",
+      Client_Block: "",
+      Client_FlatNo: "",
+      Client_PropertyTitle: "",
+      Client_PropertyType: "Select",
+      Client_ListingType: "Select",
+      Client_Location: "",
+      Client_Address: "",
+      Client_ListingPrice: 0,
+      Client_BHK: "Select",
+      Client_Status: "Select",
+      Client_ParkingLot: "Select",
+      Client_ConstructionSqft: 0,
+      Client_LandSqft: 0,
+      Client_ShortDesc: "",
+      Client_LongDesc: "",
+      Client_PropertyAmenities: [],
+      Client_ImgURL: "",
+    });
+  };
   return {
     handleChange,
     handleCheckbox,
     handleSubmit,
     values,
+    handleClear,
   };
 };

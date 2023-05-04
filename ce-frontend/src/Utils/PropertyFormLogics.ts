@@ -6,7 +6,7 @@ import { snackBarOpen } from "../Redux/PropertySlice";
 
 export const PropertyFormLogics = () => {
   const dispatch = useDispatch();
- 
+
   const url = useSelector((state: any) => state.ClientSlice.Url);
   const request = useSelector((state: any) => state.PropertySlice.request);
   const requestObject = useSelector(
@@ -33,6 +33,24 @@ export const PropertyFormLogics = () => {
         }
       : requestObject
   );
+  const handleClear = () => {
+    setValues({
+      PropertyTitle: "",
+      PropertyType: "Select",
+      Property_ListingType: "Select",
+      Property_Location: "",
+      Property_Address: "",
+      Property_OverallSqft: 0,
+      Property_Blocks: 0,
+      Property_Floors: 0,
+      Property_Flats: 0,
+      Property_1BHK: 0,
+      Property_2BHK: 0,
+      Property_3BHK: 0,
+      Property_ImgURL: "",
+      Property_Amenities: [],
+    });
+  };
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setValues((preVal: any) => {
@@ -120,5 +138,6 @@ export const PropertyFormLogics = () => {
     handleCheckbox,
     handleSubmit,
     handleDelete,
+    handleClear,
   };
 };
