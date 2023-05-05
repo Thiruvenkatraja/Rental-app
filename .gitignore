@@ -37,6 +37,7 @@ build/
 
 # Project specific files
 .env
+env/
 .env.local
 .env.*.local
 .env.development.local
