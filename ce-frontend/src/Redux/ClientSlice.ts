@@ -8,7 +8,7 @@ export const fetchClientData = createAsyncThunk("fetchClientData", async () => {
 export const clientData = createSlice({
   name: "Client",
   initialState: {
-    Url: "https://3.226.14.5:7000/",
+    Url: "https://3.226.14.5:7000",
     loading: false,
     clientData: [],
     error: false,
