@@ -7,7 +7,6 @@ import { Link, useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import PropertyDataElements from "../components/PropertyDataElements";
 
-
 type Props = {};
 
 const PropertyData = (props: Props) => {
@@ -71,8 +70,10 @@ const PropertyData = (props: Props) => {
               width: "88px",
               "&:hover": {
                 backgroundColor: theme.palette.secondary.main,
+                scale: "1.1",
               },
-              boxShadow: `0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)`,
+              transition: ".5s",
+              boxShadow: `0.5px 1.5px 9px 1px rgba(0,0,0,0.2)`,
               margin: "12px",
               borderRadius: "12px",
               fontFamily: "Poppins",

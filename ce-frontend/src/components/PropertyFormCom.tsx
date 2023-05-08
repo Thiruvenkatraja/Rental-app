@@ -17,36 +17,14 @@ import {
 } from "../constants";
 import { PropertyFormLogics } from "../Utils/PropertyFormLogics";
 import FormActionButtons from "./FormActionButtons";
+import { TextValidatorStyle, TypographyStyles } from "../Utils/Constants";
 
 const PropertyFormCom = () => {
   const { handleChange, values, handleCheckbox, handleSubmit, handleClear } =
     PropertyFormLogics();
 
   const theme = useTheme();
-  const TypographStyles = {
-    fontFamily: "Poppins",
-    fontWeight: "650",
-    color: "inherit",
-    textDecoration: "none",
-  };
 
-  const TextValidatorStyle = {
-    "& .MuiOutlinedInput-root": {
-      background: "#F6F6F6 !important",
-      boxShadow: "none",
-      marginTop: "0.5rem",
-    },
-    "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
-      background: "#F6F6F6 !important",
-      borderRadius: "12px !important",
-    },
-    "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
-      border: 0,
-    },
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#84342d !important",
-    },
-  };
   return (
     <Paper
       elevation={3}
@@ -77,7 +55,7 @@ const PropertyFormCom = () => {
           }}
         >
           <Grid item xs={12}>
-            <Typography style={TypographStyles}>Property Title</Typography>
+            <Typography style={TypographyStyles}>Property Title</Typography>
             <TextValidator
               placeholder="Tittle"
               id="outlined-basic"
@@ -88,7 +66,7 @@ const PropertyFormCom = () => {
               onChange={handleChange}
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  boxShadow: "none",
+                //   boxShadow: "none",
                   marginTop: "0.5rem",
                   width: "34rem",
                 },
@@ -107,7 +85,7 @@ const PropertyFormCom = () => {
             />
           </Grid>
           <Grid item xs={6}>
-            <Typography style={TypographStyles}>Property Type</Typography>
+            <Typography style={TypographyStyles}>Property Type</Typography>
             <TextValidator
               variant="outlined"
               name="PropertyType"
@@ -128,7 +106,7 @@ const PropertyFormCom = () => {
             </TextValidator>
           </Grid>
           <Grid item xs={6}>
-            <Typography style={TypographStyles}>Listing Type</Typography>
+            <Typography style={TypographyStyles}>Listing Type</Typography>
             <TextValidator
               variant="outlined"
               name="Property_ListingType"
@@ -150,7 +128,7 @@ const PropertyFormCom = () => {
           </Grid>
           {PropertyFormInputs.map((inputs) => (
             <Grid item xs={6}>
-              <Typography style={TypographStyles}>{inputs.label}</Typography>
+              <Typography style={TypographyStyles}>{inputs.label}</Typography>
               <TextValidator
                 placeholder={inputs.placeholder}
                 id="outlined-basic"
@@ -168,7 +146,7 @@ const PropertyFormCom = () => {
             </Grid>
           ))}
           <Grid item xs={12}>
-            <Typography style={TypographStyles}>Property amenities</Typography>
+            <Typography style={TypographyStyles}>Property amenities</Typography>
           </Grid>
 
           <FormGroup
@@ -199,7 +177,7 @@ const PropertyFormCom = () => {
           </FormGroup>
 
           <Grid item xs={12}>
-            <Typography style={TypographStyles}>Listing images</Typography>
+            <Typography style={TypographyStyles}>Listing images</Typography>
             <Typography
               style={{
                 marginTop: "1rem",
