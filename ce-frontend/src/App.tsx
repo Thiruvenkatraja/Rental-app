@@ -19,7 +19,7 @@ function App() {
           path="/properties_data/:id/:propertyName"
           element={<PropertyData />}
         />
-        <Route path="/" element={<Admin />} />
+        <Route path="/home" element={<Admin />} />
         <Route path="/addclient" element={<AddClient />} />
         <Route path="/property_form" element={<PropertyForm />} />
         <Route
@@ -28,7 +28,7 @@ function App() {
         />
         <Route path="/super_admin" element={<SuperAdmin />} />
         <Route path="/add_user" element={<AddUserForm />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

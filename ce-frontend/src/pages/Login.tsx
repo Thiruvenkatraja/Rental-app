@@ -4,18 +4,20 @@ import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { Grid } from "@mui/material";
 
 import { TextValidatorStyle, TypographyStyles } from "../Utils/Constants";
+import { LoginPageLogic } from "../Utils/LoginPageLogic";
 
 type Props = {};
 
 const Login = (props: Props) => {
-  const handleSubmit = () => {};
+  const { handleSubmit, handleChange, values } = LoginPageLogic();
   const theme = useTheme();
   return (
     <div
       style={{
         position: "relative",
         width: "100%",
-        borderRadius: "12px",
+        height: "100vh",
+        // borderRadius: "12px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -67,8 +69,8 @@ const Login = (props: Props) => {
                 placeholder="example@gmail.com"
                 id="outlined-basic"
                 variant="outlined"
-                value=""
-                // onChange={handleChange}
+                value={values.email}
+                onChange={handleChange}
                 name="email"
                 required={true}
                 style={{
@@ -84,8 +86,8 @@ const Login = (props: Props) => {
                 placeholder="**********"
                 id="outlined-basic"
                 variant="outlined"
-                value=""
-                // onChange={handleChange}
+                value={values.password}
+                onChange={handleChange}
                 name="password"
                 required={true}
                 style={{
