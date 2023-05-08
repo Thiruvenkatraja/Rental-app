@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material";
 import ClientSlice from "./Redux/ClientSlice";
 import PropertySlice from "./Redux/PropertySlice";
-
+import "./index.css";
 const theme = createTheme({
   palette: {
     primary: {
@@ -22,8 +22,8 @@ const theme = createTheme({
 });
 const store = configureStore({
   reducer: {
-    ClientSlice:ClientSlice,
-    PropertySlice:PropertySlice
+    ClientSlice: ClientSlice,
+    PropertySlice: PropertySlice,
   },
 });
 
