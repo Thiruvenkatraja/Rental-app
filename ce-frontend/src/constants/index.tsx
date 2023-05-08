@@ -63,7 +63,7 @@ export const FormControl = [
     name: "security_cameras",
     label: "Security Cameras",
   },
- 
+
   {
     name: "parking",
     label: "Parking",
@@ -167,4 +167,32 @@ export const Status = [
   { value: "Select", label: "Select" },
   { value: "Active", label: "Active" },
   { value: "In-Active", label: "In-Active" },
+];
+
+export const AddUserFormInputs = [
+  {
+    label: "Manager Name",
+    name: "Name",
+    placeholder: "John",
+  },
+  {
+    label: "Email",
+    name: "email",
+    placeholder: "example@gmail.com",
+  },
+  {
+    label: "City",
+    name: "City",
+    placeholder: "ex. Chennai",
+  },
+  {
+    label: "Address",
+    name: "Address",
+    placeholder: "No 13, North Street, Chennai",
+  },
+  {
+    label: "Mobile No",
+    name: "Mobile No",
+    placeholder: "9876543210",
+  },
 ];

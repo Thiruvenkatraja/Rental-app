@@ -6,6 +6,8 @@ import PropertyForm from "./pages/PropertyForm";
 import ClientForm from "./pages/ClientForm";
 import PropertyData from "./pages/PropertyData";
 import SuperAdmin from "./pages/SuperAdmin";
+import AddUserForm from "./pages/AddUserForm";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           element={<ClientForm />}
         />
         <Route path="/super_admin" element={<SuperAdmin />} />
+        <Route path="/add_user" element={<AddUserForm />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

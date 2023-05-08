@@ -1,11 +1,4 @@
-import {
-  Avatar,
-  Button,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import { Avatar, Typography } from "@mui/material";
 import { useTheme } from "@mui/material";
 import React from "react";
 import { Box, Grid } from "@mui/material";
@@ -13,7 +6,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import ClientFormCom from "../components/ClientFormCom";
 import SnackBar from "../components/SnakeBar";
 const ClientForm = () => {
-const theme = useTheme();
+  const theme = useTheme();
   return (
     <>
       <Box
@@ -55,7 +48,6 @@ const theme = useTheme();
                 }}
               />
             </Avatar>
-
             <Typography
               variant="h6"
               style={{
