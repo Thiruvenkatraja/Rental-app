@@ -41,6 +41,7 @@ export const TextValidatorStyle = {
     // boxShadow: `0.2px .2px 5px .5px rgba(0,0,0,0.2)`,
     background: "#F6F6F6 !important",
     marginTop: "0.5rem",
+    border: "1px solid #f6f6f600",
   },
   "& .MuiTextValidator-root": {
     backgroundColor: "#F6F6F6 !important",
