@@ -46,6 +46,9 @@ export const TextValidatorStyle = {
   "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
     border: "1px solid #f6f6f600",
   },
+  "& .css-igs3ac": {
+    border: "none",
+  },
 };
 export const TypographyStyles = {
   fontFamily: "Poppins",
