@@ -16,12 +16,10 @@ class UserAuthenticationView(APIView):
         if user is None:
             return Response({'error':'requested user does not exists'},status=status.HTTP_400_BAD_REQUEST)
         login(request,user)
-        serializer = UserSerializer(user)
-        return Response(serializer.data,status=status.HTTP_200_OK)
+        # serializer = UserSerializer(user)
+        return Response({'response':'login successfull'},status=status.HTTP_200_OK)
 
-class UserRegistrationView(APIView):
-    
-    serializer_class = UserSerializer
+class UserRegistrationView(APIView):    
 
     def post(self,request):
         username = request.data.get('username')
