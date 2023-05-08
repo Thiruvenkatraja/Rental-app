@@ -32,19 +32,19 @@ const PropertyFormCom = () => {
 
   const TextValidatorStyle = {
     "& .MuiOutlinedInput-root": {
-      background: "#F6F6F6",
+      background: "#F6F6F6 !important",
       boxShadow: "none",
       marginTop: "0.5rem",
     },
     "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
-      background: "#F6F6F6",
-      borderRadius: "12px",
+      background: "#F6F6F6 !important",
+      borderRadius: "12px !important",
     },
     "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
       border: 0,
     },
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#84342d",
+      borderColor: "#84342d !important",
     },
   };
   return (
@@ -93,15 +93,15 @@ const PropertyFormCom = () => {
                   width: "34rem",
                 },
                 "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
-                  background: "#F6F6F6",
-                  borderRadius: "12px",
+                  background: "#F6F6F6 !important",
+                  borderRadius: "12px !important",
                 },
                 "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
                   border: 0,
                 },
                 "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                   {
-                    borderColor: "#84342d",
+                    borderColor: "#84342d !important",
                   },
               }}
             />

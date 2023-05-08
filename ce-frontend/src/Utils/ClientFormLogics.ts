@@ -61,7 +61,7 @@ export const ClientFormLogics = () => {
   };
   const handleSubmit = () => {
     axios
-      .post(`${url}clients/`, values)
+      .post(`${url}/clients/`, values)
       .then((res) => {
         console.log(res.data);
         dispatch<any>(snackBarOpen<any>(true));
