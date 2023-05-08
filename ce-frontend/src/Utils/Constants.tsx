@@ -33,7 +33,7 @@ export const TextFieldStyle = {
     height: "1rem",
   },
   "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
-    border: 0,
+    border: "1px solid black",
   },
 };
 export const TextValidatorStyle = {
@@ -50,7 +50,7 @@ export const TextValidatorStyle = {
     borderRadius: "12px",
   },
   "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
-    border: "0 !important",
+    border: "1px solid #f6f6f600",
   },
   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
     borderColor: "#84342d !important",
