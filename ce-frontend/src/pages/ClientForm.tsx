@@ -57,7 +57,7 @@ const ClientForm = () => {
                 textDecoration: "none",
               }}
             >
-              Clien Information
+              Client Information
             </Typography>
           </Grid>
           <Grid

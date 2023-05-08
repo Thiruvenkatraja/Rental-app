@@ -66,21 +66,17 @@ const PropertyFormCom = () => {
               onChange={handleChange}
               sx={{
                 "& .MuiOutlinedInput-root": {
-                //   boxShadow: "none",
+                  //   boxShadow: "none",
+                  background: "#F6F6F6 !important",
                   marginTop: "0.5rem",
                   width: "34rem",
                 },
                 "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
-                  background: "#F6F6F6 !important",
                   borderRadius: "12px !important",
                 },
                 "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
-                  border: 0,
+                  border: "1px solid #f6f6f600",
                 },
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "#84342d !important",
-                  },
               }}
             />
           </Grid>
