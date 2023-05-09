@@ -85,7 +85,13 @@ const SuperAdmin = (props: Props) => {
             ADD
           </Button>
         </Grid>
-        <Grid sx={{ position: "relative", left: "9rem" }}>
+        <Grid
+          sx={{
+            position: "relative",
+            display: "grid",
+            width: "100%",
+          }}
+        >
           <SuperAdminDataElement />
         </Grid>
       </Box>

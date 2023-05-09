@@ -20,11 +20,10 @@ import {
 import { ClientFormLogics } from "../Utils/ClientFormLogics";
 import FormActionButtons from "./FormActionButtons";
 import { TextValidatorStyle, TypographyStyles } from "../Utils/Constants";
-
 const ClientFormCom = () => {
   const { handleChange, handleCheckbox, values, handleSubmit, handleClear } =
     ClientFormLogics();
-
+  const theme = useTheme();
   return (
     <Paper
       elevation={3}
@@ -32,6 +31,7 @@ const ClientFormCom = () => {
         position: "relative",
         width: "650px",
         margin: "4rem",
+        borderRadius: "12px",
       }}
     >
       <ValidatorForm
@@ -123,7 +123,7 @@ const ClientFormCom = () => {
               variant="outlined"
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  //   boxShadow: "none",
+                  boxShadow: "none",
                   background: "#F6F6F6 !important",
                   marginTop: "0.5rem",
                   width: "34rem",
@@ -136,6 +136,9 @@ const ClientFormCom = () => {
                 },
                 "& .css-igs3ac": {
                   border: "none",
+                  "&:hover": {
+                    border: "1px solid #84342d",
+                  },
                 },
               }}
             />
@@ -462,7 +465,13 @@ const ClientFormCom = () => {
               sx={TextValidatorStyle}
             />
           </Grid>
-          <Grid item xs={3}>
+          <Grid
+            item
+            xs={3}
+            style={{
+              marginTop: "0.5rem",
+            }}
+          >
             <FormActionButtons handleClear={handleClear} />
           </Grid>
         </Grid>
