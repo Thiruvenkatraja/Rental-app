@@ -89,7 +89,7 @@ export default function PropertyDataGrid() {
           },
         }}
         getRowId={(row: any) => row.Client_ID}
-        rows={Data?Data:[]}
+        rows={Data ? Data : []}
         columns={columns}
         initialState={{
           pagination: {
