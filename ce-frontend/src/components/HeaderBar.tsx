@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const pages = ["Properties", "Buy/Sell", "Contact Us"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Users", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -74,7 +74,7 @@ function ResponsiveAppBar() {
                 textDecoration: "none",
               }}
             >
-              Rental House
+              PropHub
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -208,7 +208,17 @@ function ResponsiveAppBar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography
+                      sx={{
+                        color: "inherit",
+                        textDecoration: "none",
+                      }}
+                      component="a"
+                      href="/super_admin"
+                      textAlign="center"
+                    >
+                      {setting}
+                    </Typography>
                   </MenuItem>
                 ))}
               </Menu>
