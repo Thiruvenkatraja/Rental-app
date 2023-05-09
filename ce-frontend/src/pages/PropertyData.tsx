@@ -91,6 +91,7 @@ const PropertyData = (props: Props) => {
           sx={{
             position: "relative",
             display: "grid",
+            justifyContent: "center",
             width: "100%",
           }}
         >

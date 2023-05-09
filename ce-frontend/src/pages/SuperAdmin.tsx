@@ -88,7 +88,8 @@ const SuperAdmin = (props: Props) => {
         <Grid
           sx={{
             position: "relative",
-            display: "grid",
+                      display: "grid",
+            justifyContent:"center",
             width: "100%",
           }}
         >

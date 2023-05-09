@@ -14,7 +14,7 @@ const SuperAdminDataElement = (props: Props) => {
 
   return (
     <>
-      <Box>
+   
         <Paper
           sx={{
             borderRadius: "12px",
@@ -26,19 +26,7 @@ const SuperAdminDataElement = (props: Props) => {
             backgroundColor: "white",
           }}
         >
-          {/* <Typography
-            variant="h6"
-            style={{
-              marginRight: 2,
-              fontFamily: "Poppins",
-              fontWeight: "500",
-              color: "#84342D",
-              textDecoration: "none",
-              float: "left",
-            }}
-          >
-          User list
-          </Typography> */}
+         
           <Paper
             sx={{
               //   background: "#f6c290",
@@ -85,7 +73,7 @@ const SuperAdminDataElement = (props: Props) => {
           </Paper>
           <SuperAdminDataGrid />
         </Paper>
-      </Box>
+      
     </>
   );
 };

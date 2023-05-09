@@ -42,6 +42,11 @@ export const TextValidatorStyle = {
     background: "#F6F6F6 !important",
     marginTop: "0.5rem",
   },
+  "& .css-jeuavn .MuiOutlinedInput-root": {
+    boxShadow: "none",
+    background: "#F6F6F6 !important",
+    marginTop: "0.5rem",
+  },
   "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
     borderRadius: "12px !important",
   },
