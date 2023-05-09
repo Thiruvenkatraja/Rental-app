@@ -172,6 +172,15 @@ export const Admin = () => {
               borderRadius: "12px",
               top: "-5px",
             },
+            "& .css-1djx7wr": {
+              color: "white",
+              fontSize: "1.2rem",
+              fontWeight: 500,
+              background: theme.palette.secondary.main,
+              padding: "2px 10px 2px 10px",
+              borderRadius: "12px",
+              top: "-5px",
+            },
           }}
           id="outlined-select-currency"
           color="secondary"
@@ -203,6 +212,15 @@ export const Admin = () => {
             "& .MuiOutlinedInput-root": {
               backgroundColor: "white",
               boxShadow: `0.5px 1.5px 9px 1px rgba(0,0,0,0.2)`,
+            },
+            "& .css-1djx7wr": {
+              color: "white",
+              fontSize: "1.2rem",
+              fontWeight: 500,
+              background: theme.palette.secondary.main,
+              padding: "2px 10px 2px 10px",
+              borderRadius: "12px",
+              top: "-5px",
             },
             "& .css-lyltk5-MuiFormLabel-root-MuiInputLabel-root": {
               color: "white",
