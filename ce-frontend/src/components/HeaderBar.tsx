@@ -16,6 +16,7 @@ import { useTheme } from "@mui/material";
 import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { LoginPageLogic } from "../Utils/LoginPageLogic";
 
 const pages = ["Properties", "Buy/Sell", "Contact Us"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -42,12 +43,17 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  const { handleClick } = LoginPageLogic();
   const theme = useTheme();
-  //   const isLoggedIn = useSelector((state: any) => state.LoginSlice.isLoggedIn);
   const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const loginStatus = useSelector((state: any) => state.LoginSlice.isLoggedIn);
   return (
-    <div style={{ display: isLoggedIn === "true" ? "block" : "none" }}>
+    <div
+      style={{
+        display:
+          isLoggedIn === "true" || loginStatus === true ? "block" : "none",
+      }}
+    >
       <AppBar
         position="static"
         sx={{
@@ -209,7 +215,12 @@ function ResponsiveAppBar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography
+                      onClick={() => handleClick(setting)}
+                      textAlign="center"
+                    >
+                      {setting}
+                    </Typography>
                   </MenuItem>
                 ))}
               </Menu>

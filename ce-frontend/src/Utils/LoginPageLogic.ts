@@ -10,7 +10,6 @@ export const LoginPageLogic = () => {
     email: "",
     password: "",
   });
-  //   const isLoggedIn = useSelector((state: any) => state.LoginSlice.isLoggedIn);
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setValues((preVal: any) => {
@@ -21,13 +20,22 @@ export const LoginPageLogic = () => {
     });
   };
   const handleSubmit = () => {
-    // dispatch(loginStatus(true));
+    dispatch(loginStatus(true));
     localStorage.setItem("isLoggedIn", "true");
     navigate("/home");
+  };
+
+  const handleClick = (element: any) => {
+    if (element == "Logout") {
+      dispatch(loginStatus(false));
+      localStorage.removeItem("isLoggedIn");
+      navigate("/");
+    }
   };
   return {
     handleSubmit,
     handleChange,
     values,
+    handleClick,
   };
 };
