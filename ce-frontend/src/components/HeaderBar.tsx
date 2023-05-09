@@ -44,9 +44,10 @@ function ResponsiveAppBar() {
   };
 
   const theme = useTheme();
-  const isLoggedIn = useSelector((state: any) => state.LoginSlice.isLoggedIn);
+  //   const isLoggedIn = useSelector((state: any) => state.LoginSlice.isLoggedIn);
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
   return (
-    <div style={{ display: isLoggedIn ? "block" : "none" }}>
+    <div style={{ display: isLoggedIn === "true" ? "block" : "none" }}>
       <AppBar
         position="static"
         sx={{

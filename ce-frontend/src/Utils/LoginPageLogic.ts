@@ -21,7 +21,8 @@ export const LoginPageLogic = () => {
     });
   };
   const handleSubmit = () => {
-    dispatch(loginStatus(true));
+    // dispatch(loginStatus(true));
+    localStorage.setItem("isLoggedIn", "true");
     navigate("/home");
   };
   return {
