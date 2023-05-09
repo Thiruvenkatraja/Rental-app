@@ -15,13 +15,18 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { useTheme } from "@mui/material";
 import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const pages = ["Properties", "Buy/Sell", "Contact Us"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null
+  );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -39,9 +44,9 @@ function ResponsiveAppBar() {
   };
 
   const theme = useTheme();
-
+  const isLoggedIn = useSelector((state: any) => state.LoginSlice.isLoggedIn);
   return (
-    <div>
+    <div style={{ display: isLoggedIn ? "block" : "none" }}>
       <AppBar
         position="static"
         sx={{

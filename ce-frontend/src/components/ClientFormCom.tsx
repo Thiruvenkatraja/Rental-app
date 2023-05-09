@@ -1,5 +1,4 @@
 import {
-  Button,
   Checkbox,
   FormControlLabel,
   FormGroup,
@@ -9,7 +8,6 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { Grid } from "@mui/material";
-// import TextField from "@mui/material/TextValidator";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import {
   BHK,
@@ -21,38 +19,12 @@ import {
 } from "../constants";
 import { ClientFormLogics } from "../Utils/ClientFormLogics";
 import FormActionButtons from "./FormActionButtons";
+import { TextValidatorStyle, TypographyStyles } from "../Utils/Constants";
 
 const ClientFormCom = () => {
   const { handleChange, handleCheckbox, values, handleSubmit, handleClear } =
     ClientFormLogics();
-  const theme = useTheme();
-  const TextValidatorStyle = {
-    "& .MuiOutlinedInput-root": {
-      boxShadow: "none",
-      background: "#F6F6F6 !important",
-      marginTop: "0.5rem",
-    },
-    "& .MuiTextValidator-root": {
-      backgroundColor: "#F6F6F6 !important",
-    },
-    "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
-      background: "#F6F6F6 !important",
 
-      borderRadius: "12px",
-    },
-    "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
-      border: "0 !important",
-    },
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#84342d !important",
-    },
-  };
-  const TypographyStyles = {
-    fontFamily: "Poppins",
-    fontWeight: "650",
-    color: "inherit",
-    textDecoration: "none",
-  };
   return (
     <Paper
       elevation={3}
@@ -63,7 +35,6 @@ const ClientFormCom = () => {
       }}
     >
       <ValidatorForm
-        // instantValidate
         onSubmit={handleSubmit}
         onError={(errors: any) => console.log(errors)}
       >
@@ -152,22 +123,20 @@ const ClientFormCom = () => {
               variant="outlined"
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  boxShadow: "none",
+                  //   boxShadow: "none",
+                  background: "#F6F6F6 !important",
                   marginTop: "0.5rem",
-                  width: "551px",
+                  width: "34rem",
                 },
                 "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
-                  background: "#F6F6F6 !important",
-
-                  borderRadius: "12px",
+                  borderRadius: "12px !important",
                 },
                 "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
-                  border: "0 !important",
+                  border: "1px solid #f6f6f600",
                 },
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "#84342d !important",
-                  },
+                "& .css-igs3ac": {
+                  border: "none",
+                },
               }}
             />
           </Grid>

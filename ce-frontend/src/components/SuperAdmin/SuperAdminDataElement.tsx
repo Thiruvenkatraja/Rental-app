@@ -4,23 +4,13 @@ import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
-import PropertyDataGrid from "./PropertyDataGrid";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import { PropertyDataLogics } from "../Utils/PropertyDataGridLogics";
-import { TextFieldStyle } from "../Utils/Constants";
- 
+import SuperAdminDataGrid from "./SuperAdminDataGrid";
+import { TextFieldStyle } from "../../Utils/Constants";
 type Props = {};
 
-const PropertyDataElements = (props: Props) => {
+const SuperAdminDataElement = (props: Props) => {
   const theme = useTheme();
-  const {
-    block,
-    handleFilterChange,
-    blockType,
-    search,
-    setSearch,
-    propertyName,
-  } = PropertyDataLogics();
 
   return (
     <>
@@ -36,8 +26,8 @@ const PropertyDataElements = (props: Props) => {
             backgroundColor: "white",
           }}
         >
-          <Typography
-            variant="h5"
+          {/* <Typography
+            variant="h6"
             style={{
               marginRight: 2,
               fontFamily: "Poppins",
@@ -47,8 +37,8 @@ const PropertyDataElements = (props: Props) => {
               float: "left",
             }}
           >
-            {propertyName}
-          </Typography>
+          User list
+          </Typography> */}
           <Paper
             sx={{
               //   background: "#f6c290",
@@ -56,49 +46,24 @@ const PropertyDataElements = (props: Props) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              padding: "0rem .1rem .6rem .1rem",
+              padding: ".3rem .1rem .6rem .1rem",
               gap: ".7rem",
               boxShadow: "none",
             }}
           >
             <TextField
-              variant="outlined"
-              sx={TextFieldStyle}
-              style={{
-                width: "250px",
-                borderRadius: "100px",
-                backgroundColor: "#ffffff00",
-              }}
-              id="outlined-select-type"
-              select
-              defaultValue="Block"
-              name="block"
-              value={block}
-              onChange={(e) =>
-                handleFilterChange(e.target.name, e.target.value)
-              }
-            >
-              <MenuItem value="All">All</MenuItem>
-              {blockType.map((type: string) => (
-                <MenuItem key={type} value={type}>
-                  {type}
-                </MenuItem>
-              ))}
-            </TextField>
-
-            <TextField
               placeholder="Search"
               id="outlined-basic"
               variant="outlined"
               style={{
-                width: "37rem",
+                width: "54.5rem",
                 borderRadius: "100px",
                 backgroundColor: "#ffffff00",
               }}
               sx={TextFieldStyle}
               name="search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              //   value={search}
+              //   onChange={(e) => setSearch(e.target.value)}
             />
             <Button
               sx={{
@@ -110,6 +75,7 @@ const PropertyDataElements = (props: Props) => {
                 mt: "6px",
                 borderRadius: "100px",
                 minWidth: "0rem",
+                boxShadow: `0.5px 1.5px 9px 1px rgba(0,0,0,0.2)`,
                 color: theme.palette.info.main,
                 backgroundColor: theme.palette.primary.main,
               }}
@@ -117,11 +83,11 @@ const PropertyDataElements = (props: Props) => {
               <DeleteForeverIcon sx={{ fontSize: "25px" }} />
             </Button>
           </Paper>
-          <PropertyDataGrid />
+          <SuperAdminDataGrid />
         </Paper>
       </Box>
     </>
   );
 };
 
-export default PropertyDataElements;
+export default SuperAdminDataElement;

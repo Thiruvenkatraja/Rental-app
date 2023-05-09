@@ -5,13 +5,11 @@ import { useTheme } from "@mui/material";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "@mui/material";
-import PropertyDataElements from "../components/PropertyDataElements";
+import SuperAdminDataElement from "../components/SuperAdmin/SuperAdminDataElement";
 
 type Props = {};
 
-const PropertyData = (props: Props) => {
-  const { id, propertyName } = useParams();
-
+const SuperAdmin = (props: Props) => {
   const theme = useTheme();
   return (
     <>
@@ -21,7 +19,7 @@ const PropertyData = (props: Props) => {
             border: "none",
             outline: "none",
             borderRadius: "12px",
-            height: "54px",
+            // height: "54px",
             boxShadow: `0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)`,
             "& .MuiOutlinedInput-notchedOutline": {
               border: "none",
@@ -60,11 +58,11 @@ const PropertyData = (props: Props) => {
               textDecoration: "none",
             }}
           >
-            Property Owners
+            User
           </Typography>
           <Button
             component={Link}
-            to={`/client_form/${id}/${propertyName}`}
+            to={`/add_user`}
             sx={{
               height: "31px",
               width: "88px",
@@ -88,11 +86,11 @@ const PropertyData = (props: Props) => {
           </Button>
         </Grid>
         <Grid sx={{ position: "relative", left: "9rem" }}>
-          <PropertyDataElements />
+          <SuperAdminDataElement />
         </Grid>
       </Box>
     </>
   );
 };
 
-export default PropertyData;
+export default SuperAdmin;
