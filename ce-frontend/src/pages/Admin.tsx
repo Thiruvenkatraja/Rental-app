@@ -25,13 +25,12 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { PropertyCard } from "../components/PropertyCard";
 import { AdminLogics } from "../Utils/AdminLogics";
-import {  requests } from "../Redux/PropertySlice";
+import { requests } from "../Redux/PropertySlice";
 import { useDispatch } from "react-redux";
 
-
 export const Admin = () => {
-    const theme = useTheme();
-    const dispatch = useDispatch();
+  const theme = useTheme();
+  const dispatch = useDispatch();
   const {
     handleClearClick,
     handlePageChange,
@@ -126,7 +125,8 @@ export const Admin = () => {
             alignItems: "center",
             width: 600,
             marginLeft: "30px",
-            backgroundColor: "#F6F6F6",
+            backgroundColor: "white",
+            boxShadow: `0.5px 1.5px 9px 1px rgba(0,0,0,0.2)`,
           }}
         >
           <InputBase
@@ -136,26 +136,7 @@ export const Admin = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             value={searchTerm}
           />
-          {/* <Button
-            sx={{
-              height: "31px",
-              width: "91px",
-              "&:hover": {
-                backgroundColor: theme.palette.primary.main,
-              },
-              boxShadow: `0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)`,
-              margin: "12px",
-              borderRadius: "12px",
-              fontFamily: "Poppins",
-              textTransform: "none",
-              color: theme.palette.info.main,
-              backgroundColor: theme.palette.primary.main,
-            }}
-            onClick={handleSearchClick}
-            startIcon={<SearchIcon />}
-          >
-            Search
-          </Button> */}
+
           <IconButton
             disabled={!searchTerm}
             sx={{
@@ -177,7 +158,29 @@ export const Admin = () => {
           }}
           sx={{
             marginLeft: "30px",
-            backgroundColor: theme.palette.primary.main,
+
+            "& .MuiOutlinedInput-root": {
+              backgroundColor: "white",
+              boxShadow: `0.5px 1.5px 9px 1px rgba(0,0,0,0.2)`,
+            },
+            "& .css-lyltk5-MuiFormLabel-root-MuiInputLabel-root": {
+              color: "white",
+              fontSize: "1.2rem",
+              fontWeight: 500,
+              background: theme.palette.secondary.main,
+              padding: "2px 10px 2px 10px",
+              borderRadius: "12px",
+              top: "-5px",
+            },
+            "& .css-1djx7wr": {
+              color: "white",
+              fontSize: "1.2rem",
+              fontWeight: 500,
+              background: theme.palette.secondary.main,
+              padding: "2px 10px 2px 10px",
+              borderRadius: "12px",
+              top: "-5px",
+            },
           }}
           id="outlined-select-currency"
           color="secondary"
@@ -204,13 +207,38 @@ export const Admin = () => {
               </InputAdornment>
             ),
           }}
-          sx={{ marginLeft: "30px" }}
+          sx={{
+            marginLeft: "30px",
+            "& .MuiOutlinedInput-root": {
+              backgroundColor: "white",
+              boxShadow: `0.5px 1.5px 9px 1px rgba(0,0,0,0.2)`,
+            },
+            "& .css-1djx7wr": {
+              color: "white",
+              fontSize: "1.2rem",
+              fontWeight: 500,
+              background: theme.palette.secondary.main,
+              padding: "2px 10px 2px 10px",
+              borderRadius: "12px",
+              top: "-5px",
+            },
+            "& .css-lyltk5-MuiFormLabel-root-MuiInputLabel-root": {
+              color: "white",
+              fontSize: "1.2rem",
+              fontWeight: 500,
+              background: theme.palette.secondary.main,
+              padding: "2px 10px 2px 10px",
+              borderRadius: "12px",
+              top: "-5px",
+            },
+          }}
           id="outlined-select-currency"
           select
           defaultValue="All"
           label="Property"
           value={propertyType}
           name="type"
+          color="secondary"
           onChange={(e) => handleFilterChange(e.target.name, e.target.value)}
         >
           <MenuItem value="All">All</MenuItem>
@@ -225,16 +253,16 @@ export const Admin = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          padding: "1rem 0 2rem 0",
+          //   alignItems: "center",
+          //   justifyContent: "flex-start",
+          padding: "1rem 5rem 2rem 5rem",
         }}
       >
         <Grid
           sx={{
             display: "flex",
             flexWrap: "wrap",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             gap: "3rem",
           }}
           spacing={2}

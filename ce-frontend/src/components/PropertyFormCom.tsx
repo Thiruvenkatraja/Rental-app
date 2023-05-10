@@ -79,6 +79,9 @@ const PropertyFormCom = () => {
                 },
                 "& .css-igs3ac": {
                   border: "none",
+                  "&:hover": {
+                    border: "1px solid #84342d",
+                  },
                 },
               }}
             />

@@ -14,78 +14,64 @@ const SuperAdminDataElement = (props: Props) => {
 
   return (
     <>
-      <Box>
+      <Paper
+        sx={{
+          borderRadius: "12px",
+          boxShadow: `rgba(0, 0, 0, 0.2) 0px 2px 4px -1px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px`,
+          marginTop: "2rem",
+          p: "2rem 3rem",
+          display: "flex",
+          flexDirection: "column",
+          gap: "1.5rem",
+          backgroundColor: "white",
+        }}
+      >
         <Paper
           sx={{
-            borderRadius: "12px",
-            marginTop: "2rem",
-            p: "2rem 3rem",
+            //   background: "#f6c290",
+            borderRadius: "1rem",
             display: "flex",
-            flexDirection: "column",
-            gap: "1.5rem",
-            backgroundColor: "white",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: ".3rem .1rem .6rem .1rem",
+            gap: ".7rem",
+            boxShadow: "none",
           }}
         >
-          {/* <Typography
-            variant="h6"
+          <TextField
+            placeholder="Search"
+            id="outlined-basic"
+            variant="outlined"
             style={{
-              marginRight: 2,
-              fontFamily: "Poppins",
-              fontWeight: "500",
-              color: "#84342D",
-              textDecoration: "none",
-              float: "left",
+              width: "54.5rem",
+              borderRadius: "100px",
+              backgroundColor: "#ffffff00",
             }}
-          >
-          User list
-          </Typography> */}
-          <Paper
+            sx={TextFieldStyle}
+            name="search"
+            //   value={search}
+            //   onChange={(e) => setSearch(e.target.value)}
+          />
+          <Button
             sx={{
-              //   background: "#f6c290",
-              borderRadius: "1rem",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: ".3rem .1rem .6rem .1rem",
-              gap: ".7rem",
-              boxShadow: "none",
+              "&:hover": {
+                backgroundColor: theme.palette.primary.main,
+                scale: "1.1",
+              },
+              transition: ".5s",
+              mt: "6px",
+              borderRadius: "100px",
+              minWidth: "0rem",
+              boxShadow: `0.5px 1.5px 9px 1px rgba(0,0,0,0.2)`,
+              color: theme.palette.info.main,
+              backgroundColor: theme.palette.primary.main,
             }}
           >
-            <TextField
-              placeholder="Search"
-              id="outlined-basic"
-              variant="outlined"
-              style={{
-                width: "54.5rem",
-                borderRadius: "100px",
-                backgroundColor: "#ffffff00",
-              }}
-              sx={TextFieldStyle}
-              name="search"
-              //   value={search}
-              //   onChange={(e) => setSearch(e.target.value)}
-            />
-            <Button
-              sx={{
-                "&:hover": {
-                  backgroundColor: theme.palette.primary.main,
-                  scale: "1.1",
-                },
-                transition: ".5s",
-                mt: "6px",
-                borderRadius: "100px",
-                minWidth: "0rem",
-                boxShadow: `0.5px 1.5px 9px 1px rgba(0,0,0,0.2)`,
-                color: theme.palette.info.main,
-                backgroundColor: theme.palette.primary.main,
-              }}
-            >
-              <DeleteForeverIcon sx={{ fontSize: "25px" }} />
-            </Button>
-          </Paper>
-          <SuperAdminDataGrid />
+            <DeleteForeverIcon sx={{ fontSize: "25px" }} />
+          </Button>
         </Paper>
-      </Box>
+        <SuperAdminDataGrid />
+      </Paper>
     </>
   );
 };
