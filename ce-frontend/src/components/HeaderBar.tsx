@@ -17,7 +17,7 @@ import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { LoginPageLogic } from "../Utils/LoginPageLogic";
-
+import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
 const pages = ["Properties", "Buy/Sell", "Contact Us"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -67,12 +67,18 @@ function ResponsiveAppBar() {
       >
         <Container maxWidth="xl" sx={{ flexGrow: 1 }}>
           <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+            <MapsHomeWorkIcon
+              sx={{
+                fontSize: "2rem",
+                display: { xs: "none", md: "flex" },
+                mr: 1,
+              }}
+            />
             <Typography
               variant="h6"
               noWrap
               component="a"
-              href="/"
+              href="/home"
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
@@ -81,7 +87,7 @@ function ResponsiveAppBar() {
                 textDecoration: "none",
               }}
             >
-              Rental House
+              Property Hub
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
