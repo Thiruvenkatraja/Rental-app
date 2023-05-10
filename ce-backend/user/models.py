@@ -1,6 +1,5 @@
 from django.db import models
-from django.utils import timezone
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser,PermissionsMixin
 # Create your models here.
 
 class User(AbstractUser):
@@ -11,5 +10,8 @@ class User(AbstractUser):
     Created_At = models.DateTimeField(auto_now_add=True)
     Updated_At = models.DateTimeField(auto_now=True)
 
+    @property
+    def id(self):
+        return self.User_Id
     class Meta:
         db_table = 'User'
