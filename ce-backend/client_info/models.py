@@ -7,7 +7,7 @@ from property_info.models import Property
 class Clients(models.Model):
     Client_ID = models.AutoField(primary_key=True)
     Client_PropertyID = models.ForeignKey(
-        Property, on_delete=models.PROTECT, null=True)
+        Property, on_delete=models.CASCADE, null=True)
     Client_FullName = models.CharField(max_length=30,null=True)
     Client_MobileNumber = models.BigIntegerField(null=True)
     Client_EMail = models.EmailField(null=True)
