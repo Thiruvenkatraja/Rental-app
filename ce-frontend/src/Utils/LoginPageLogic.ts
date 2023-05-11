@@ -35,7 +35,7 @@ export const LoginPageLogic = () => {
       dispatch(loginStatus(false));
       localStorage.removeItem("isLoggedIn");
       navigate("/");
-    } else if (element == "Account") {
+    } else if (element == "Users") {
       navigate("/super_admin");
     } else if (element == "Dashboard") {
       navigate("/home");

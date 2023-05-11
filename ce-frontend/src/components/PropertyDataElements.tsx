@@ -8,7 +8,7 @@ import PropertyDataGrid from "./PropertyDataGrid";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { PropertyDataLogics } from "../Utils/PropertyDataGridLogics";
 import { TextFieldStyle } from "../Utils/Constants";
- 
+
 type Props = {};
 
 const PropertyDataElements = (props: Props) => {
@@ -28,7 +28,7 @@ const PropertyDataElements = (props: Props) => {
         <Paper
           sx={{
             borderRadius: "12px",
-            marginTop: "2rem",
+            margin: "2rem",
             p: "2rem 3rem",
             display: "flex",
             flexDirection: "column",
