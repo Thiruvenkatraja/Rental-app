@@ -8,6 +8,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 # Create your views here.
+
+
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, User):
@@ -17,8 +19,10 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['User_Id'] = user_id
         return token
 
+
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+
 
 class UserAuthenticationView(APIView):
 
@@ -35,14 +39,29 @@ class UserAuthenticationView(APIView):
 class UserRegistrationView(APIView):
 
     def post(self, request):
-        username = request.data.get('username')
+        data = request.data
+        mobile_no = request.data.get('mobile_no')
         password = request.data.get('password1')
-        username_exists = User.objects.filter(username=username)
-        if username_exists:
-            result = 'Username already taken'
+        user_exists = User.objects.filter(Mobile_No=mobile_no)
+        if user_exists:
+            result = 'User already exists'
         elif request.data['password1'] != request.data['password2']:
             result = 'Password Does not match'
         else:
-            User.objects.create_user(username=username, password=password)
+            User.objects.create_user(
+                Mobile_No=mobile_no, password=password, Full_Name=data["full_name"], email=data['email'], Role=data['role'], Construction_Name=data['construction_name'], GST_No=data["gst_no"], City=data['city'], Address=data['address'])
             result = 'User created successfully'
         return Response({'response': result})
+
+
+# {
+#     "mobile_no": 7356556336,
+#     "password1": "test",
+#     "password2": "test",
+#     "full_name": "rahul",
+#     "email": "rahul@gmail.com",
+#     "role": "admin",
+#     "construction_name": "test",
+#     "city": "chennai",
+#     "address": "test"
+# }
