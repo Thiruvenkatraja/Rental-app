@@ -64,14 +64,14 @@ const Login = (props: Props) => {
             }}
           >
             <Grid item xs={12}>
-              <Typography style={TypographyStyles}>Email</Typography>
+              <Typography style={TypographyStyles}>Mobile No</Typography>
               <TextValidator
-                placeholder="example@gmail.com"
+                placeholder="9876543210"
                 id="outlined-basic"
                 variant="outlined"
                 value={values.email}
                 onChange={handleChange}
-                name="email"
+                name="mobile_no"
                 required={true}
                 style={{
                   width: "250px",
