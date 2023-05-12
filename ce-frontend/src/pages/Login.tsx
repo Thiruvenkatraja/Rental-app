@@ -69,9 +69,9 @@ const Login = (props: Props) => {
                 placeholder="9876543210"
                 id="outlined-basic"
                 variant="outlined"
-                value={values.email}
+                value={values.Mobile_No}
                 onChange={handleChange}
-                name="mobile_no"
+                name="Mobile_No"
                 required={true}
                 style={{
                   width: "250px",
