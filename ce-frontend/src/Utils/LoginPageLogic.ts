@@ -3,13 +3,15 @@ import LoginSlice from "../Redux/LoginSlice";
 import { useState } from "react";
 import { loginStatus } from "../Redux/LoginSlice";
 import { useNavigate } from "react-router-dom";
+import jwtDecode from 'jwt-decode';
 import axios from "axios";
 export const LoginPageLogic = () => {
-  const url = useSelector((state: any) => state.ClientSlice.url);
+  const [token,setToken] = useState<any>(null);
+  const url = useSelector((state: any) => state.ClientSlice.Url);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [values, setValues] = useState({
-    email: "",
+    Mobile_No: "",
     password: "",
   });
   const handleChange = (e: any) => {
@@ -22,13 +24,17 @@ export const LoginPageLogic = () => {
     });
   };
   const handleSubmit = () => {
-    axios.post(`${url}/token`, values).then((res: any) => {
-      return console.log(res.data);
-    });
+  axios.post(`${url}/user/token/`,values)
+    .then((res: any) => {
+      console.log(res.data.access)
+      const decodedToken = jwtDecode(res.data.access)
+      setToken(decodedToken)
+  });
     dispatch(loginStatus(true));
     localStorage.setItem("isLoggedIn", "true");
     navigate("/home");
   };
+ 
 
   const handleClick = (element: any) => {
     if (element == "Logout") {
