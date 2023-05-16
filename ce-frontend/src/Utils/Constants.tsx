@@ -27,7 +27,9 @@ export const TextFieldStyle = {
     height: "3rem",
     boxShadow: `0.5px .5px 5px .5px rgba(0,0,0,0.2)`,
   },
-
+  "& .css-1uhh9gl .MuiOutlinedInput-root": {
+    boxShadow: "none",
+  },
   "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
     borderRadius: "12px",
     height: "1rem",

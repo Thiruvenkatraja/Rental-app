@@ -1,11 +1,10 @@
 import { Avatar, Button, Paper, TextField, Typography } from "@mui/material";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { useTheme } from "@mui/material";
 import React from "react";
 import { Box } from "@mui/material";
 import SnackBar from "../components/SnakeBar";
 import AddUserFormCom from "../components/SuperAdmin/AddUserFormCom";
-
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 const AddUserForm = () => {
   const theme = useTheme();
 
@@ -35,11 +34,11 @@ const AddUserForm = () => {
               height: 56,
             }}
           >
-            <HomeOutlinedIcon
+            <AccountCircleIcon
               style={{
                 color: theme.palette.primary.main,
-                width: 45,
-                height: 45,
+                width: 40,
+                height: 40,
               }}
             />
           </Avatar>

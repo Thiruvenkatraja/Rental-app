@@ -195,4 +195,9 @@ export const AddUserFormInputs = [
     name: "Mobile No",
     placeholder: "9876543210",
   },
+  {
+    label: "GST No",
+    name: "gst_no",
+    placeholder: "33AAACC4175D1Z5",
+  },
 ];
