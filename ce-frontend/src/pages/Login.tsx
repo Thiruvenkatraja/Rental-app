@@ -126,6 +126,7 @@ const Login = (props: Props) => {
       <SnackBar
         message={"Mobile number or password Incorrect"}
         duration={10000}
+        navigate={{}}
       />
     </div>
   );

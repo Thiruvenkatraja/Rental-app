@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { snackBarOpen } from "../Redux/PropertySlice";
 type props = {};
-const SnackBar = ({ message,duration }: any) => {
+const SnackBar = ({ message, duration, navigate }: any) => {
   const open = useSelector((state: any) => state.PropertySlice.open);
   const history = useNavigate();
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const SnackBar = ({ message,duration }: any) => {
       return;
     }
     dispatch<any>(snackBarOpen<any>(false));
-    history(-1);
+    history(navigate);
     console.log("goback works");
   };
   const [state, setState] = React.useState<any>({
