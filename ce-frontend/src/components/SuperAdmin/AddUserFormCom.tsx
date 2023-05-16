@@ -6,10 +6,11 @@ import { AddUserFormInputs } from "../../constants";
 import { PropertyFormLogics } from "../../Utils/PropertyFormLogics";
 import FormActionButtons from "../FormActionButtons";
 import { TextValidatorStyle, TypographyStyles } from "../../Utils/Constants";
+import AddUserFormLogics from "../../Utils/AddUserFormLogics";
 
 const AddUserFormCom = () => {
-  const { handleChange, values, handleCheckbox, handleSubmit, handleClear } =
-    PropertyFormLogics();
+  const { handleChange, values, handleSubmit, handleClear } =
+    AddUserFormLogics();
 
   const theme = useTheme();
 
@@ -47,8 +48,8 @@ const AddUserFormCom = () => {
               placeholder="Name of the construction"
               id="outlined-basic"
               variant="outlined"
-              name="PropertyTitle"
-              value={values.PropertyTitle}
+              name="construction_name"
+              value={values.construction_name}
               required={true}
               onChange={handleChange}
               sx={{
@@ -81,7 +82,7 @@ const AddUserFormCom = () => {
                 value={values[inputs.name]}
                 onChange={handleChange}
                 name={inputs.name}
-                required={true}
+                required={inputs.required}
                 style={{
                   width: "250px",
                   marginTop: "0.5rem",

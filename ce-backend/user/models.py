@@ -26,7 +26,7 @@ class User(AbstractUser):
     Construction_Name = models.CharField(
         max_length=50, blank=True, null=False)
     Mobile_No = models.BigIntegerField(unique=True, blank=False, null=False)
-    GST_No = models.CharField(max_length=20,blank=True, null=True)
+    GST_No = models.CharField(max_length=20, blank=True, null=True)
     Role = models.CharField(max_length=30, blank=False, null=False)
     City = models.CharField(max_length=30, blank=False, null=False)
     Address = models.CharField(max_length=100, blank=False, null=False)
