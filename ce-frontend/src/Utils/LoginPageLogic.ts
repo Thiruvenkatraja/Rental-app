@@ -34,8 +34,8 @@ export const LoginPageLogic = () => {
       localStorage.setItem("isLoggedIn", "true");
       navigate("/home");
     } catch (err) {
-      dispatch<any>(snackBarOpen(true));
-      dispatch<any>(loginError(true));
+      dispatch<any>(snackBarOpen<any>(true));
+      dispatch<any>(loginError<any>(true));
       console.log(err);
     }
   };
