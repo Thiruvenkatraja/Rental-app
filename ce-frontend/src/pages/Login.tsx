@@ -5,10 +5,18 @@ import { Grid } from "@mui/material";
 
 import { TextValidatorStyle, TypographyStyles } from "../Utils/Constants";
 import { LoginPageLogic } from "../Utils/LoginPageLogic";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import SnackBar from "../components/SnakeBar";
 
 type Props = {};
 
 const Login = (props: Props) => {
+  const loginError = useSelector((state: any) => state.LoginSlice.error);
+  console.log(loginError, "error");
+  useEffect(() => {
+    localStorage.removeItem("isLoggedIn");
+  }, []);
   const { handleSubmit, handleChange, values } = LoginPageLogic();
   const theme = useTheme();
   return (
@@ -46,6 +54,7 @@ const Login = (props: Props) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          border: loginError ? "2px solid red" : "",
         }}
       >
         <ValidatorForm
@@ -114,6 +123,10 @@ const Login = (props: Props) => {
           </Grid>
         </ValidatorForm>
       </Paper>
+      <SnackBar
+        message={"Mobile number or password Incorrect"}
+        duration={10000}
+      />
     </div>
   );
 };

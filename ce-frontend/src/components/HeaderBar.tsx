@@ -50,8 +50,7 @@ function ResponsiveAppBar() {
   return (
     <div
       style={{
-        display:
-          isLoggedIn === "true" || loginStatus === true ? "block" : "none",
+        display: isLoggedIn === "true" ? "block" : "none",
       }}
     >
       <AppBar

@@ -57,7 +57,7 @@ const AddUserForm = () => {
         </Box>
         <AddUserFormCom />
       </Box>
-      <SnackBar />
+      <SnackBar message={"Request submitted succesfully!"} duration={1000} />
     </>
   );
 };

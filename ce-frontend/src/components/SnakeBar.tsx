@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { snackBarOpen } from "../Redux/PropertySlice";
 type props = {};
-const SnackBar = (props: props) => {
+const SnackBar = ({ message,duration }: any) => {
   const open = useSelector((state: any) => state.PropertySlice.open);
   const history = useNavigate();
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const SnackBar = (props: props) => {
   return (
     <Snackbar
       open={open}
-      autoHideDuration={1000}
+      autoHideDuration={duration}
       anchorOrigin={{ vertical, horizontal }}
       style={{
         transition: ".3s",
@@ -40,7 +40,7 @@ const SnackBar = (props: props) => {
         style={{
           color: "#84342d",
           backgroundColor: "#f6c290",
-          width: "20vw",
+          //   width: "20vw",
           padding: "10px",
           borderRadius: "1rem",
           textAlign: "center",
@@ -48,7 +48,7 @@ const SnackBar = (props: props) => {
           fontFamily: "Poppins",
         }}
       >
-        Request submitted succesfully!
+        {message}
       </div>
     </Snackbar>
   );
