@@ -54,6 +54,18 @@ class UserRegistrationView(APIView):
         return Response({'response': result})
 
 
+    def get(self, request, User_ID=None, *args, **kwargs):
+        try:
+            if User_ID:
+                data = User.objects.get(Use_ID=User_ID)
+                serializer = UserSerializer(data)
+            else:
+                data = User.objects.all()
+                serializer = UserSerializer(data, many=True)
+            return Response(serializer.data)
+        except User.DoesNotExist:
+            return Response({"Response":"Users Data not Found"},status=status.HTTP_404_NOT_FOUND)
+
 # {
 #     "mobile_no": 7356556336,
 #     "password1": "test",
