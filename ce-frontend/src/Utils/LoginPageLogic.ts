@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import LoginSlice from "../Redux/LoginSlice";
 import { useState } from "react";
-import { loginStatus } from "../Redux/LoginSlice";
+import { loginError } from "../Redux/LoginSlice";
 import { useNavigate } from "react-router-dom";
-import jwtDecode from 'jwt-decode';
+import jwtDecode from "jwt-decode";
 import axios from "axios";
+import { snackBarOpen } from "../Redux/PropertySlice";
 export const LoginPageLogic = () => {
-  const [token,setToken] = useState<any>(null);
+  const [token, setToken] = useState<any>(null);
   const url = useSelector((state: any) => state.ClientSlice.Url);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [values, setValues] = useState({
@@ -23,22 +25,23 @@ export const LoginPageLogic = () => {
       };
     });
   };
-  const handleSubmit = () => {
-  axios.post(`${url}/user/token/`,values)
-    .then((res: any) => {
-      console.log(res.data.access)
-      const decodedToken = jwtDecode(res.data.access)
-      setToken(decodedToken)
-  });
-    dispatch(loginStatus(true));
-    localStorage.setItem("isLoggedIn", "true");
-    navigate("/home");
+  const handleSubmit = async () => {
+    try {
+      let res = await axios.post(`${url}/user/token/`, values);
+      console.log(res);
+      const decodedToken = jwtDecode(res.data.access);
+      setToken(decodedToken);
+      localStorage.setItem("isLoggedIn", "true");
+      navigate("/home");
+    } catch (err) {
+      dispatch<any>(snackBarOpen(true));
+      dispatch<any>(loginError(true));
+      console.log(err);
+    }
   };
- 
 
   const handleClick = (element: any) => {
     if (element == "Logout") {
-      dispatch(loginStatus(false));
       localStorage.removeItem("isLoggedIn");
       navigate("/");
     } else if (element == "Users") {

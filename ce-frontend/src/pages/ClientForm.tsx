@@ -99,7 +99,7 @@ const ClientForm = () => {
         </Box>
         <ClientFormCom />
       </Box>
-      <SnackBar />
+      <SnackBar message={"Request submitted succesfully!"} duration={1000} />
     </>
   );
 };

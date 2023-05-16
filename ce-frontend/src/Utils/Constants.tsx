@@ -1,5 +1,3 @@
-import React from "react";
-
 export interface Property {
   PropertyTitle: string;
   PropertyType: string;
