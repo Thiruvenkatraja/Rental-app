@@ -2,11 +2,13 @@ from .models import User
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserSerializer
-from django.contrib.auth import authenticate, login
+from .serializers import ChangePasswordSerializer, UserSerializer
+from django.contrib.auth import authenticate, login, logout
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTTokenUserAuthentication
+from rest_framework.authentication import TokenAuthentication, BasicAuthentication
 # Create your views here.
 
 
@@ -14,9 +16,9 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, User):
         # Use the correct attribute for the primary key
-        user_id = getattr(User, 'User_Id')
+        # user_id = getattr(User, 'User_Id')
         token = super().get_token(User)
-        token['User_Id'] = user_id
+        token['full_name'] = User.Full_Name
         return token
 
 
@@ -27,13 +29,26 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 class UserAuthenticationView(APIView):
 
     def post(self, request):
-        username = request.data.get('username')
+        mobile_no = request.data.get('Mobile_No')
         password = request.data.get('password')
-        user = authenticate(username=username, password=password)
+        print(mobile_no, password)
+        user = authenticate(request, Mobile_No=mobile_no, password=password)
         if user is None:
             return Response({'error': 'requested user does not exists'}, status=status.HTTP_400_BAD_REQUEST)
         login(request, user)
         return Response({'response': 'login successfull'}, status=status.HTTP_200_OK)
+
+
+{
+    "Mobile_No": 917356556336,
+    "password": "test"
+}
+
+{
+    "old_password": "changeme",
+    "new_password1": "test",
+    "new_password2": "test"
+}
 
 
 class UserRegistrationView(APIView):
@@ -53,7 +68,6 @@ class UserRegistrationView(APIView):
             result = 'User created successfully'
         return Response({'response': result})
 
-
     def get(self, request, User_ID=None, *args, **kwargs):
         try:
             if User_ID:
@@ -64,16 +78,28 @@ class UserRegistrationView(APIView):
                 serializer = UserSerializer(data, many=True)
             return Response(serializer.data)
         except User.DoesNotExist:
-            return Response({"Response":"Users Data not Found"},status=status.HTTP_404_NOT_FOUND)
+            return Response({"Response": "Users Data not Found"}, status=status.HTTP_404_NOT_FOUND)
 
-# {
-#     "mobile_no": 7356556336,
-#     "password1": "test",
-#     "password2": "test",
-#     "full_name": "rahul",
-#     "email": "rahul@gmail.com",
-#     "role": "admin",
-#     "construction_name": "test",
-#     "city": "chennai",
-#     "address": "test"
-# }
+
+class ChangePassword(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        data = request.data
+        serializer = ChangePasswordSerializer(data=data)
+        if serializer.is_valid():
+            user = request.user
+            old_password = data['old_password']
+            new_password = data['new_password1']
+            if not user.check_password(old_password):
+                return Response({'response': 'old password incorrect'}, status=status.HTTP_400_BAD_REQUEST)
+            user.set_password(new_password)
+            user.save()
+            return Response({'response': 'password changed successfully'})
+        return Response({'response':  serializer.data})
+
+
+class Userlogout(APIView):
+    def post(self, request):
+        logout(request)
+        return Response({'response': 'logout successfull'})

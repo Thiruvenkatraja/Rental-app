@@ -4,28 +4,25 @@ import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { Grid } from "@mui/material";
 
 import { TextValidatorStyle, TypographyStyles } from "../Utils/Constants";
-import { AuthenticationLogics } from "../Utils/AuthenticationLogics";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import SnackBar from "../components/SnakeBar";
+import { AuthenticationLogics } from "../Utils/AuthenticationLogics";
 
 type Props = {};
 
-const Login = (props: Props) => {
+const ChangePassword = (props: Props) => {
   const loginError = useSelector((state: any) => state.LoginSlice.error);
   console.log(loginError, "error");
-  useEffect(() => {
-    localStorage.removeItem("isLoggedIn");
-  }, []);
-  const { handleSubmit, handleChange, values } = AuthenticationLogics();
+
+  const { ChangePassHandleSubmit, ChangePassHandleChange, ChangePassValues } =
+    AuthenticationLogics();
   const theme = useTheme();
   return (
     <div
       style={{
         position: "relative",
         width: "100%",
-        height: "100vh",
-        // borderRadius: "12px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -33,15 +30,16 @@ const Login = (props: Props) => {
       }}
     >
       <Typography
-        variant="h3"
+        variant="h4"
         style={{
           fontFamily: "Poppins",
           fontWeight: "500",
           color: "inherit",
           textDecoration: "none",
+          margin: "1rem",
         }}
       >
-        Sign in
+        Change Password
       </Typography>
       <Paper
         elevation={3}
@@ -49,7 +47,7 @@ const Login = (props: Props) => {
           position: "relative",
           width: "25rem",
           borderRadius: "12px",
-          margin: "4rem",
+          margin: "2rem",
           padding: "2rem",
           display: "flex",
           justifyContent: "center",
@@ -58,7 +56,7 @@ const Login = (props: Props) => {
         }}
       >
         <ValidatorForm
-          onSubmit={handleSubmit}
+          onSubmit={ChangePassHandleSubmit}
           onError={(errors: any) => console.log(errors)}
         >
           <Grid
@@ -73,14 +71,14 @@ const Login = (props: Props) => {
             }}
           >
             <Grid item xs={12}>
-              <Typography style={TypographyStyles}>Mobile No</Typography>
+              <Typography style={TypographyStyles}>Current Password</Typography>
               <TextValidator
                 placeholder="9876543210"
                 id="outlined-basic"
                 variant="outlined"
-                value={values.Mobile_No}
-                onChange={handleChange}
-                name="Mobile_No"
+                value={ChangePassValues.old_password}
+                onChange={ChangePassHandleChange}
+                name="old_password"
                 required={true}
                 style={{
                   width: "250px",
@@ -90,14 +88,33 @@ const Login = (props: Props) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Typography style={TypographyStyles}>Password</Typography>
+              <Typography style={TypographyStyles}>New Password</Typography>
+              <TextValidator
+                placeholder="9876543210"
+                id="outlined-basic"
+                variant="outlined"
+                value={ChangePassValues.new_password1}
+                onChange={ChangePassHandleChange}
+                name="new_password1"
+                required={true}
+                style={{
+                  width: "250px",
+                  marginTop: "0.5rem",
+                }}
+                sx={TextValidatorStyle}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Typography style={TypographyStyles}>
+                Re-type New Password
+              </Typography>
               <TextValidator
                 placeholder="**********"
                 id="outlined-basic"
                 variant="outlined"
-                value={values.password}
-                onChange={handleChange}
-                name="password"
+                value={ChangePassValues.new_password2}
+                onChange={ChangePassHandleChange}
+                name="new_password2"
                 required={true}
                 style={{
                   width: "250px",
@@ -132,4 +149,4 @@ const Login = (props: Props) => {
   );
 };
 
-export default Login;
+export default ChangePassword;

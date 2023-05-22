@@ -46,3 +46,6 @@ class User(AbstractUser):
 
     class Meta:
         db_table = 'User'
+
+    def __str__(self) -> str:
+        return str(self.Mobile_No)
