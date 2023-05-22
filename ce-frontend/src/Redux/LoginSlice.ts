@@ -5,6 +5,7 @@ export const loginData = createSlice({
   initialState: {
     isLoggedIn: false,
     error: false,
+    accessToken: "",
   },
   reducers: {
     loginStatus: (state: any, action: any) => {
@@ -13,8 +14,11 @@ export const loginData = createSlice({
     loginError: (state: any, action: any) => {
       state.error = action.payload;
     },
+    Token: (state: any, action: any) => {
+      state.accessToken = action.payload;
+    },
   },
 });
 
-export const { loginStatus, loginError } = loginData.actions;
+export const { loginStatus, loginError, Token } = loginData.actions;
 export default loginData.reducer;

@@ -8,6 +8,7 @@ import PropertyData from "./pages/PropertyData";
 import SuperAdmin from "./pages/SuperAdmin";
 import AddUserForm from "./pages/AddUserForm";
 import Login from "./pages/Login";
+import ChangePassword from "./pages/ChangePassword";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/super_admin" element={<SuperAdmin />} />
         <Route path="/add_user" element={<AddUserForm />} />
         <Route path="/" element={<Login />} />
+        <Route path="/change_password" element={<ChangePassword />} />
       </Routes>
     </BrowserRouter>
   );

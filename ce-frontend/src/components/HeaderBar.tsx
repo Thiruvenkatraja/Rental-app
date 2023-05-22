@@ -16,10 +16,10 @@ import { useTheme } from "@mui/material";
 import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { LoginPageLogic } from "../Utils/LoginPageLogic";
+import { AuthenticationLogics } from "../Utils/AuthenticationLogics";
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
 const pages = ["Properties", "Buy/Sell", "Contact Us"];
-const settings = ["Profile", "Users", "Dashboard", "Logout"];
+const settings = ["Profile", "Users", "Dashboard", "Change Password", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -43,7 +43,7 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const { handleClick } = LoginPageLogic();
+  const { handleClick } = AuthenticationLogics();
   const theme = useTheme();
   const isLoggedIn = localStorage.getItem("isLoggedIn");
   const loginStatus = useSelector((state: any) => state.LoginSlice.isLoggedIn);
