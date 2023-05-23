@@ -34,20 +34,22 @@ export const AuthenticationLogics = () => {
   };
   const handleSubmit = async () => {
     try {
-      let token = await axios.post(`${url}/user/token/`, values);
-      let login = await axios.post(`${url}/user/login/`, values);
-      console.log(token);
-      const decodedToken = jwtDecode(token.data.access);
-      //   setAccessToken(token.data.access);
+      let res = await axios.post(`${url}/user/token/`, values);
+      console.log(res);
+      const decodedToken: any = jwtDecode(res.data.access);
+      console.log(decodedToken);
       setToken(decodedToken);
-      dispatch<any>(Token<any>(token.data.access));
+      dispatch<any>(Token<any>(res.data.access));
       localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("role", decodedToken.role);
+
       navigate("/home");
     } catch (err) {
       dispatch<any>(snackBarOpen<any>(true));
       dispatch<any>(loginError<any>(true));
       console.log(err);
     }
+    console.log(token);
   };
 
   const handleClick = (element: any) => {
@@ -88,10 +90,11 @@ export const AuthenticationLogics = () => {
     });
   };
   const ChangePassHandleSubmit = async () => {
-    console.log("token", token);
+    console.log("token", accessToken);
     try {
-      if (accessToken === null) {
+      if (!accessToken) {
         window.alert("Session expired please login again");
+        localStorage.removeItem("isLoggedIn");
         navigate("/");
       }
       let res = await axiosInstance.post(

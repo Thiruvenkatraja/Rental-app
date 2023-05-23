@@ -1,16 +1,35 @@
-import * as React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { UserFilteredlist, fetchUserList } from "../../Redux/LoginSlice";
 
 export default function SuperAdminDataGrid() {
-  const Data: any = useSelector(
-    (state: any) => state.ClientSlice.filteredClientData.filteredClientData
-  );
+  const Data: any = useSelector((state: any) => state.LoginSlice.userList);
+  console.log("data", Data);
+  const role = localStorage.getItem("role");
+  const dispatch = useDispatch();
+
+  const filteredData = useMemo(() => {
+    let filtered = [];
+    if (role === "admin") {
+      filtered = Data.filter(
+        (data: any) => data.role === "owner" && data.role === "tenent"
+      );
+    } else if (role === "owner") {
+      filtered = Data.filter((data: any) => data.role === "tenent");
+    }
+    return filtered;
+  }, [role]);
+
+  useEffect(() => {
+    dispatch<any>(fetchUserList());
+    dispatch<any>(UserFilteredlist<any>(filteredData));
+  }, [filteredData]);
   const columns: GridColDef[] = [
     // { field: "Client_ID", headerName: "S.NO", width: 100 },
     {
-      field: "Name",
+      field: "Full_Name",
       headerName: "Name",
       width: 200,
       headerAlign: "center",
@@ -33,7 +52,7 @@ export default function SuperAdminDataGrid() {
       align: "center",
       // editable: true,
     },
-    
+
     {
       field: " Status",
       headerName: "Status",
@@ -71,7 +90,7 @@ export default function SuperAdminDataGrid() {
             borderBottom: "none",
           },
         }}
-        getRowId={(row: any) => row.Client_ID}
+        getRowId={(row: any) => row.User_Id}
         rows={Data ? Data : []}
         columns={columns}
         initialState={{

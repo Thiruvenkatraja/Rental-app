@@ -1,20 +1,27 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { snackBarOpen } from "../Redux/PropertySlice";
 import { useDispatch, useSelector } from "react-redux";
-
-type Props = {};
+import { fetchUserList } from "../Redux/LoginSlice";
 
 const AddUserFormLogics = () => {
   const dispatch = useDispatch();
   const url = useSelector((state: any) => state.ClientSlice.Url);
+  const role = localStorage.getItem("role");
   const [values, setValues] = useState<any>({
     mobile_no: "",
     password1: "changeme",
     password2: "changeme",
     full_name: "",
     email: "",
-    role: "",
+    role:
+      role === "superuser"
+        ? "admin"
+        : role === "admin"
+        ? "owner"
+        : role === "owner"
+        ? "tenent"
+        : "",
     construction_name: "",
     gst_no: "",
     city: "",
@@ -68,6 +75,8 @@ const AddUserFormLogics = () => {
       address: "",
     });
   };
+
+ 
   return { handleClear, handleSubmit, handleChange, values };
 };
 

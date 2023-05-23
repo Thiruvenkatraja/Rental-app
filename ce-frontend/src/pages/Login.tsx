@@ -13,7 +13,6 @@ type Props = {};
 
 const Login = (props: Props) => {
   const loginError = useSelector((state: any) => state.LoginSlice.error);
-  console.log(loginError, "error");
   useEffect(() => {
     localStorage.removeItem("isLoggedIn");
   }, []);

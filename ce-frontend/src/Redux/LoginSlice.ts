@@ -1,11 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const fetchUserList = createAsyncThunk("userList", async () => {
+  const res = await axios.get("https://3.226.14.5:7000/user/");
+  console.log("...........", res);
+  return res.data;
+});
 
 export const loginData = createSlice({
   name: "login",
   initialState: {
+    loading: false,
     isLoggedIn: false,
     error: false,
     accessToken: "",
+    role: "",
+    userList: [],
+    filteredList: [],
   },
   reducers: {
     loginStatus: (state: any, action: any) => {
@@ -17,8 +28,26 @@ export const loginData = createSlice({
     Token: (state: any, action: any) => {
       state.accessToken = action.payload;
     },
+    userRole: (state: any, action: any) => {
+      state.role = action.payload;
+    },
+    UserFilteredlist: (state: any, action: any) => {
+      state.filteredList = action.payload;
+    },
+  },
+  extraReducers: (builder: any) => {
+    builder.addCase(fetchUserList.pending, (state: any) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchUserList.fulfilled, (state: any, action: any) => {
+      state.userList = action.payload;
+    });
+    builder.addCase(fetchUserList.rejected, (state: any) => {
+      state.error = true;
+    });
   },
 });
 
-export const { loginStatus, loginError, Token } = loginData.actions;
+export const { loginStatus, loginError, Token, userRole, UserFilteredlist } =
+  loginData.actions;
 export default loginData.reducer;
