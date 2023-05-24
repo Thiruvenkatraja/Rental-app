@@ -49,7 +49,7 @@ export const PropertyDataLogics = () => {
   React.useEffect(() => {
     dispatch<any>(
       clientDataFiltered<any>({ filteredClientData: filteredClients })
-    );
+      );
   }, [filteredClients]);
 
   return {

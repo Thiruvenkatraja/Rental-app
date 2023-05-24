@@ -3,36 +3,14 @@ import Box from "@mui/material/Box";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { userFilteredlist, fetchUserList } from "../../Redux/LoginSlice";
+import { SuperAdminDataGridLogics } from "../../Utils/SuperAdminDataGridLogics";
 
 export default function SuperAdminDataGrid() {
-  const Data: any = useSelector((state: any) => state.LoginSlice.userList);
+  const { role } = SuperAdminDataGridLogics();
   const filteredUserList: any = useSelector(
     (state: any) => state.LoginSlice.filteredList
   );
   console.log("data", filteredUserList);
-  const role = localStorage.getItem("role");
-  const dispatch = useDispatch();
-
-  const filteredData = useMemo(() => {
-    let filtered = [];
-    if (role === "admin") {
-      filtered = Data.filter(
-        (data: any) => data.Role === "owner" || data.Role === "tenent"
-      );
-    } else if (role === "owner") {
-      filtered = Data.filter((data: any) => data.Role === "tenent");
-    } else {
-      filtered = Data;
-    }
-    return filtered;
-  }, [role, Data]);
-
-  console.log("filtered", filteredData);
-
-  useEffect(() => {
-    dispatch<any>(userFilteredlist<any>(filteredData));
-    dispatch<any>(fetchUserList());
-  }, []);
 
   const columns: GridColDef[] = [
     {
@@ -101,7 +79,7 @@ export default function SuperAdminDataGrid() {
           },
         }}
         getRowId={(row: any) => row.User_Id}
-        rows={filteredUserList ? filteredUserList : filteredData}
+        rows={filteredUserList ? filteredUserList : []}
         columns={modifiedColumn}
         initialState={{
           pagination: {
