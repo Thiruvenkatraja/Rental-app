@@ -8,11 +8,11 @@ import axios from "axios";
 export const PropertyDataLogics = () => {
   const { id, propertyName }: any = useParams();
   const [data, setData] = React.useState([]);
-//   const getData = () => {
-//     axios
-//       .get("https://3.226.14.5:7000/clients/")
-//       .then((res) => setData(res.data));
-//   };
+  //   const getData = () => {
+  //     axios
+  //       .get("https://3.226.14.5:7000/clients/")
+  //       .then((res) => setData(res.data));
+  //   };
   const Idx = parseInt(id);
   const dispatch = useDispatch();
   const Data: any = useSelector((state: any) => state.ClientSlice.clientData);

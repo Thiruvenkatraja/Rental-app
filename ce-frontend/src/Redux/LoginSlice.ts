@@ -3,7 +3,6 @@ import axios from "axios";
 
 export const fetchUserList = createAsyncThunk("userList", async () => {
   const res = await axios.get("https://3.226.14.5:7000/user/");
-  console.log("...........", res);
   return res.data;
 });
 
@@ -31,7 +30,7 @@ export const loginData = createSlice({
     userRole: (state: any, action: any) => {
       state.role = action.payload;
     },
-    UserFilteredlist: (state: any, action: any) => {
+    userFilteredlist: (state: any, action: any) => {
       state.filteredList = action.payload;
     },
   },
@@ -48,6 +47,6 @@ export const loginData = createSlice({
   },
 });
 
-export const { loginStatus, loginError, Token, userRole, UserFilteredlist } =
+export const { loginStatus, loginError, Token, userRole, userFilteredlist } =
   loginData.actions;
 export default loginData.reducer;
