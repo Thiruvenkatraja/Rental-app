@@ -11,6 +11,7 @@ type Props = {};
 
 const SuperAdmin = (props: Props) => {
   const theme = useTheme();
+  const role = localStorage.getItem("role");
   return (
     <>
       <Box
@@ -58,7 +59,13 @@ const SuperAdmin = (props: Props) => {
               textDecoration: "none",
             }}
           >
-            User
+            {role === "superuser"
+              ? "Admin"
+              : role === "admin"
+              ? "Owner"
+              : role == "owner"
+              ? "Tenent"
+              : ""}
           </Typography>
           <Button
             component={Link}

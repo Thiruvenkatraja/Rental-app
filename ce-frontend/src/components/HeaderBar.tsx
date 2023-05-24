@@ -18,10 +18,11 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AuthenticationLogics } from "../Utils/AuthenticationLogics";
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
+import { settings } from "../constants";
 const pages = ["Properties", "Buy/Sell", "Contact Us"];
-const settings = ["Profile", "Users", "Dashboard", "Change Password", "Logout"];
 
 function ResponsiveAppBar() {
+  const role = localStorage.getItem("role");
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -220,10 +221,16 @@ function ResponsiveAppBar() {
               >
                 {settings.map((setting) => (
                   <MenuItem
-                    key={setting}
+                    key={setting.name}
                     onClick={() => {
-                      handleClick(setting);
+                      handleClick(setting.name);
                       handleCloseUserMenu();
+                    }}
+                    sx={{
+                      display:
+                        role === "tenent" && setting.name === "Users"
+                          ? "none"
+                          : "",
                     }}
                   >
                     <Typography
@@ -233,7 +240,7 @@ function ResponsiveAppBar() {
                       }}
                       textAlign="center"
                     >
-                      {setting}
+                      {setting.label}
                     </Typography>
                   </MenuItem>
                 ))}

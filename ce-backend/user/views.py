@@ -19,6 +19,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         # user_id = getattr(User, 'User_Id')
         token = super().get_token(User)
         token['full_name'] = User.Full_Name
+        token['role'] = User.Role
         return token
 
 

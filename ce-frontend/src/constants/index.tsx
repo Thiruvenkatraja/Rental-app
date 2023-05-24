@@ -1,3 +1,26 @@
+export const settings = [
+  {
+    name: "Profile",
+    label: "Profile",
+  },
+  {
+    name: "Users",
+    label: "Users",
+  },
+  {
+    name: "Dashboard",
+    label: "Dashboard",
+  },
+  {
+    name: "Change Password",
+    label: "Change Password",
+  },
+  {
+    name: "Logout",
+    label: "Logout",
+  },
+];
+
 export const PropertyFormInputs = [
   {
     label: "Location",

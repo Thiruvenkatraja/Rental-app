@@ -1,16 +1,42 @@
-import * as React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { userFilteredlist, fetchUserList } from "../../Redux/LoginSlice";
 
 export default function SuperAdminDataGrid() {
-  const Data: any = useSelector(
-    (state: any) => state.ClientSlice.filteredClientData.filteredClientData
+  const Data: any = useSelector((state: any) => state.LoginSlice.userList);
+  const filteredUserList: any = useSelector(
+    (state: any) => state.LoginSlice.filteredList
   );
+  console.log("data", filteredUserList);
+  const role = localStorage.getItem("role");
+  const dispatch = useDispatch();
+
+  const filteredData = useMemo(() => {
+    let filtered = [];
+    if (role === "admin") {
+      filtered = Data.filter(
+        (data: any) => data.Role === "owner" || data.Role === "tenent"
+      );
+    } else if (role === "owner") {
+      filtered = Data.filter((data: any) => data.Role === "tenent");
+    } else {
+      filtered = Data;
+    }
+    return filtered;
+  }, [role, Data]);
+
+  console.log("filtered", filteredData);
+
+  useEffect(() => {
+    dispatch<any>(userFilteredlist<any>(filteredData));
+    dispatch<any>(fetchUserList());
+  }, []);
+
   const columns: GridColDef[] = [
-    // { field: "Client_ID", headerName: "S.NO", width: 100 },
     {
-      field: "Name",
+      field: "Full_Name",
       headerName: "Name",
       width: 200,
       headerAlign: "center",
@@ -26,14 +52,14 @@ export default function SuperAdminDataGrid() {
       // editable: true,
     },
     {
-      field: "role",
+      field: "Role",
       headerName: "Role",
       width: 210,
       headerAlign: "center",
       align: "center",
       // editable: true,
     },
-    
+
     {
       field: " Status",
       headerName: "Status",
@@ -59,7 +85,10 @@ export default function SuperAdminDataGrid() {
       },
     },
   ];
-
+  const modifiedColumn =
+    role === "owner"
+      ? columns.filter((col: any) => col.field !== "Role")
+      : columns;
   return (
     <Box sx={{ height: 400, width: "100%" }}>
       <DataGrid
@@ -71,9 +100,9 @@ export default function SuperAdminDataGrid() {
             borderBottom: "none",
           },
         }}
-        getRowId={(row: any) => row.Client_ID}
-        rows={Data ? Data : []}
-        columns={columns}
+        getRowId={(row: any) => row.User_Id}
+        rows={filteredUserList ? filteredUserList : filteredData}
+        columns={modifiedColumn}
         initialState={{
           pagination: {
             paginationModel: {
